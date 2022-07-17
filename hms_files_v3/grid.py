@@ -848,34 +848,68 @@ class main_window():
 
         self.main_page_frame_view3_physical_management_book_book_room = tk.Button(self.main_page_frame_view3_physical_management_book_frame,text="Book Room",bg='red',command= self.physical_management_book)
         self.main_page_frame_view3_physical_management_book_book_room.place(x=20,y=50,width=100,height=30)
-        self.main_page_frame_view3_physical_management_book_empty_room = tk.Button(self.main_page_frame_view3_physical_management_book_frame,text="Empty Room",command= self.physical_management_empty)
-        self.main_page_frame_view3_physical_management_book_empty_room.place(x=130,y=50,width=100,height=30)
+        self.main_page_frame_view3_physical_management_book_Discharge_room = tk.Button(self.main_page_frame_view3_physical_management_book_frame,text="Discharge Room",command= self.physical_management_Discharge)
+        self.main_page_frame_view3_physical_management_book_Discharge_room.place(x=130,y=50,width=100,height=30)
         self.main_page_frame_view3_physical_management_book_room_status = tk.Button(self.main_page_frame_view3_physical_management_book_frame,text="Room Status",command= self.physical_management_room_status)
         self.main_page_frame_view3_physical_management_book_room_status.place(x=240,y=50,width=100,height=30)
 
         self.main_page_frame_view3_physical_management_book_line_label= tk.Label(self.main_page_frame_view3_physical_management_book_frame,text="",bg='black')
         self.main_page_frame_view3_physical_management_book_line_label.place(x=5,y=85,width=1285,height=1)
 
+        self.main_page_frame_view3_physical_management_book_book_room_refresh = tk.Button(self.main_page_frame_view3_physical_management_book_frame,text="Reload",bg='red',command= None)
+        self.main_page_frame_view3_physical_management_book_book_room_refresh.place(x=20,y=90,width=150,height=30)
+        self.main_page_frame_view3_physical_management_book_Discharge_room_book_room = tk.Button(self.main_page_frame_view3_physical_management_book_frame,text="Assign Room",command= None)
+        self.main_page_frame_view3_physical_management_book_Discharge_room_book_room.place(x=180,y=90,width=150,height=30)
+        self.main_page_frame_view3_physical_management_book_room_status_exit = tk.Button(self.main_page_frame_view3_physical_management_book_frame,text="Exit",command= None)
+        self.main_page_frame_view3_physical_management_book_room_status_exit.place(x=340,y=90,width=150,height=30)
+        self.main_page_frame_view3_physical_management_book_room_status_reset = tk.Button(self.main_page_frame_view3_physical_management_book_frame,text="Reset",command= None)
+        self.main_page_frame_view3_physical_management_book_room_status_reset.place(x=500,y=90,width=150,height=30)
+   
+
+        #physical_management_book_room_tree_view========================================start========================================
+        # define columns
+        self.physical_management_book_room_columns = ('ROOM_ID', 'FLOOR_NO', 'ROOM_NO','ROOM_STATUS')
+
+        self.physical_management_book_room_default_tree = ttk.Treeview(self.main_page_frame_view3_physical_management_book_frame, columns=self.physical_management_book_room_columns, show='headings')
+
+
+
+        # define headings
+        self.physical_management_book_room_default_tree.heading('ROOM_ID', text='ROOM ID')
+        self.physical_management_book_room_default_tree.heading('FLOOR_NO', text='FLOOR NO')
+        self.physical_management_book_room_default_tree.heading('ROOM_NO', text='ROOM NO')
+        self.physical_management_book_room_default_tree.heading('ROOM_STATUS', text='ROOM STATUS')
+        #patient_search_tree_view========================================end========================================
+        #physical_management_book_room_default_frame-----------end-------------
 
         #main_page_frame_view3_physical_management_book_frame------------------end-------------
-        #main_page_frame_view3_physical_management_empty_frame---------------start-------------
-        self.main_page_frame_view3_physical_management_empty_frame=tk.Frame(self.root1,bg='LavenderBlush')
-        self.main_page_frame_view3_physical_management_empty_frame['borderwidth']=0
+        #main_page_frame_view3_physical_management_Discharge_frame---------------start-------------
+        self.main_page_frame_view3_physical_management_Discharge_frame=tk.Frame(self.root1,bg='LavenderBlush')
+        self.main_page_frame_view3_physical_management_Discharge_frame['borderwidth']=0
 
-        self.main_page_frame_view3_physical_management_empty_mainheading1 = tk.Label(self.main_page_frame_view3_physical_management_empty_frame,text="Empty Room",font=("lucida",15,"bold"),bg='blue')
-        self.main_page_frame_view3_physical_management_empty_mainheading1.place(x=5,y=5,width=1300,height=40)
+        self.main_page_frame_view3_physical_management_Discharge_mainheading1 = tk.Label(self.main_page_frame_view3_physical_management_Discharge_frame,text="Discharge Room",font=("lucida",15,"bold"),bg='blue')
+        self.main_page_frame_view3_physical_management_Discharge_mainheading1.place(x=5,y=5,width=1300,height=40)
 
-        self.main_page_frame_view3_physical_management_empty_book_room = tk.Button(self.main_page_frame_view3_physical_management_empty_frame,text="Book Room",command= self.physical_management_book)
-        self.main_page_frame_view3_physical_management_empty_book_room.place(x=20,y=50,width=100,height=30)
-        self.main_page_frame_view3_physical_management_empty_empty_room = tk.Button(self.main_page_frame_view3_physical_management_empty_frame,text="Empty Room",bg='red',command= self.physical_management_empty)
-        self.main_page_frame_view3_physical_management_empty_empty_room.place(x=130,y=50,width=100,height=30)
-        self.main_page_frame_view3_physical_management_empty_room_status = tk.Button(self.main_page_frame_view3_physical_management_empty_frame,text="Room Status",command= self.physical_management_room_status)
-        self.main_page_frame_view3_physical_management_empty_room_status.place(x=240,y=50,width=100,height=30)
+        self.main_page_frame_view3_physical_management_Discharge_book_room = tk.Button(self.main_page_frame_view3_physical_management_Discharge_frame,text="Book Room",command= self.physical_management_book)
+        self.main_page_frame_view3_physical_management_Discharge_book_room.place(x=20,y=50,width=100,height=30)
+        self.main_page_frame_view3_physical_management_Discharge_Discharge_room = tk.Button(self.main_page_frame_view3_physical_management_Discharge_frame,text="Discharge Room",bg='red',command= self.physical_management_Discharge)
+        self.main_page_frame_view3_physical_management_Discharge_Discharge_room.place(x=130,y=50,width=100,height=30)
+        self.main_page_frame_view3_physical_management_Discharge_room_status = tk.Button(self.main_page_frame_view3_physical_management_Discharge_frame,text="Room Status",command= self.physical_management_room_status)
+        self.main_page_frame_view3_physical_management_Discharge_room_status.place(x=240,y=50,width=100,height=30)
 
-        self.main_page_frame_view3_physical_management_empty_line_label= tk.Label(self.main_page_frame_view3_physical_management_empty_frame,text="",bg='black')
-        self.main_page_frame_view3_physical_management_empty_line_label.place(x=5,y=85,width=1285,height=1)
+        self.main_page_frame_view3_physical_management_Discharge_line_label= tk.Label(self.main_page_frame_view3_physical_management_Discharge_frame,text="",bg='black')
+        self.main_page_frame_view3_physical_management_Discharge_line_label.place(x=5,y=85,width=1285,height=1)
 
-        #main_page_frame_view3_physical_management_empty_frame------------------end-------------
+        self.main_page_frame_view3_physical_management_Discharge_Discharge_room_refresh = tk.Button(self.main_page_frame_view3_physical_management_Discharge_frame,text="Reload",bg='red',command= None)
+        self.main_page_frame_view3_physical_management_Discharge_Discharge_room_refresh.place(x=20,y=90,width=150,height=30)
+        self.main_page_frame_view3_physical_management_Discharge_Discharge_room_discharge_room = tk.Button(self.main_page_frame_view3_physical_management_Discharge_frame,text="discharge Room",command= None)
+        self.main_page_frame_view3_physical_management_Discharge_Discharge_room_discharge_room.place(x=180,y=90,width=150,height=30)
+        self.main_page_frame_view3_physical_management_Discharge_room_status_exit = tk.Button(self.main_page_frame_view3_physical_management_Discharge_frame,text="Exit",command= None)
+        self.main_page_frame_view3_physical_management_Discharge_room_status_exit.place(x=340,y=90,width=150,height=30)
+        self.main_page_frame_view3_physical_management_Discharge_room_status_reset = tk.Button(self.main_page_frame_view3_physical_management_Discharge_frame,text="Reset",command= None)
+        self.main_page_frame_view3_physical_management_Discharge_room_status_reset.place(x=500,y=90,width=150,height=30)
+
+        #main_page_frame_view3_physical_management_Discharge_frame------------------end-------------
         #main_page_frame_view3_physical_management_room_status_frame---------------start-------------
         self.main_page_frame_view3_physical_management_room_status_frame=tk.Frame(self.root1,bg='gray85')
         self.main_page_frame_view3_physical_management_room_status_frame['borderwidth']=0
@@ -887,7 +921,7 @@ class main_window():
 
         self.main_page_frame_view3_physical_management_room_status_book_room = tk.Button(self.main_page_frame_view3_physical_management_room_status_frame,text="Book Room",command= self.physical_management_book)
         self.main_page_frame_view3_physical_management_room_status_book_room.place(x=20,y=50,width=100,height=30)
-        self.main_page_frame_view3_physical_management_room_status_room_status_room = tk.Button(self.main_page_frame_view3_physical_management_room_status_frame,text="Empty Room",command= self.physical_management_empty)
+        self.main_page_frame_view3_physical_management_room_status_room_status_room = tk.Button(self.main_page_frame_view3_physical_management_room_status_frame,text="Discharge Room",command= self.physical_management_Discharge)
         self.main_page_frame_view3_physical_management_room_status_room_status_room.place(x=130,y=50,width=100,height=30)
         self.main_page_frame_view3_physical_management_room_status_room_status = tk.Button(self.main_page_frame_view3_physical_management_room_status_frame,text="Room Status",bg='red',command= self.physical_management_room_status)
         self.main_page_frame_view3_physical_management_room_status_room_status.place(x=240,y=50,width=100,height=30)
@@ -1433,7 +1467,7 @@ class main_window():
         self.main_page_frame_view3_ipo_queue_default_frame_status= "None"
 
         self.main_page_frame_view3_physical_management_book_frame_status= "None"
-        self.main_page_frame_view3_physical_management_empty_frame_status= "None"
+        self.main_page_frame_view3_physical_management_Discharge_frame_status= "None"
         self.main_page_frame_view3_physical_management_room_status_frame_status= "None"
 
 
@@ -2243,8 +2277,9 @@ class main_window():
     
     #ipd_queue_functions==============================end==================================
     #physical_management_functions==============================start==================================
-
-    def physical_management_empty_room(self):
+    def physical_management_Book_room_fun(self):
+        pass
+    def physical_management_Discharge_room_fun(self):
         pass
 
     def physical_management_room_status_refresh(self):
@@ -2506,10 +2541,10 @@ class main_window():
             self.main_page_frame_view3_physical_management_book_frame_status = "activated"
             self.main_page_frame_view3_physical_management_book_frame.pack(ipadx=670,ipady=390,side='top')
 
-    def main_page_frame_view3_physical_management_empty_frame_activate(self):
-        if self.main_page_frame_view3_physical_management_empty_frame_status  == "deactivated" or self.main_page_frame_view3_physical_management_empty_frame_status == "None" :
-            self.main_page_frame_view3_physical_management_empty_frame_status = "activated"
-            self.main_page_frame_view3_physical_management_empty_frame.pack(ipadx=670,ipady=390,side='top')
+    def main_page_frame_view3_physical_management_Discharge_frame_activate(self):
+        if self.main_page_frame_view3_physical_management_Discharge_frame_status  == "deactivated" or self.main_page_frame_view3_physical_management_Discharge_frame_status == "None" :
+            self.main_page_frame_view3_physical_management_Discharge_frame_status = "activated"
+            self.main_page_frame_view3_physical_management_Discharge_frame.pack(ipadx=670,ipady=390,side='top')
 
     def main_page_frame_view3_physical_management_room_status_frame_activate(self):
         if self.main_page_frame_view3_physical_management_room_status_frame_status  == "deactivated" or self.main_page_frame_view3_physical_management_room_status_frame_status == "None" :
@@ -2642,10 +2677,10 @@ class main_window():
               self.main_page_frame_view3_physical_management_book_frame_status = "deactivated"
               self.main_page_frame_view3_physical_management_book_frame.pack_forget()
 
-    def main_page_frame_view3_physical_management_empty_frame_deactivate(self):
-        if self.main_page_frame_view3_physical_management_empty_frame_status  == "activated" or self.main_page_frame_view3_physical_management_empty_frame_status == "None" :
-            self.main_page_frame_view3_physical_management_empty_frame_status = "deactivated"
-            self.main_page_frame_view3_physical_management_empty_frame.pack_forget()
+    def main_page_frame_view3_physical_management_Discharge_frame_deactivate(self):
+        if self.main_page_frame_view3_physical_management_Discharge_frame_status  == "activated" or self.main_page_frame_view3_physical_management_Discharge_frame_status == "None" :
+            self.main_page_frame_view3_physical_management_Discharge_frame_status = "deactivated"
+            self.main_page_frame_view3_physical_management_Discharge_frame.pack_forget()
 
     def main_page_frame_view3_physical_management_room_status_frame_deactivate(self):
         if self.main_page_frame_view3_physical_management_room_status_frame_status  == "activated" or self.main_page_frame_view3_physical_management_room_status_frame_status == "None" :
@@ -2743,7 +2778,7 @@ class main_window():
     self.main_page_frame_view3_opd_queue_default_frame_deactivate()
 
     self.main_page_frame_view3_physical_management_book_frame_deactivate()
-    self.main_page_frame_view3_physical_management_empty_frame_deactivate()
+    self.main_page_frame_view3_physical_management_Discharge_frame_deactivate()
     self.main_page_frame_view3_physical_management_room_status_frame_deactivate()
 
     self.main_page_frame_view3_dialy_collection_default_frame_deactivate()
@@ -2780,7 +2815,7 @@ class main_window():
              self.main_page_frame_view3_ipo_queue_default_frame_deactivate()
 
              self.main_page_frame_view3_physical_management_book_frame_deactivate()
-             self.main_page_frame_view3_physical_management_empty_frame_deactivate()
+             self.main_page_frame_view3_physical_management_Discharge_frame_deactivate()
              self.main_page_frame_view3_physical_management_room_status_frame_deactivate()
 
              self.main_page_frame_view3_dialy_collection_default_frame_deactivate()
@@ -2805,7 +2840,7 @@ class main_window():
              self.main_page_frame_view3_ipo_queue_default_frame_deactivate()
 
              self.main_page_frame_view3_physical_management_book_frame_deactivate()
-             self.main_page_frame_view3_physical_management_empty_frame_deactivate()
+             self.main_page_frame_view3_physical_management_Discharge_frame_deactivate()
              self.main_page_frame_view3_physical_management_room_status_frame_deactivate()
 
              self.main_page_frame_view3_dialy_collection_default_frame_deactivate()
@@ -2867,7 +2902,7 @@ class main_window():
              self.main_page_frame_view3_ipo_queue_default_frame_deactivate()
 
              self.main_page_frame_view3_physical_management_book_frame_deactivate()
-             self.main_page_frame_view3_physical_management_empty_frame_deactivate()
+             self.main_page_frame_view3_physical_management_Discharge_frame_deactivate()
              self.main_page_frame_view3_physical_management_room_status_frame_deactivate()
              
              self.main_page_frame_view3_dialy_collection_default_frame_deactivate()
@@ -2929,7 +2964,7 @@ class main_window():
              self.main_page_frame_view3_ipo_queue_default_frame_deactivate()
 
              self.main_page_frame_view3_physical_management_book_frame_deactivate()
-             self.main_page_frame_view3_physical_management_empty_frame_deactivate()
+             self.main_page_frame_view3_physical_management_Discharge_frame_deactivate()
              self.main_page_frame_view3_physical_management_room_status_frame_deactivate()
              
              self.main_page_frame_view3_dialy_collection_default_frame_deactivate()
@@ -2961,7 +2996,7 @@ class main_window():
              self.main_page_frame_view3_ipo_queue_default_frame_deactivate()
 
              self.main_page_frame_view3_physical_management_book_frame_deactivate()
-             self.main_page_frame_view3_physical_management_empty_frame_deactivate()
+             self.main_page_frame_view3_physical_management_Discharge_frame_deactivate()
              self.main_page_frame_view3_physical_management_room_status_frame_deactivate()
 
              self.main_page_frame_view3_dialy_collection_default_frame_deactivate()
@@ -2994,7 +3029,7 @@ class main_window():
         self.main_page_frame_view3_ipo_queue_default_frame_deactivate()
 
         self.main_page_frame_view3_physical_management_book_frame_deactivate()
-        self.main_page_frame_view3_physical_management_empty_frame_deactivate()
+        self.main_page_frame_view3_physical_management_Discharge_frame_deactivate()
         self.main_page_frame_view3_physical_management_room_status_frame_deactivate()
 
         self.main_page_frame_view3_dialy_collection_default_frame_deactivate()
@@ -3024,7 +3059,7 @@ class main_window():
          self.main_page_frame_view3_ipo_queue_default_frame_deactivate()
 
          self.main_page_frame_view3_physical_management_book_frame_deactivate()
-         self.main_page_frame_view3_physical_management_empty_frame_deactivate()
+         self.main_page_frame_view3_physical_management_Discharge_frame_deactivate()
          self.main_page_frame_view3_physical_management_room_status_frame_deactivate()
 
          self.main_page_frame_view3_dialy_collection_default_frame_deactivate()
@@ -3050,7 +3085,7 @@ class main_window():
          self.main_page_frame_view3_ipo_queue_default_frame_deactivate()
 
          self.main_page_frame_view3_physical_management_book_frame_deactivate()
-         self.main_page_frame_view3_physical_management_empty_frame_deactivate()
+         self.main_page_frame_view3_physical_management_Discharge_frame_deactivate()
          self.main_page_frame_view3_physical_management_room_status_frame_deactivate()
 
          self.main_page_frame_view3_dialy_collection_default_frame_deactivate()
@@ -3080,7 +3115,7 @@ class main_window():
         self.main_page_frame_view3_ipo_queue_default_frame_deactivate()
 
         self.main_page_frame_view3_physical_management_book_frame_deactivate()
-        self.main_page_frame_view3_physical_management_empty_frame_deactivate()
+        self.main_page_frame_view3_physical_management_Discharge_frame_deactivate()
         self.main_page_frame_view3_physical_management_room_status_frame_deactivate()
 
         self.main_page_frame_view3_dialy_collection_default_frame_deactivate()
@@ -3110,7 +3145,7 @@ class main_window():
         self.main_page_frame_view3_ipo_queue_default_frame_activate()
 
         self.main_page_frame_view3_physical_management_book_frame_deactivate()
-        self.main_page_frame_view3_physical_management_empty_frame_deactivate()
+        self.main_page_frame_view3_physical_management_Discharge_frame_deactivate()
         self.main_page_frame_view3_physical_management_room_status_frame_deactivate()
 
         self.main_page_frame_view3_dialy_collection_default_frame_deactivate()
@@ -3140,14 +3175,14 @@ class main_window():
         self.main_page_frame_view3_ipo_queue_default_frame_deactivate()
 
         self.main_page_frame_view3_physical_management_book_frame_activate()
-        self.main_page_frame_view3_physical_management_empty_frame_deactivate()
+        self.main_page_frame_view3_physical_management_Discharge_frame_deactivate()
         self.main_page_frame_view3_physical_management_room_status_frame_deactivate()
 
         self.main_page_frame_view3_dialy_collection_default_frame_deactivate()
         self.main_page_frame_view3_dialy_collection_dialy_collection_ipd_frame_deactivate()
         self.main_page_frame_view3_dialy_collection_dialy_collection_opd_frame_deactivate()
 
-    def physical_management_empty(self):
+    def physical_management_Discharge(self):
         self.main_page_frame_view3_home_frame_deactivate()
         self.main_page_frame_view3_patient_registration_default_frame_deactivate()
         self.main_page_frame_view3_patient_visit_default_frame_deactivate()
@@ -3167,7 +3202,7 @@ class main_window():
         self.main_page_frame_view3_ipo_queue_default_frame_deactivate()
 
         self.main_page_frame_view3_physical_management_book_frame_deactivate()
-        self.main_page_frame_view3_physical_management_empty_frame_activate()
+        self.main_page_frame_view3_physical_management_Discharge_frame_activate()
         self.main_page_frame_view3_physical_management_room_status_frame_deactivate()
 
         self.main_page_frame_view3_dialy_collection_default_frame_deactivate()
@@ -3195,7 +3230,7 @@ class main_window():
         self.main_page_frame_view3_ipo_queue_default_frame_deactivate()
 
         self.main_page_frame_view3_physical_management_book_frame_deactivate()
-        self.main_page_frame_view3_physical_management_empty_frame_deactivate()
+        self.main_page_frame_view3_physical_management_Discharge_frame_deactivate()
         self.main_page_frame_view3_physical_management_room_status_frame_activate()
 
         self.main_page_frame_view3_dialy_collection_default_frame_deactivate()
@@ -3224,7 +3259,7 @@ class main_window():
         self.main_page_frame_view3_ipo_queue_default_frame_deactivate()
 
         self.main_page_frame_view3_physical_management_book_frame_deactivate()
-        self.main_page_frame_view3_physical_management_empty_frame_deactivate()
+        self.main_page_frame_view3_physical_management_Discharge_frame_deactivate()
         self.main_page_frame_view3_physical_management_room_status_frame_deactivate()
 
         self.main_page_frame_view3_dialy_collection_dialy_collection_ipd_frame_deactivate()
@@ -3250,7 +3285,7 @@ class main_window():
         self.main_page_frame_view3_ipo_queue_default_frame_deactivate()
 
         self.main_page_frame_view3_physical_management_book_frame_deactivate()
-        self.main_page_frame_view3_physical_management_empty_frame_deactivate()
+        self.main_page_frame_view3_physical_management_Discharge_frame_deactivate()
         self.main_page_frame_view3_physical_management_room_status_frame_deactivate()
 
         self.main_page_frame_view3_dialy_collection_default_frame_deactivate()
@@ -3276,7 +3311,7 @@ class main_window():
         self.main_page_frame_view3_ipo_queue_default_frame_deactivate()
 
         self.main_page_frame_view3_physical_management_book_frame_deactivate()
-        self.main_page_frame_view3_physical_management_empty_frame_deactivate()
+        self.main_page_frame_view3_physical_management_Discharge_frame_deactivate()
         self.main_page_frame_view3_physical_management_room_status_frame_deactivate()
  
         self.main_page_frame_view3_dialy_collection_default_frame_deactivate()

@@ -1,16 +1,22 @@
-#main_page_frame_view3_physical_management_room_status_frame---------------start-------------
-        self.main_page_frame_view3_physical_management_room_status_frame=tk.Frame(self.root1,bg='cyan')
-        self.main_page_frame_view3_physical_management_room_status_frame['borderwidth']=0
+def physical_management_book_room_display(self): 
+        self.avaliable_room_list = login_check.get_execution_result("select room_ID,room_floor, room_no,rooms_status from rooms_details where rooms_status = 'occupied'")
+        #adding the values into contact list 
+        self.physical_management_book_room_contacts = []
+        for n in self.avaliable_room_list:
+            self.physical_management_book_room_contacts.append((f'physical_management_book_room_first {n}', f'last {n}', f'email{n}@example.com'))
 
-        self.main_page_frame_view3_physical_management_room_status_mainheading1 = tk.Label(self.main_page_frame_view3_physical_management_room_status_frame,text="physical management",font=("lucida",15,"bold"),bg='blue')
-        self.main_page_frame_view3_physical_management_room_status_mainheading1.place(x=5,y=5,width=1300,height=40)
+        # add data to the treeview 
+        for contact in self.physical_management_book_room_contacts:
+            self.physical_management_book_room_default_tree.insert('', tk.END, values=contact)
 
-        self.main_page_frame_view3_physical_management_room_status_book_room = tk.Button(self.main_page_frame_view3_physical_management_room_status_frame,text="Book Room")
-        self.main_page_frame_view3_physical_management_room_status_book_room.place(x=20,y=50,width=100,height=30)
-        self.main_page_frame_view3_physical_management_room_status_room_status_room = tk.Button(self.main_page_frame_view3_physical_management_room_status_frame,text="Empty Room")
-        self.main_page_frame_view3_physical_management_room_status_room_status_room.place(x=130,y=50,width=100,height=30)
-        self.main_page_frame_view3_physical_management_room_status_room_status = tk.Button(self.main_page_frame_view3_physical_management_room_status_frame,text="Room Status")
-        self.main_page_frame_view3_physical_management_room_status_room_status.place(x=240,y=50,width=100,height=30)
+        self.physical_management_book_room_default_tree.place(x=15,y=340,width=1150,height=400)
+        #tree.grid(row=0, column=0, sticky='nsew')
 
-
-        #main_page_frame_view3_physical_management_room_status_frame------------------end-------------
+        #ading the scroll baar 
+        self.physical_management_book_room_scrollbar = ttk.Scrollbar(self.main_page_frame_view3_physical_management_book_room_default_frame, orient=tk.VERTICAL, command=self.physical_management_book_room_default_tree.yview)
+        self.physical_management_book_room_default_tree.configure(yscroll=self.physical_management_book_room_scrollbar.set)
+        #scrollbar.grid(row=0, column=1, sticky='ns')
+        self.physical_management_book_room_scrollbar.place(x=1165, y=340,width=15,height=400)
+        
+        self.physical_management_book_room_selected = self.physical_management_book_room_default_tree.focus()
+        print("self.physical_management_book_room_selected in display" + self.physical_management_book_room_selected)
