@@ -856,13 +856,13 @@ class main_window():
         self.main_page_frame_view3_physical_management_book_line_label= tk.Label(self.main_page_frame_view3_physical_management_book_frame,text="",bg='black')
         self.main_page_frame_view3_physical_management_book_line_label.place(x=5,y=85,width=1285,height=1)
 
-        self.main_page_frame_view3_physical_management_book_book_room_refresh = tk.Button(self.main_page_frame_view3_physical_management_book_frame,text="Reload",bg='red',command= None)
+        self.main_page_frame_view3_physical_management_book_book_room_refresh = tk.Button(self.main_page_frame_view3_physical_management_book_frame,text="Reload",command= self.physical_management_Book_room_fun)
         self.main_page_frame_view3_physical_management_book_book_room_refresh.place(x=20,y=90,width=150,height=30)
-        self.main_page_frame_view3_physical_management_book_Discharge_room_book_room = tk.Button(self.main_page_frame_view3_physical_management_book_frame,text="Assign Room",command= None)
+        self.main_page_frame_view3_physical_management_book_Discharge_room_book_room = tk.Button(self.main_page_frame_view3_physical_management_book_frame,text="Assign Room",command= self.physical_management_book_room_assaign_room_fun)
         self.main_page_frame_view3_physical_management_book_Discharge_room_book_room.place(x=180,y=90,width=150,height=30)
-        self.main_page_frame_view3_physical_management_book_room_status_exit = tk.Button(self.main_page_frame_view3_physical_management_book_frame,text="Exit",command= None)
+        self.main_page_frame_view3_physical_management_book_room_status_exit = tk.Button(self.main_page_frame_view3_physical_management_book_frame,text="Exit",command=self.home_default)
         self.main_page_frame_view3_physical_management_book_room_status_exit.place(x=340,y=90,width=150,height=30)
-        self.main_page_frame_view3_physical_management_book_room_status_reset = tk.Button(self.main_page_frame_view3_physical_management_book_frame,text="Reset",command= None)
+        self.main_page_frame_view3_physical_management_book_room_status_reset = tk.Button(self.main_page_frame_view3_physical_management_book_frame,text="Reset",command=self.physical_management_book_room_treeview_reset)
         self.main_page_frame_view3_physical_management_book_room_status_reset.place(x=500,y=90,width=150,height=30)
    
 
@@ -892,7 +892,7 @@ class main_window():
 
         self.main_page_frame_view3_physical_management_Discharge_book_room = tk.Button(self.main_page_frame_view3_physical_management_Discharge_frame,text="Book Room",command= self.physical_management_book)
         self.main_page_frame_view3_physical_management_Discharge_book_room.place(x=20,y=50,width=100,height=30)
-        self.main_page_frame_view3_physical_management_Discharge_Discharge_room = tk.Button(self.main_page_frame_view3_physical_management_Discharge_frame,text="Discharge Room",bg='red',command= self.physical_management_Discharge)
+        self.main_page_frame_view3_physical_management_Discharge_Discharge_room = tk.Button(self.main_page_frame_view3_physical_management_Discharge_frame,text="Discharge Room",bg='red' ,command= self.physical_management_Discharge)
         self.main_page_frame_view3_physical_management_Discharge_Discharge_room.place(x=130,y=50,width=100,height=30)
         self.main_page_frame_view3_physical_management_Discharge_room_status = tk.Button(self.main_page_frame_view3_physical_management_Discharge_frame,text="Room Status",command= self.physical_management_room_status)
         self.main_page_frame_view3_physical_management_Discharge_room_status.place(x=240,y=50,width=100,height=30)
@@ -900,14 +900,31 @@ class main_window():
         self.main_page_frame_view3_physical_management_Discharge_line_label= tk.Label(self.main_page_frame_view3_physical_management_Discharge_frame,text="",bg='black')
         self.main_page_frame_view3_physical_management_Discharge_line_label.place(x=5,y=85,width=1285,height=1)
 
-        self.main_page_frame_view3_physical_management_Discharge_Discharge_room_refresh = tk.Button(self.main_page_frame_view3_physical_management_Discharge_frame,text="Reload",bg='red',command= None)
+        self.main_page_frame_view3_physical_management_Discharge_Discharge_room_refresh = tk.Button(self.main_page_frame_view3_physical_management_Discharge_frame,text="Reload",command=self.physical_management_Discharge_room_fun)
         self.main_page_frame_view3_physical_management_Discharge_Discharge_room_refresh.place(x=20,y=90,width=150,height=30)
-        self.main_page_frame_view3_physical_management_Discharge_Discharge_room_discharge_room = tk.Button(self.main_page_frame_view3_physical_management_Discharge_frame,text="discharge Room",command= None)
+        self.main_page_frame_view3_physical_management_Discharge_Discharge_room_discharge_room = tk.Button(self.main_page_frame_view3_physical_management_Discharge_frame,text="discharge Room",command= self.physical_management_Discharge_room_Discharge_room_fun)
         self.main_page_frame_view3_physical_management_Discharge_Discharge_room_discharge_room.place(x=180,y=90,width=150,height=30)
-        self.main_page_frame_view3_physical_management_Discharge_room_status_exit = tk.Button(self.main_page_frame_view3_physical_management_Discharge_frame,text="Exit",command= None)
+        self.main_page_frame_view3_physical_management_Discharge_room_status_exit = tk.Button(self.main_page_frame_view3_physical_management_Discharge_frame,text="Exit",command=self.home_default)
         self.main_page_frame_view3_physical_management_Discharge_room_status_exit.place(x=340,y=90,width=150,height=30)
-        self.main_page_frame_view3_physical_management_Discharge_room_status_reset = tk.Button(self.main_page_frame_view3_physical_management_Discharge_frame,text="Reset",command= None)
+        self.main_page_frame_view3_physical_management_Discharge_room_status_reset = tk.Button(self.main_page_frame_view3_physical_management_Discharge_frame,text="Reset",command= self.physical_management_Discharge_room_treeview_reset)
         self.main_page_frame_view3_physical_management_Discharge_room_status_reset.place(x=500,y=90,width=150,height=30)
+
+        
+        #physical_management_Discharge_room_tree_view========================================start========================================
+        # define columns
+        self.physical_management_Discharge_room_columns = ('ROOM_ID', 'FLOOR_NO', 'ROOM_NO','ROOM_STATUS')
+
+        self.physical_management_Discharge_room_default_tree = ttk.Treeview(self.main_page_frame_view3_physical_management_Discharge_frame, columns=self.physical_management_Discharge_room_columns, show='headings')
+
+
+
+        # define headings
+        self.physical_management_Discharge_room_default_tree.heading('ROOM_ID', text='ROOM ID')
+        self.physical_management_Discharge_room_default_tree.heading('FLOOR_NO', text='FLOOR NO')
+        self.physical_management_Discharge_room_default_tree.heading('ROOM_NO', text='ROOM NO')
+        self.physical_management_Discharge_room_default_tree.heading('ROOM_STATUS', text='ROOM STATUS')
+        #patient_search_tree_view========================================end========================================
+        #physical_management_Discharge_room_default_frame-----------end-------------
 
         #main_page_frame_view3_physical_management_Discharge_frame------------------end-------------
         #main_page_frame_view3_physical_management_room_status_frame---------------start-------------
@@ -2278,9 +2295,314 @@ class main_window():
     #ipd_queue_functions==============================end==================================
     #physical_management_functions==============================start==================================
     def physical_management_Book_room_fun(self):
-        pass
+        self.physical_management_book_room_treeview_reset()
+        self.avaliable_room_list = None
+        self.avaliable_room_list = login_check.get_execution_result("select room_ID,room_floor, room_no,rooms_status from rooms_details where rooms_status = 'unoccupied'")
+        print("avaliable_room_list type:",self.avaliable_room_list)
+        #adding the values into contact list 
+        self.physical_management_book_room_contacts = []
+        for i in self.avaliable_room_list:
+            #self.physical_management_book_room_contacts.append(i[0],i[1],i[2],i[3])
+            self.physical_management_book_room_contacts.append((f'{i[0]}', f'{i[1]}', f'{i[2]}',f'{i[3]}'))
+            #(f'patient_search_first {n}', f'last {n}', f'email{n}@example.com')
+
+        # add data to the treeview 
+        for i in self.physical_management_book_room_contacts:
+            self.physical_management_book_room_default_tree.insert('', tk.END, values=i)
+
+        self.physical_management_book_room_default_tree.place(x=130,y=200,width=1000,height=400)
+        #tree.grid(row=0, column=0, sticky='nsew')
+
+        #ading the scroll baar 
+        self.physical_management_book_room_scrollbar = ttk.Scrollbar(self.main_page_frame_view3_physical_management_book_frame, orient=tk.VERTICAL, command=self.physical_management_book_room_default_tree.yview)
+        self.physical_management_book_room_default_tree.configure(yscroll=self.physical_management_book_room_scrollbar.set)
+        #scrollbar.grid(row=0, column=1, sticky='ns')
+        self.physical_management_book_room_scrollbar.place(x=1130, y=200,width=15,height=400)
+        
+        self.physical_management_book_room_selected = self.physical_management_book_room_default_tree.focus()
+        print("self.physical_management_book_room_selected in display",self.physical_management_book_room_selected)
+
+    def physical_management_book_room_treeview_reset(self):
+        for item in self.physical_management_book_room_default_tree.get_children():
+            self.physical_management_book_room_default_tree.delete(item)
+    def physical_management_book_room_assaign_room_fun(self):
+         self.physical_management_book_room_treeview_select_responce = self.physical_management_book_room_default_tree.focus()
+         print("physical_management_book_room_treeview_selected :",self.physical_management_book_room_treeview_select_responce)
+         self.physical_management_book_room_treeview_selected1 = self.physical_management_book_room_default_tree.item(self.physical_management_book_room_treeview_select_responce)
+         print("values are ",self.physical_management_book_room_treeview_selected1['values'])
+         self.physical_management_book_room_treeview_selected=self.physical_management_book_room_treeview_selected1['values']
+         print("self.physical_management_book_room_treeview_selected type:",type(self.physical_management_book_room_treeview_selected))
+         self.physical_management_book_room_assaign_room_id = self.physical_management_book_room_treeview_selected[0]
+         self.physical_management_book_room_assaign_room_floor_no =self.physical_management_book_room_treeview_selected[1]
+         self.physical_management_book_room_assaign_room_room_no =self.physical_management_book_room_treeview_selected[2]
+         self.physical_management_book_room_assaign_room_patient_id_input_var=tk.IntVar()
+         self.physical_management_book_room_assaign_room = Toplevel(self.main_page_frame_view3_physical_management_book_frame)
+         self.physical_management_book_room_assaign_room.title("ASSIGN ROOM")
+         self.physical_management_book_room_assaign_room.geometry("600x300+500+300")
+         
+         #self.physical_management_book_room_assaign_room
+
+         self.physical_management_book_room_assaign_room_assign_room_label=tk.Label(self.physical_management_book_room_assaign_room,text="Assign Room")
+         self.physical_management_book_room_assaign_room_assign_room_label.place(x=250,y=20,width=100,height=25)
+         self.physical_management_book_room_assaign_room_floor_label=tk.Label(self.physical_management_book_room_assaign_room,text="Floor :")
+         self.physical_management_book_room_assaign_room_floor_label.place(x=220,y=40,width=50,height=25)
+         self.physical_management_book_room_assaign_room_floor_no_label=tk.Label(self.physical_management_book_room_assaign_room,text=self.physical_management_book_room_assaign_room_floor_no)
+         self.physical_management_book_room_assaign_room_floor_no_label.place(x=270,y=40,width=10,height=25)
+         self.physical_management_book_room_assaign_room_room_label=tk.Label(self.physical_management_book_room_assaign_room,text="Room :")
+         self.physical_management_book_room_assaign_room_room_label.place(x=320,y=40,width=50,height=25)
+         self.physical_management_book_room_assaign_room_room_no_label=tk.Label(self.physical_management_book_room_assaign_room,text=self.physical_management_book_room_assaign_room_room_no)
+         self.physical_management_book_room_assaign_room_room_no_label.place(x=370,y=40,width=10,height=25)
+         self.physical_management_book_room_assaign_room_to_label=tk.Label(self.physical_management_book_room_assaign_room,text="to",font=("lucida",15,"bold"))
+         self.physical_management_book_room_assaign_room_to_label.place(x=295,y=70,width=30,height=25)
+         self.physical_management_book_room_assaign_room_patient_id=tk.Label(self.physical_management_book_room_assaign_room,text="Patient ID :")
+         self.physical_management_book_room_assaign_room_patient_id.place(x=100,y=100,width=100,height=25)
+         self.physical_management_book_room_assaign_room_patient_id_input=tk.Entry(self.physical_management_book_room_assaign_room,textvariable= self.physical_management_book_room_assaign_room_patient_id_input_var)
+         self.physical_management_book_room_assaign_room_patient_id_input.place(x=205,y=100,width=100,height=25)
+         self.physical_management_book_room_assaign_room_get_details_button=tk.Button(self.physical_management_book_room_assaign_room,text="Get Details",command=self.physical_management_book_room_assaign_room_get_details)
+         self.physical_management_book_room_assaign_room_get_details_button.place(x=350,y=100,width=100,height=25)
+
+         
+         self.physical_management_book_room_assaign_room_id_label=tk.Label(self.physical_management_book_room_assaign_room,text="Patient ID :")
+         self.physical_management_book_room_assaign_room_id_label.place(x=20,y=140,width=100,height=25)
+         self.physical_management_book_room_assaign_room_id_label_display=tk.Label(self.physical_management_book_room_assaign_room,text="Patient ID display")
+         self.physical_management_book_room_assaign_room_id_label_display.place(x=172,y=140,width=112,height=25)
+
+         self.physical_management_book_room_assaign_room_name_label=tk.Label(self.physical_management_book_room_assaign_room,text="Name :")
+         self.physical_management_book_room_assaign_room_name_label.place(x=300,y=140,width=102,height=25)
+         self.physical_management_book_room_assaign_room_name_label_display=tk.Label(self.physical_management_book_room_assaign_room,text="patient name")
+         self.physical_management_book_room_assaign_room_name_label_display.place(x=424,y=140,width=112,height=25)
+        
+         self.physical_management_book_room_assaign_room_phoneno_label=tk.Label(self.physical_management_book_room_assaign_room,text="Phone NO :")
+         self.physical_management_book_room_assaign_room_phoneno_label.place(x=20,y=180,width=160,height=25)
+         self.physical_management_book_room_assaign_room_phoneno_label_display=tk.Label(self.physical_management_book_room_assaign_room,text="phone_no_display")
+         self.physical_management_book_room_assaign_room_phoneno_label_display.place(x=172,y=180,width=112,height=25)
+        
+         self.physical_management_book_room_assaign_room_gender_label=tk.Label(self.physical_management_book_room_assaign_room,text="Gender:")
+         self.physical_management_book_room_assaign_room_gender_label.place(x=300,y=180,width=160,height=25)
+         self.physical_management_book_room_assaign_room_gender_label_display=tk.Label(self.physical_management_book_room_assaign_room,text="gender_display")
+         self.physical_management_book_room_assaign_room_gender_label_display.place(x=424,y=180,width=112,height=25)
+
+         self.physical_management_book_room_assaign_room_age_label=tk.Label(self.physical_management_book_room_assaign_room,text="Age :")
+         self.physical_management_book_room_assaign_room_age_label.place(x=20,y=220,width=100,height=25)
+         self.physical_management_book_room_assaign_room_age_label_display=tk.Label(self.physical_management_book_room_assaign_room,text="age display")
+         self.physical_management_book_room_assaign_room_age_label_display.place(x=172,y=220,width=112,height=25)
+
+         self.physical_management_book_room_assaign_room_yes_button = tk.Button(self.physical_management_book_room_assaign_room,text='YES',command=self.physical_management_book_room_assaign_room_yes_button_fun)
+         self.physical_management_book_room_assaign_room_no_button = tk.Button(self.physical_management_book_room_assaign_room,text='NO')
+
+         
+        
+         
+    def physical_management_book_room_assaign_room_get_details(self):
+         self.physical_management_book_room_assaign_room_patient_id_in_int =self.physical_management_book_room_assaign_room_patient_id_input_var.get()
+         print("self.physical_management_book_room_assaign_room_patient_id_in_int:",self.physical_management_book_room_assaign_room_patient_id_in_int)
+         self.physical_management_book_room_assaign_room_patient_id_in_string = str(self.physical_management_book_room_assaign_room_patient_id_in_int)
+         self.physical_management_book_room_assaign_room_get_details_database_command = "select id,name,phone_number,age,gender from patient_details where id = " + self.physical_management_book_room_assaign_room_patient_id_in_string
+         print("get details command :",self.physical_management_book_room_assaign_room_get_details_database_command)
+         self.physical_management_book_room_assaign_room_patient_details_from_patient_id = login_check.get_execution_result(self.physical_management_book_room_assaign_room_get_details_database_command)
+         self.book_room_assain_contact=[]
+         for i in self.physical_management_book_room_assaign_room_patient_details_from_patient_id:
+            #print(" for loop i[0]",i[0])
+            #self.book_room_assain_contact.append((f'{i[0]}', f'{i[1]}', f'{i[2]}',f'{i[3]}',f'{i[4]}'))
+            self.book_room_assain_contact.append(f'{i[0]}')
+            self.book_room_assain_contact.append(f'{i[1]}')
+            self.book_room_assain_contact.append(f'{i[2]}')
+            self.book_room_assain_contact.append(f'{i[3]}')
+            self.book_room_assain_contact.append(f'{i[4]}')
+
+         print("self.book_room_assain_contact:",self.book_room_assain_contact)
+         print("type self.book_room_assain_contact:",type(self.book_room_assain_contact))
+
+         print("physical_management_book_room_assaign_room_patient_details_from_patient_id:",type(self.physical_management_book_room_assaign_room_patient_details_from_patient_id))
+         print("self.physical_management_book_room_assaign_room_patient_details_from_patient_id=i[0]=",self.physical_management_book_room_assaign_room_patient_details_from_patient_id)
+        
+         self.physical_management_book_room_assaign_room_id_label_display_var=self.book_room_assain_contact[0]
+         self.physical_management_book_room_assaign_room_name_label_display_var=self.book_room_assain_contact[1]
+         self.physical_management_book_room_assaign_room_phoneno_label_display_var=self.book_room_assain_contact[2]
+         self.physical_management_book_room_assaign_room_gender_label_display_var=self.book_room_assain_contact[4]
+         self.physical_management_book_room_assaign_room_age_label_display_var=self.book_room_assain_contact[3]
+         print("self.physical_management_book_room_assaign_room_name_label_display_var:",self.physical_management_book_room_assaign_room_name_label_display_var)
+
+         if self.physical_management_book_room_assaign_room_patient_details_from_patient_id != "":
+            self.physical_management_book_room_assaign_room_id_label_display.config(text=self.physical_management_book_room_assaign_room_id_label_display_var)
+            self.physical_management_book_room_assaign_room_name_label_display.config(text=self.physical_management_book_room_assaign_room_name_label_display_var)
+            self.physical_management_book_room_assaign_room_phoneno_label_display.config(text=self.physical_management_book_room_assaign_room_phoneno_label_display_var)
+            self.physical_management_book_room_assaign_room_gender_label_display.config(text=self.physical_management_book_room_assaign_room_gender_label_display_var)
+            self.physical_management_book_room_assaign_room_age_label_display.config(text=self.physical_management_book_room_assaign_room_age_label_display_var)
+
+         if self.physical_management_book_room_treeview_select_responce != " ":
+            self.physical_management_book_room_assaign_room_yes_button.place(x=70,y=270,width=112,height=25)
+            self.physical_management_book_room_assaign_room_no_button.place(x=370,y=270,width=112,height=25)
+         
+         print("self.physical_management_book_room_assaign_room_patient_details_from_patient_id=i[0]=",self.physical_management_book_room_assaign_room_patient_details_from_patient_id)
+        
+    def physical_management_book_room_assaign_room_yes_button_fun(self):
+        self.physical_management_book_room_assaign_person_id_str= str(self.physical_management_book_room_assaign_room_id_label_display_var )
+        self.physical_management_book_room_assaign_room_id_str=str(self.physical_management_book_room_assaign_room_id)
+        self.physical_management_book_room_assaign_room_command1 = "update rooms_details set  rooms_status = 'occupied',"
+        self.physical_management_book_room_assaign_room_command2 = "booked_person_id = " +  self.physical_management_book_room_assaign_person_id_str
+        self.physical_management_book_room_assaign_room_command3= "  where room_ID = " + self.physical_management_book_room_assaign_room_id_str
+        self.physical_management_book_room_assaign_room_command_main = self.physical_management_book_room_assaign_room_command1 + self.physical_management_book_room_assaign_room_command2 + self.physical_management_book_room_assaign_room_command3
+        print("self.physical_management_book_room_assaign_room_command_main:",self.physical_management_book_room_assaign_room_command_main)
+        self.physical_management_book_room_assaign_yes_responce = login_check.get_execution_result(self.physical_management_book_room_assaign_room_command_main)
+        if self.physical_management_book_room_assaign_yes_responce == []:
+            self.physical_management_book_room_assaign_room.destroy()
+
+
+
     def physical_management_Discharge_room_fun(self):
-        pass
+        self.physical_management_Discharge_room_treeview_reset()
+        self.unavaliable_room_list = None
+        self.unavaliable_room_list = login_check.get_execution_result("select room_ID,room_floor, room_no,rooms_status from rooms_details where rooms_status = 'occupied'")
+        print("avaliable_room_list type:",self.unavaliable_room_list)
+        #adding the values into contact list 
+        self.physical_management_Discharge_room_contacts = []
+        for i in self.unavaliable_room_list:
+            #self.physical_management_Discharge_room_contacts.append(i[0],i[1],i[2],i[3])
+            self.physical_management_Discharge_room_contacts.append((f'{i[0]}', f'{i[1]}', f'{i[2]}',f'{i[3]}'))
+            #(f'patient_search_first {n}', f'last {n}', f'email{n}@example.com')
+
+        # add data to the treeview 
+        for i in self.physical_management_Discharge_room_contacts:
+            self.physical_management_Discharge_room_default_tree.insert('', tk.END, values=i)
+
+        self.physical_management_Discharge_room_default_tree.place(x=130,y=200,width=1000,height=400)
+        #tree.grid(row=0, column=0, sticky='nsew')
+
+        #ading the scroll baar 
+        self.physical_management_Discharge_room_scrollbar = ttk.Scrollbar(self.main_page_frame_view3_physical_management_Discharge_frame, orient=tk.VERTICAL, command=self.physical_management_Discharge_room_default_tree.yview)
+        self.physical_management_Discharge_room_default_tree.configure(yscroll=self.physical_management_Discharge_room_scrollbar.set)
+        #scrollbar.grid(row=0, column=1, sticky='ns')
+        self.physical_management_Discharge_room_scrollbar.place(x=1130, y=200,width=15,height=400)
+        
+        self.physical_management_Discharge_room_selected = self.physical_management_Discharge_room_default_tree.focus()
+        print("self.physical_management_Discharge_room_selected in display",self.physical_management_Discharge_room_selected)
+
+    def physical_management_Discharge_room_treeview_reset(self):
+        for item in self.physical_management_Discharge_room_default_tree.get_children():
+            self.physical_management_Discharge_room_default_tree.delete(item)
+    def physical_management_Discharge_room_Discharge_room_fun(self):
+         self.physical_management_Discharge_room_treeview_select_responce = self.physical_management_Discharge_room_default_tree.focus()
+         print("physical_management_Discharge_room_treeview_selected :",self.physical_management_Discharge_room_treeview_select_responce)
+         self.physical_management_Discharge_room_treeview_selected1 = self.physical_management_Discharge_room_default_tree.item(self.physical_management_Discharge_room_treeview_select_responce)
+         print("values are ",self.physical_management_Discharge_room_treeview_selected1['values'])
+         self.physical_management_Discharge_room_treeview_selected=self.physical_management_Discharge_room_treeview_selected1['values']
+         print("self.physical_management_Discharge_room_treeview_selected type:",type(self.physical_management_Discharge_room_treeview_selected))
+         self.physical_management_Discharge_room_Discharge_room_id = self.physical_management_Discharge_room_treeview_selected[0]
+         self.physical_management_Discharge_room_Discharge_room_floor_no =self.physical_management_Discharge_room_treeview_selected[1]
+         self.physical_management_Discharge_room_Discharge_room_room_no =self.physical_management_Discharge_room_treeview_selected[2]
+         self.physical_management_Discharge_room_Discharge_room_patient_id_input_var=tk.IntVar()
+         self.physical_management_Discharge_room_Discharge_room = Toplevel(self.main_page_frame_view3_physical_management_Discharge_frame)
+         self.physical_management_Discharge_room_Discharge_room.title("DISCHARGE ROOM")
+         self.physical_management_Discharge_room_Discharge_room.geometry("600x300+500+300")
+         
+         #self.physical_management_Discharge_room_Discharge_room
+
+         self.physical_management_Discharge_room_Discharge_room_assign_room_label=tk.Label(self.physical_management_Discharge_room_Discharge_room,text="Discharge Room")
+         self.physical_management_Discharge_room_Discharge_room_assign_room_label.place(x=250,y=20,width=100,height=25)
+         self.physical_management_Discharge_room_Discharge_room_floor_label=tk.Label(self.physical_management_Discharge_room_Discharge_room,text="Floor :")
+         self.physical_management_Discharge_room_Discharge_room_floor_label.place(x=220,y=40,width=50,height=25)
+         self.physical_management_Discharge_room_Discharge_room_floor_no_label=tk.Label(self.physical_management_Discharge_room_Discharge_room,text=self.physical_management_Discharge_room_Discharge_room_floor_no)
+         self.physical_management_Discharge_room_Discharge_room_floor_no_label.place(x=270,y=40,width=10,height=25)
+         self.physical_management_Discharge_room_Discharge_room_room_label=tk.Label(self.physical_management_Discharge_room_Discharge_room,text="Room :")
+         self.physical_management_Discharge_room_Discharge_room_room_label.place(x=320,y=40,width=50,height=25)
+         self.physical_management_Discharge_room_Discharge_room_room_no_label=tk.Label(self.physical_management_Discharge_room_Discharge_room,text=self.physical_management_Discharge_room_Discharge_room_room_no)
+         self.physical_management_Discharge_room_Discharge_room_room_no_label.place(x=370,y=40,width=10,height=25)
+         self.physical_management_Discharge_room_Discharge_room_to_label=tk.Label(self.physical_management_Discharge_room_Discharge_room,text="to",font=("lucida",15,"bold"))
+         self.physical_management_Discharge_room_Discharge_room_to_label.place(x=295,y=70,width=30,height=25)
+         self.physical_management_Discharge_room_Discharge_room_patient_id=tk.Label(self.physical_management_Discharge_room_Discharge_room,text="Patient ID :")
+         self.physical_management_Discharge_room_Discharge_room_patient_id.place(x=100,y=100,width=100,height=25)
+         self.physical_management_Discharge_room_Discharge_room_patient_id_input=tk.Entry(self.physical_management_Discharge_room_Discharge_room,textvariable= self.physical_management_Discharge_room_Discharge_room_patient_id_input_var)
+         self.physical_management_Discharge_room_Discharge_room_patient_id_input.place(x=205,y=100,width=100,height=25)
+         self.physical_management_Discharge_room_Discharge_room_get_details_button=tk.Button(self.physical_management_Discharge_room_Discharge_room,text="Get Details",command=self.physical_management_Discharge_room_Discharge_room_get_details)
+         self.physical_management_Discharge_room_Discharge_room_get_details_button.place(x=350,y=100,width=100,height=25)
+
+         
+         self.physical_management_Discharge_room_Discharge_room_id_label=tk.Label(self.physical_management_Discharge_room_Discharge_room,text="Patient ID :")
+         self.physical_management_Discharge_room_Discharge_room_id_label.place(x=20,y=140,width=100,height=25)
+         self.physical_management_Discharge_room_Discharge_room_id_label_display=tk.Label(self.physical_management_Discharge_room_Discharge_room,text="Patient ID display")
+         self.physical_management_Discharge_room_Discharge_room_id_label_display.place(x=172,y=140,width=112,height=25)
+
+         self.physical_management_Discharge_room_Discharge_room_name_label=tk.Label(self.physical_management_Discharge_room_Discharge_room,text="Name :")
+         self.physical_management_Discharge_room_Discharge_room_name_label.place(x=300,y=140,width=102,height=25)
+         self.physical_management_Discharge_room_Discharge_room_name_label_display=tk.Label(self.physical_management_Discharge_room_Discharge_room,text="patient name")
+         self.physical_management_Discharge_room_Discharge_room_name_label_display.place(x=424,y=140,width=112,height=25)
+        
+         self.physical_management_Discharge_room_Discharge_room_phoneno_label=tk.Label(self.physical_management_Discharge_room_Discharge_room,text="Phone NO :")
+         self.physical_management_Discharge_room_Discharge_room_phoneno_label.place(x=20,y=180,width=160,height=25)
+         self.physical_management_Discharge_room_Discharge_room_phoneno_label_display=tk.Label(self.physical_management_Discharge_room_Discharge_room,text="phone_no_display")
+         self.physical_management_Discharge_room_Discharge_room_phoneno_label_display.place(x=172,y=180,width=112,height=25)
+        
+         self.physical_management_Discharge_room_Discharge_room_gender_label=tk.Label(self.physical_management_Discharge_room_Discharge_room,text="Gender:")
+         self.physical_management_Discharge_room_Discharge_room_gender_label.place(x=300,y=180,width=160,height=25)
+         self.physical_management_Discharge_room_Discharge_room_gender_label_display=tk.Label(self.physical_management_Discharge_room_Discharge_room,text="gender_display")
+         self.physical_management_Discharge_room_Discharge_room_gender_label_display.place(x=424,y=180,width=112,height=25)
+
+         self.physical_management_Discharge_room_Discharge_room_age_label=tk.Label(self.physical_management_Discharge_room_Discharge_room,text="Age :")
+         self.physical_management_Discharge_room_Discharge_room_age_label.place(x=20,y=220,width=100,height=25)
+         self.physical_management_Discharge_room_Discharge_room_age_label_display=tk.Label(self.physical_management_Discharge_room_Discharge_room,text="age display")
+         self.physical_management_Discharge_room_Discharge_room_age_label_display.place(x=172,y=220,width=112,height=25)
+
+         self.physical_management_Discharge_room_Discharge_room_yes_button = tk.Button(self.physical_management_Discharge_room_Discharge_room,text='YES',command=self.physical_management_Discharge_room_Discharge_room_yes_button_fun)
+         self.physical_management_Discharge_room_Discharge_room_no_button = tk.Button(self.physical_management_Discharge_room_Discharge_room,text='NO')
+
+         
+        
+         
+    def physical_management_Discharge_room_Discharge_room_get_details(self):
+         self.physical_management_Discharge_room_Discharge_room_patient_id_in_int =self.physical_management_Discharge_room_Discharge_room_patient_id_input_var.get()
+         print("self.physical_management_Discharge_room_Discharge_room_patient_id_in_int:",self.physical_management_Discharge_room_Discharge_room_patient_id_in_int)
+         self.physical_management_Discharge_room_Discharge_room_patient_id_in_string = str(self.physical_management_Discharge_room_Discharge_room_patient_id_in_int)
+         self.physical_management_Discharge_room_Discharge_room_get_details_database_command = "select id,name,phone_number,age,gender from patient_details where id = " + self.physical_management_Discharge_room_Discharge_room_patient_id_in_string
+         print("get details command :",self.physical_management_Discharge_room_Discharge_room_get_details_database_command)
+         self.physical_management_Discharge_room_Discharge_room_patient_details_from_patient_id = login_check.get_execution_result(self.physical_management_Discharge_room_Discharge_room_get_details_database_command)
+         self.Discharge_room_assain_contact=[]
+         for i in self.physical_management_Discharge_room_Discharge_room_patient_details_from_patient_id:
+            #print(" for loop i[0]",i[0])
+            #self.Discharge_room_assain_contact.append((f'{i[0]}', f'{i[1]}', f'{i[2]}',f'{i[3]}',f'{i[4]}'))
+            self.Discharge_room_assain_contact.append(f'{i[0]}')
+            self.Discharge_room_assain_contact.append(f'{i[1]}')
+            self.Discharge_room_assain_contact.append(f'{i[2]}')
+            self.Discharge_room_assain_contact.append(f'{i[3]}')
+            self.Discharge_room_assain_contact.append(f'{i[4]}')
+
+         print("self.Discharge_room_assain_contact:",self.Discharge_room_assain_contact)
+         print("type self.Discharge_room_assain_contact:",type(self.Discharge_room_assain_contact))
+
+         print("physical_management_Discharge_room_Discharge_room_patient_details_from_patient_id:",type(self.physical_management_Discharge_room_Discharge_room_patient_details_from_patient_id))
+         print("self.physical_management_Discharge_room_Discharge_room_patient_details_from_patient_id=i[0]=",self.physical_management_Discharge_room_Discharge_room_patient_details_from_patient_id)
+        
+         self.physical_management_Discharge_room_Discharge_room_id_label_display_var=self.Discharge_room_assain_contact[0]
+         self.physical_management_Discharge_room_Discharge_room_name_label_display_var=self.Discharge_room_assain_contact[1]
+         self.physical_management_Discharge_room_Discharge_room_phoneno_label_display_var=self.Discharge_room_assain_contact[2]
+         self.physical_management_Discharge_room_Discharge_room_gender_label_display_var=self.Discharge_room_assain_contact[4]
+         self.physical_management_Discharge_room_Discharge_room_age_label_display_var=self.Discharge_room_assain_contact[3]
+         print("self.physical_management_Discharge_room_Discharge_room_name_label_display_var:",self.physical_management_Discharge_room_Discharge_room_name_label_display_var)
+
+         if self.physical_management_Discharge_room_Discharge_room_patient_details_from_patient_id != "":
+            self.physical_management_Discharge_room_Discharge_room_id_label_display.config(text=self.physical_management_Discharge_room_Discharge_room_id_label_display_var)
+            self.physical_management_Discharge_room_Discharge_room_name_label_display.config(text=self.physical_management_Discharge_room_Discharge_room_name_label_display_var)
+            self.physical_management_Discharge_room_Discharge_room_phoneno_label_display.config(text=self.physical_management_Discharge_room_Discharge_room_phoneno_label_display_var)
+            self.physical_management_Discharge_room_Discharge_room_gender_label_display.config(text=self.physical_management_Discharge_room_Discharge_room_gender_label_display_var)
+            self.physical_management_Discharge_room_Discharge_room_age_label_display.config(text=self.physical_management_Discharge_room_Discharge_room_age_label_display_var)
+
+         if self.physical_management_Discharge_room_treeview_select_responce != " ":
+            self.physical_management_Discharge_room_Discharge_room_yes_button.place(x=70,y=270,width=112,height=25)
+            self.physical_management_Discharge_room_Discharge_room_no_button.place(x=370,y=270,width=112,height=25)
+         
+         print("self.physical_management_Discharge_room_Discharge_room_patient_details_from_patient_id=i[0]=",self.physical_management_Discharge_room_Discharge_room_patient_details_from_patient_id)
+        
+    def physical_management_Discharge_room_Discharge_room_yes_button_fun(self):
+        self.physical_management_Discharge_room_Discharge_person_id_str= str(self.physical_management_Discharge_room_Discharge_room_id_label_display_var )
+        self.physical_management_Discharge_room_Discharge_room_id_str=str(self.physical_management_Discharge_room_Discharge_room_id)
+        self.physical_management_Discharge_room_Discharge_room_command1 = "update rooms_details set  rooms_status = 'unoccupied',"
+        self.physical_management_Discharge_room_Discharge_room_command2 = "booked_person_id = " +  self.physical_management_Discharge_room_Discharge_person_id_str
+        self.physical_management_Discharge_room_Discharge_room_command3= "  where room_ID = " + self.physical_management_Discharge_room_Discharge_room_id_str
+        self.physical_management_Discharge_room_Discharge_room_command_main = self.physical_management_Discharge_room_Discharge_room_command1 + self.physical_management_Discharge_room_Discharge_room_command2 + self.physical_management_Discharge_room_Discharge_room_command3
+        print("self.physical_management_Discharge_room_Discharge_room_command_main:",self.physical_management_Discharge_room_Discharge_room_command_main)
+        self.physical_management_Discharge_room_Discharge_yes_responce = login_check.get_execution_result(self.physical_management_Discharge_room_Discharge_room_command_main)
+        if self.physical_management_Discharge_room_Discharge_yes_responce == []:
+            self.physical_management_Discharge_room_Discharge_room.destroy()
 
     def physical_management_room_status_refresh(self):
         self.room_details_data=None
@@ -3156,6 +3478,7 @@ class main_window():
 
     #physical_management_book=====================================start========================================
     def physical_management_book(self):
+        self.physical_management_Book_room_fun()
         self.main_page_frame_view3_home_frame_deactivate()
         self.main_page_frame_view3_patient_registration_default_frame_deactivate()
         self.main_page_frame_view3_patient_visit_default_frame_deactivate()
@@ -3183,6 +3506,7 @@ class main_window():
         self.main_page_frame_view3_dialy_collection_dialy_collection_opd_frame_deactivate()
 
     def physical_management_Discharge(self):
+        self.physical_management_Discharge_room_fun()
         self.main_page_frame_view3_home_frame_deactivate()
         self.main_page_frame_view3_patient_registration_default_frame_deactivate()
         self.main_page_frame_view3_patient_visit_default_frame_deactivate()

@@ -1,3 +1,4 @@
+import re
 import mysql.connector
 mydb = None
 mycursor=None
@@ -90,7 +91,9 @@ def get_execution_result(command):
     execution_cursor = mydb.cursor();
     execution_cursor.execute(command)
     result = execution_cursor.fetchall()
+    print("Exexition in database:",command)
     mydb.commit()
+    print("result:",result)
     return result
     
 data = get_execution_result("select * from rooms_details")
