@@ -578,16 +578,20 @@ class main_window():
 
         #patient_search_tree_view========================================start========================================
         # define columns
-        self.patient_search_columns = ('first_name', 'last_name', 'email')
+        self.patient_search_columns = ('id','fname','lname','phone_number','age','gender')
 
         self.patient_search_default_tree = ttk.Treeview(self.main_page_frame_view3_patient_search_default_frame, columns=self.patient_search_columns, show='headings')
 
 
 
         # define headings
-        self.patient_search_default_tree.heading('first_name', text='First Name')
-        self.patient_search_default_tree.heading('last_name', text='Last Name')
-        self.patient_search_default_tree.heading('email', text='Email')
+        self.patient_search_default_tree.heading('id', text='Patient ID')
+        self.patient_search_default_tree.heading('fname', text='First Name')
+        self.patient_search_default_tree.heading('lname', text='Last Name')
+        self.patient_search_default_tree.heading('phone_number', text='Phone Number')
+        self.patient_search_default_tree.heading('age', text='Age')
+        self.patient_search_default_tree.heading('gender', text='Gender')
+
         #patient_search_tree_view========================================end========================================
         #patient_table=====================================================start=======================================
 
@@ -1503,6 +1507,9 @@ class main_window():
         self.patient_search_input_Fname_var_str=None
         self.patient_search_input_Lname_var_str=None
         self.patient_search_input_Phone_No_var_str=None
+        
+        
+        
         if self.patient_search_input_reg_id_var.get() == 0:
             pass
         else :
@@ -1582,12 +1589,15 @@ class main_window():
         self.patient_search_selectItem()
         #adding the values into contact list 
         self.patient_search_contacts = []
-        for n in range(1, 200):
-            self.patient_search_contacts.append((f'patient_search_first {n}', f'last {n}', f'email{n}@example.com'))
+        if self.patient_search_command_result != None:
+              for i in self.patient_search_command_result:
+                    self.patient_search_contacts.append((f'{i[0]}', f'{i[1]}', f'{i[2]}',f'{i[3]}', f'{i[4]}',f'{i[5]}'))
+            #self.patient_search_contacts.append((f'patient_search_first {n}', f'last {n}', f'email{n}@example.com'))
 
         # add data to the treeview 
-        for contact in self.patient_search_contacts:
-            self.patient_search_default_tree.insert('', tk.END, values=contact)
+        if self.patient_search_contacts != None:
+            for contact in self.patient_search_contacts:
+                 self.patient_search_default_tree.insert('', tk.END, values=contact)
 
         self.patient_search_default_tree.place(x=15,y=340,width=1150,height=400)
         #tree.grid(row=0, column=0, sticky='nsew')
