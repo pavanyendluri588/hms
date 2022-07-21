@@ -510,16 +510,16 @@ class main_window():
         self.patient_search_mainheading1.place(x=5,y=5,width=1300,height=40)
 
         #main_buttons========================================start==========================================
-        self.patient_search_button1_DISPLAY = tk.Button(self.main_page_frame_view3_patient_search_default_frame,text="DISPLAY",command=self.patient_search_display)
+        self.patient_search_button1_DISPLAY = tk.Button(self.main_page_frame_view3_patient_search_default_frame,text="DISPLAY",command=self.patient_search_default_display)
         self.patient_search_button1_DISPLAY.place(x=5,y=50,width=100,height=30)
 
         self.patient_search_button1_PAQTIENT_QUEUE = tk.Button(self.main_page_frame_view3_patient_search_default_frame,text="PAQTIENT QUEUE",command=self.patient_queue_default)
         self.patient_search_button1_PAQTIENT_QUEUE.place(x=115,y=50,width=100,height=30)
 
-        self.patient_search_button1_EDIT_PATIENT_QUEUE = tk.Button(self.main_page_frame_view3_patient_search_default_frame,text="EDIT")
+        self.patient_search_button1_EDIT_PATIENT_QUEUE = tk.Button(self.main_page_frame_view3_patient_search_default_frame,text="EDIT",command=self.patient_search_edit_fun)
         self.patient_search_button1_EDIT_PATIENT_QUEUE.place(x=225,y=50,width=100,height=30)
 
-        self.patient_search_button1_DETAILS = tk.Button(self.main_page_frame_view3_patient_search_default_frame,text="DETAILS")
+        self.patient_search_button1_DETAILS = tk.Button(self.main_page_frame_view3_patient_search_default_frame,text="DETAILS",command=self.patient_search_display_fun)
         self.patient_search_button1_DETAILS.place(x=335,y=50,width=100,height=30)
 
         self.patient_search_button1_EXIT = tk.Button(self.main_page_frame_view3_patient_search_default_frame,text="EXIT",command=self.home_default)
@@ -571,7 +571,7 @@ class main_window():
         self.patient_search_input_entry4.place(x=150,y=290,width=250,height=20)
 
         
-        self.patient_search_button7_tree_view_reset = tk.Button(self.main_page_frame_view3_patient_search_default_frame,text="RESET",command=self.patient_search_display_treeview_reset)
+        self.patient_search_button7_tree_view_reset = tk.Button(self.main_page_frame_view3_patient_search_default_frame,text="RESET",command=self.patient_search_default_display_treeview_reset)
         self.patient_search_button7_tree_view_reset.place(x=450,y=300,width=70,height=25)
 
         #patient_search_input===========================================end====================================
@@ -596,7 +596,129 @@ class main_window():
         #patient_table=====================================================start=======================================
 
         #patient_table=====================================================end=======================================
+        #patient_search_edit_frame------start-------------
+        self.main_page_frame_view3_patient_search_edit_frame=tk.Frame(self.root1,bg='white')
+        self.main_page_frame_view3_patient_search_edit_frame['borderwidth']=0
+        
+        self.patient_search_edit_mainheading1 = tk.Label(self.main_page_frame_view3_patient_search_edit_frame,text="patient info edit",font=("lucida",15,"bold "),bg='blue')
+        self.patient_search_edit_mainheading1.place(x=5,y=5,width=1300,height=40)
+        #patient_search_edit_frame------end-------------
 
+        #patient_search_display_frame------start-------------
+        self.main_page_frame_view3_patient_search_display_frame=tk.Frame(self.root1,bg='white')
+        self.main_page_frame_view3_patient_search_display_frame['borderwidth']=0
+        
+        self.patient_search_display_mainheading1 = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="patient info display",font=("lucida",15,"bold "),bg='blue')
+        self.patient_search_display_mainheading1.place(x=5,y=5,width=1300,height=40)
+
+        
+
+        self.patient_search_display_Patient_ID = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="Patient ID")
+        self.patient_search_display_Patient_ID.place(x=20,y=85,width=150,height=25)
+        self.patient_search_display_Patient_ID_display = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="Patient ID display",font=("lucida",10,"bold "))
+        self.patient_search_display_Patient_ID_display.place(x=180,y=85,width=150,height=25)
+
+        self.patient_search_display_fname = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="Fname ")
+        self.patient_search_display_fname.place(x=20,y=150,width=150,height=25)
+        self.patient_search_display_fname_display = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="Fname display")
+        self.patient_search_display_fname_display.place(x=180,y=150,width=150,height=25)
+
+        self.patient_search_display_mname = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="Mname ")
+        self.patient_search_display_mname.place(x=490,y=150,width=150,height=25)
+        self.patient_search_display_mname_display = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="Mname display")
+        self.patient_search_display_mname_display.place(x=650,y=150,width=150,height=25)
+
+        
+        self.patient_search_display_lname = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="Lname ")
+        self.patient_search_display_lname.place(x=960,y=150,width=150,height=25)
+        self.patient_search_display_lname_display = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="Lname display")
+        self.patient_search_display_lname_display.place(x=1120,y=150,width=150,height=25)
+
+        self.patient_search_display_dob = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="DOB ")
+        self.patient_search_display_dob.place(x=20,y=215,width=150,height=25)
+        self.patient_search_display_dob_display = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="DOB display")
+        self.patient_search_display_dob_display.place(x=180,y=215,width=150,height=25)
+
+        self.patient_search_display_Phone_number1 = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="Phone Number1")
+        self.patient_search_display_Phone_number1.place(x=20,y=280,width=150,height=25)
+        self.patient_search_display_Phone_number1_display = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="Phone Number1 display")
+        self.patient_search_display_Phone_number1_display.place(x=180,y=280,width=150,height=25)
+
+        self.patient_search_display_Phone_number2 = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="Phone Number2")
+        self.patient_search_display_Phone_number2.place(x=490,y=280,width=150,height=25)
+        self.patient_search_display_Phone_number2_display = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="Phone Number2 display")
+        self.patient_search_display_Phone_number2_display.place(x=650,y=280,width=150,height=25)
+
+        self.patient_search_display_age = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="Age")
+        self.patient_search_display_age.place(x=490,y=215,width=150,height=25)
+        self.patient_search_display_age_display = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="Age display")
+        self.patient_search_display_age_display.place(x=650,y=215,width=150,height=25)
+
+        self.patient_search_display_gender = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="Gender")
+        self.patient_search_display_gender.place(x=960,y=215,width=150,height=25)
+        self.patient_search_display_gender_display = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="Gender display")
+        self.patient_search_display_gender_display.place(x=1120,y=215,width=150,height=25)
+
+        self.patient_search_display_adderess = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="Address")
+        self.patient_search_display_adderess.place(x=20,y=345,width=150,height=25)
+        self.patient_search_display_adderess_display = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="Address display")
+        self.patient_search_display_adderess_display.place(x=180,y=345,width=150,height=25)
+
+        self.patient_search_display_city = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="City")
+        self.patient_search_display_city.place(x=490,y=345,width=150,height=25)
+        self.patient_search_display_city_display = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="City display")
+        self.patient_search_display_city_display.place(x=650,y=345,width=150,height=25)
+
+        self.patient_search_display_emailid = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="Email ID")
+        self.patient_search_display_emailid.place(x=20,y=410,width=150,height=25)
+        self.patient_search_display_emailid_display = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="Email ID display")
+        self.patient_search_display_emailid_display.place(x=180,y=410,width=150,height=25)
+
+        self.patient_search_display_blood_group = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="Blood Group")
+        self.patient_search_display_blood_group.place(x=20,y=410,width=150,height=25)
+        self.patient_search_display_blood_group_display = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="blood_group display")
+        self.patient_search_display_blood_group_display.place(x=180,y=410,width=150,height=25)
+
+        self.patient_search_display_ROOM_DETAILS = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="ROOM DETAILS")
+        self.patient_search_display_ROOM_DETAILS.place(x=5,y=468,width=100,height=25)
+        self.patient_search_display_line1 = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="",bg='black')
+        self.patient_search_display_line1.place(x=110,y=480,width=1160,height=1)
+
+        self.patient_search_display_ROOM_id = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="ROOM ID")
+        self.patient_search_display_ROOM_id.place(x=20,y=530,width=150,height=25)
+        self.patient_search_display_ROOM_id_display = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="ROOM ID Display")
+        self.patient_search_display_ROOM_id_display.place(x=180,y=530,width=150,height=25)
+        self.patient_search_display_ROOM_Floor = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="ROOM Floor")
+        self.patient_search_display_ROOM_Floor.place(x=490,y=530,width=150,height=25)
+        self.patient_search_display_ROOM_Floor_display = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="ROOM Floor Display")
+        self.patient_search_display_ROOM_Floor_display.place(x=650,y=530,width=150,height=25)
+        self.patient_search_display_ROOM_no = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="ROOM No")
+        self.patient_search_display_ROOM_no.place(x=960,y=530,width=150,height=25)
+        self.patient_search_display_ROOM_no_display = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="ROOM No Display")
+        self.patient_search_display_ROOM_no_display.place(x=1120,y=530,width=150,height=25)
+
+        self.patient_search_display_FINANCE_DETAILS = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="FINANCE DETAILS")
+        self.patient_search_display_FINANCE_DETAILS.place(x=5,y=588,width=100,height=25)
+        self.patient_search_display_line2 = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="",bg='black')
+        self.patient_search_display_line2.place(x=110,y=600,width=1160,height=1)
+
+        self.patient_search_display_FINANCE_Debit = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="Debit")
+        self.patient_search_display_FINANCE_Debit.place(x=20,y=650,width=150,height=25)
+        self.patient_search_display_FINANCE_Debit_display = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="Debit Display")
+        self.patient_search_display_FINANCE_Debit_display.place(x=180,y=650,width=150,height=25)
+        self.patient_search_display_FINANCE_Credit = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="Credit")
+        self.patient_search_display_FINANCE_Credit.place(x=490,y=650,width=150,height=25)
+        self.patient_search_display_FINANCE_Credit_display = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="Credit Display")
+        self.patient_search_display_FINANCE_Credit_display.place(x=650,y=650,width=150,height=25)
+        self.patient_search_display_FINANCE_Balance = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="Balance")
+        self.patient_search_display_FINANCE_Balance.place(x=960,y=650,width=150,height=25)
+        self.patient_search_display_FINANCE_Balance_display = tk.Label(self.main_page_frame_view3_patient_search_display_frame,text="Balance Display")
+        self.patient_search_display_FINANCE_Balance_display.place(x=1120,y=650,width=150,height=25)
+
+
+        #finance details
+
+        #patient_search_display_frame------end-------------
         #patient_search_default_frame------end-------------
 
 
@@ -1474,8 +1596,10 @@ class main_window():
         self.main_page_frame_view3_home_frame_status= "None"
         self.main_page_frame_view3_patient_registration_default_frame_status = "None"
         self.main_page_frame_view3_patient_visit_default_frame_status = "None"
-        self.main_page_frame_view3_patient_search_default_frame_status= "None"
 
+        self.main_page_frame_view3_patient_search_default_frame_status= "None"
+        self.main_page_frame_view3_patient_search_edit_frame_status = "None"
+        self.main_page_frame_view3_patient_search_display_frame_status = "None"
 
         self.main_page_frame_view3_patient_queue_default_frame_status= "None"
         
@@ -1501,8 +1625,8 @@ class main_window():
         
          #frames status variables---------------------end----------------------------
     #search_patient_functions==============================start==================================
-    def patient_search_display(self):
-        self.patient_search_display_just_treeview_reset() 
+    def patient_search_default_display(self):
+        self.patient_search_default_display_just_treeview_reset() 
         self.patient_search_input_reg_id_var_str=None
         self.patient_search_input_Fname_var_str=None
         self.patient_search_input_Lname_var_str=None
@@ -1534,7 +1658,7 @@ class main_window():
             print("self.patient_search_input_Phone_No_var.get():",self.patient_search_input_Phone_No_var.get())
             self.patient_search_input_Phone_No_var_str = str(self.patient_search_input_Phone_No_var.get())
             print("self.patient_search_input_Phone_No_var_str:",self.patient_search_input_Phone_No_var_str)
-        self.patient_search_table_command =" select * from patient_details where "
+        self.patient_search_table_command =" select id,name,lname,phone_number,age,gender from patient_details where "
         self.patient_search_command = None
         if self.patient_search_input_reg_id_var.get() != 0 and self.patient_search_input_Fname_var.get() == '' and self.patient_search_input_Lname_var.get() == '' and self.patient_search_input_Phone_No_var.get() == 0:
             #1
@@ -1586,7 +1710,7 @@ class main_window():
         if self.patient_search_command != None:
             self.patient_search_command_result = login_check.get_execution_result(self.patient_search_command)
         print("self.patient_search_command_result:",self.patient_search_command_result)
-        self.patient_search_selectItem()
+        #self.patient_search_selectItem()
         #adding the values into contact list 
         self.patient_search_contacts = []
         if self.patient_search_command_result != None:
@@ -1608,8 +1732,6 @@ class main_window():
         #scrollbar.grid(row=0, column=1, sticky='ns')
         self.patient_search_scrollbar.place(x=1165, y=340,width=15,height=400)
         
-        self.patient_search_selected = self.patient_search_default_tree.focus()
-        print("self.patient_search_selected in display" + self.patient_search_selected)
 
     def patient_search_selectItem(self):
         #curItem = tree.focus()
@@ -1620,7 +1742,7 @@ class main_window():
              self.patient_search_temp = self.patient_search_default_tree.item(self.patient_search_selected, 'values')
              print(self.patient_search_temp)
 
-    def patient_search_display_treeview_reset(self):
+    def patient_search_default_display_treeview_reset(self):
         self.patient_search_input_reg_id_var.set(0)
         self.patient_search_input_Fname_var.set('')
         self.patient_search_input_Lname_var.set('')
@@ -1628,9 +1750,94 @@ class main_window():
 
         for item in self.patient_search_default_tree.get_children():
             self.patient_search_default_tree.delete(item)
-    def patient_search_display_just_treeview_reset(self):
+    def patient_search_default_display_just_treeview_reset(self):
         for item in self.patient_search_default_tree.get_children():
             self.patient_search_default_tree.delete(item)
+
+    def patient_search_edit_fun(self):
+        self.patient_search_selected = self.patient_search_default_tree.focus()
+        print("patient_search_edit_fun : self.patient_search_selected in selectitem:" + self.patient_search_selected)
+        if (self.patient_search_selected != ''):
+             self.patient_search_temp = self.patient_search_default_tree.item(self.patient_search_selected, 'values')
+             print("patient_search_edit_fun : self.patient_search_temp:",self.patient_search_temp)
+        if  len(self.patient_search_selected)!=0:
+                  print("self.patient_search_selected in patient_search_edit ",self.patient_search_selected)
+                  self.patient_search_edit()
+        else:
+                   print("main_page_frame_view3_patient_search_default_frame_activate because len(self.patient_search_selected)!=0:len(self.patient_search_selected)=",len(self.patient_search_selected))
+                   #self.main_page_frame_view3_patient_search_default_frame_activate()
+
+    def patient_search_display_fun(self):
+        self.patient_search_selected = self.patient_search_default_tree.focus()
+        self.patient_search_treeview_select_responce = self.patient_search_default_tree.focus()
+        print("patient_search_treeview_selected :",self.patient_search_treeview_select_responce)
+        print("patient_search_treeview_selected type:",type(self.patient_search_treeview_select_responce))
+        
+        
+        print("patient_search_display_fun: self.patient_search_selected in selectitem:" + self.patient_search_selected)
+        if (self.patient_search_selected != ''):
+             self.patient_search_temp = self.patient_search_default_tree.item(self.patient_search_selected, 'values')
+             print("patient_search_display_fun: self.patient_search_temp:",self.patient_search_temp)
+        if  len(self.patient_search_selected)!=0:
+                  print("self.patient_search_selected in patient_search_edit ",self.patient_search_selected)
+                  self.patient_search_display_data_update()
+                  self.patient_search_display()
+                  
+
+        else:
+                   print("main_page_frame_view3_patient_search_default_frame_activate because len(self.patient_search_selected)!=0:len(self.patient_search_selected)=",len(self.patient_search_selected))
+                   #self.main_page_frame_view3_patient_search_default_frame_activate()
+
+    def patient_search_display_data_update(self):
+        self.patient_search_treeview_select_responce = self.patient_search_default_tree.focus()
+        print("patient_search_treeview_selected :",self.patient_search_treeview_select_responce)
+        print("patient_search_treeview_selected type:",type(self.patient_search_treeview_select_responce))
+        self.patient_search_treeview_selected1 = self.patient_search_default_tree.item(self.patient_search_treeview_select_responce)
+        print("values are ",self.patient_search_treeview_selected1['values'])
+        self.patient_search_treeview_selected=self.patient_search_treeview_selected1['values']
+        print("self.patient_search_treeview_selected type:",type(self.patient_search_treeview_selected))
+        print("patient_search_treeview_selected ID:",self.patient_search_treeview_selected[0])
+        self.patient_search_treeview_selected_id = tk.IntVar()
+        self.patient_search_treeview_selected_id=  self.patient_search_treeview_selected[0]
+        self.patient_search_treeview_selected_id_char = str(self.patient_search_treeview_selected_id)
+        self.display_details_update_command1 = "select id,name,mname,lname,dob,bloodgroup,phone_number,phone_number2,age,gender,address,city,emailid   from patient_details where id = " + self.patient_search_treeview_selected_id_char
+        self.display_details_update_login_database = login_check.get_execution_result(self.display_details_update_command1 )
+        self.display_details_display_store=[]
+        for i in self.display_details_update_login_database:
+            #print(" for loop i[0]",i[0])
+            #self.book_room_assain_contact.append((f'{i[0]}', f'{i[1]}', f'{i[2]}',f'{i[3]}',f'{i[4]}'))
+            self.display_details_display_store.append(f'{i[0]}')
+            self.display_details_display_store.append(f'{i[1]}')
+            self.display_details_display_store.append(f'{i[2]}')
+            self.display_details_display_store.append(f'{i[3]}')
+            self.display_details_display_store.append(f'{i[4]}')
+            self.display_details_display_store.append(f'{i[5]}')
+            self.display_details_display_store.append(f'{i[6]}')
+            self.display_details_display_store.append(f'{i[7]}')
+            self.display_details_display_store.append(f'{i[8]}')
+            self.display_details_display_store.append(f'{i[9]}')
+            self.display_details_display_store.append(f'{i[10]}')
+            self.display_details_display_store.append(f'{i[11]}')
+            self.display_details_display_store.append(f'{i[12]}')
+
+        print("self.display_details_display_store:",self.display_details_display_store)
+        print("self.display_details_display_store type:",type(self.display_details_display_store))
+        
+
+        self.patient_search_display_Patient_ID_display.config(text = str( self.display_details_display_store[0]))
+        self.patient_search_display_fname_display.config(text = str(self.display_details_display_store[1]))
+        self.patient_search_display_mname_display.config(text = str(self.display_details_display_store[2]))
+        self.patient_search_display_lname_display.config(text = str(self.display_details_display_store[3]))
+        self.patient_search_display_dob_display.config(text = str(self.display_details_display_store[4]))
+        self.patient_search_display_blood_group_display.config(text = str(self.display_details_display_store[5]))
+        self.patient_search_display_Phone_number1_display.config(text = str( self.display_details_display_store[6]))
+        self.patient_search_display_Phone_number2_display.config(text = str(self.display_details_display_store[7]))
+        self.patient_search_display_age_display.config(text = str(self.display_details_display_store[8]))
+        self.patient_search_display_gender_display.config(text = str(self.display_details_display_store[9]))
+        self.patient_search_display_adderess_display.config(text = str(self.display_details_display_store[10]))
+        self.patient_search_display_city_display.config(text = str(self.display_details_display_store[11]))
+        self.patient_search_display_emailid_display.config(text = str(self.display_details_display_store[12]))
+             
     
     #search_patient_functions=============================end=================================
 
@@ -2915,6 +3122,18 @@ class main_window():
         if self.main_page_frame_view3_patient_search_default_frame_status  == "deactivated" or self.main_page_frame_view3_patient_search_default_frame_status == "None" :
             self.main_page_frame_view3_patient_search_default_frame_status = "activated"
             self.main_page_frame_view3_patient_search_default_frame.pack(ipadx=670,ipady=390,side='top')
+
+    def main_page_frame_view3_patient_search_edit_frame_activate(self):
+        if self.main_page_frame_view3_patient_search_edit_frame_status  == "deactivated" or self.main_page_frame_view3_patient_search_edit_frame_status == "None" :
+            self.main_page_frame_view3_patient_search_edit_frame_status = "activated"
+            self.main_page_frame_view3_patient_search_edit_frame.pack(ipadx=670,ipady=390,side='top')
+
+
+    def main_page_frame_view3_patient_search_display_frame_activate(self):
+        if self.main_page_frame_view3_patient_search_display_frame_status  == "deactivated" or self.main_page_frame_view3_patient_search_display_frame_status == "None" :
+            self.main_page_frame_view3_patient_search_display_frame_status = "activated"
+            self.main_page_frame_view3_patient_search_display_frame.pack(ipadx=670,ipady=390,side='top')
+
   
 
 
@@ -3050,7 +3269,16 @@ class main_window():
         if self.main_page_frame_view3_patient_search_default_frame_status  == "activated" or self.main_page_frame_view3_patient_search_default_frame_status == "None" :
             self.main_page_frame_view3_patient_search_default_frame_status = "deactivated"
             self.main_page_frame_view3_patient_search_default_frame.pack_forget()
-   
+    
+    def main_page_frame_view3_patient_search_edit_frame_deactivate(self):
+        if self.main_page_frame_view3_patient_search_edit_frame_status  == "activated" or self.main_page_frame_view3_patient_search_edit_frame_status == "None" :
+            self.main_page_frame_view3_patient_search_edit_frame_status = "deactivated"
+            self.main_page_frame_view3_patient_search_edit_frame.pack_forget()
+
+    def main_page_frame_view3_patient_search_display_frame_deactivate(self):
+        if self.main_page_frame_view3_patient_search_display_frame_status  == "activated" or self.main_page_frame_view3_patient_search_display_frame_status == "None" :
+            self.main_page_frame_view3_patient_search_display_frame_status = "deactivated"
+            self.main_page_frame_view3_patient_search_display_frame.pack_forget()
 
 
     def main_page_frame_view3_patient_queue_default_frame_deactivate(self):
@@ -3180,7 +3408,11 @@ class main_window():
     self.main_page_frame_view3_home_frame_deactivate()
     self.main_page_frame_view3_patient_registration_default_frame_deactivate()
     self.main_page_frame_view3_patient_visit_default_frame_deactivate()
+
+
     self.main_page_frame_view3_patient_search_default_frame_deactivate()
+    self.main_page_frame_view3_patient_search_edit_frame_deactivate()
+    self.main_page_frame_view3_patient_search_display_frame_deactivate()
 
     self.main_page_frame_view3_patient_queue_default_frame_deactivate()
      
@@ -3217,7 +3449,10 @@ class main_window():
              self.main_page_frame_view3_home_frame_activate()
              self.main_page_frame_view3_patient_registration_default_frame_deactivate()
              self.main_page_frame_view3_patient_visit_default_frame_deactivate()
+
              self.main_page_frame_view3_patient_search_default_frame_deactivate()
+             self.main_page_frame_view3_patient_search_edit_frame_deactivate()
+             self.main_page_frame_view3_patient_search_display_frame_deactivate()
 
              self.main_page_frame_view3_patient_queue_default_frame_deactivate()
               
@@ -3242,7 +3477,10 @@ class main_window():
              self.main_page_frame_view3_home_frame_deactivate()
              self.main_page_frame_view3_patient_registration_default_frame_activate()
              self.main_page_frame_view3_patient_visit_default_frame_deactivate()
+
              self.main_page_frame_view3_patient_search_default_frame_deactivate()
+             self.main_page_frame_view3_patient_search_edit_frame_deactivate()
+             self.main_page_frame_view3_patient_search_display_frame_deactivate()
 
              self.main_page_frame_view3_patient_queue_default_frame_deactivate()
               
@@ -3303,7 +3541,10 @@ class main_window():
              self.main_page_frame_view3_home_frame_deactivate()
              self.main_page_frame_view3_patient_registration_default_frame_deactivate()
              self.main_page_frame_view3_patient_visit_default_frame_activate()
+
              self.main_page_frame_view3_patient_search_default_frame_deactivate()
+             self.main_page_frame_view3_patient_search_edit_frame_deactivate()
+             self.main_page_frame_view3_patient_search_display_frame_deactivate()
 
              self.main_page_frame_view3_patient_queue_default_frame_deactivate()
               
@@ -3362,13 +3603,76 @@ class main_window():
 
     #patient_search_default=====================================start========================================
     def patient_search_default(self):
-             self.patient_search_display()
+             self.patient_search_default_display()
              self.main_page_frame_view3_home_frame_deactivate()
              self.main_page_frame_view3_patient_registration_default_frame_deactivate()
              self.main_page_frame_view3_patient_visit_default_frame_deactivate()
+
              self.main_page_frame_view3_patient_search_default_frame_activate()
+             self.main_page_frame_view3_patient_search_edit_frame_deactivate()
+             self.main_page_frame_view3_patient_search_display_frame_deactivate()
 
              self.main_page_frame_view3_patient_queue_default_frame_deactivate()
+              
+              
+
+             self.main_page_frame_view3_lab_queue_default_frame_deactivate()
+             self.main_page_frame_view3_search_lab_queue_frame_deactivate()
+             self.main_page_frame_view3_view_lab_report_frame_deactivate()
+
+             self.main_page_frame_view3_opd_queue_default_frame_deactivate()
+             self.main_page_frame_view3_ipo_queue_default_frame_deactivate()
+
+             self.main_page_frame_view3_physical_management_book_frame_deactivate()
+             self.main_page_frame_view3_physical_management_Discharge_frame_deactivate()
+             self.main_page_frame_view3_physical_management_room_status_frame_deactivate()
+             
+             self.main_page_frame_view3_dialy_collection_default_frame_deactivate()
+             self.main_page_frame_view3_dialy_collection_dialy_collection_ipd_frame_deactivate()
+              
+             self.main_page_frame_view3_dialy_collection_dialy_collection_opd_frame_deactivate()
+
+    def patient_search_edit(self):
+             self.patient_search_default_display()
+             self.main_page_frame_view3_home_frame_deactivate()
+             self.main_page_frame_view3_patient_registration_default_frame_deactivate()
+             self.main_page_frame_view3_patient_visit_default_frame_deactivate()
+
+             self.main_page_frame_view3_patient_search_default_frame_deactivate()
+             self.main_page_frame_view3_patient_search_edit_frame_activate()
+             self.main_page_frame_view3_patient_search_display_frame_deactivate()
+             
+
+             self.main_page_frame_view3_patient_queue_default_frame_deactivate()
+              
+              
+
+             self.main_page_frame_view3_lab_queue_default_frame_deactivate()
+             self.main_page_frame_view3_search_lab_queue_frame_deactivate()
+             self.main_page_frame_view3_view_lab_report_frame_deactivate()
+
+             self.main_page_frame_view3_opd_queue_default_frame_deactivate()
+             self.main_page_frame_view3_ipo_queue_default_frame_deactivate()
+
+             self.main_page_frame_view3_physical_management_book_frame_deactivate()
+             self.main_page_frame_view3_physical_management_Discharge_frame_deactivate()
+             self.main_page_frame_view3_physical_management_room_status_frame_deactivate()
+             
+             self.main_page_frame_view3_dialy_collection_default_frame_deactivate()
+             self.main_page_frame_view3_dialy_collection_dialy_collection_ipd_frame_deactivate()
+              
+             self.main_page_frame_view3_dialy_collection_dialy_collection_opd_frame_deactivate()
+
+    def patient_search_display(self):
+             self.patient_search_default_display()
+             self.main_page_frame_view3_home_frame_deactivate()
+             self.main_page_frame_view3_patient_registration_default_frame_deactivate()
+             self.main_page_frame_view3_patient_visit_default_frame_deactivate()
+
+             self.main_page_frame_view3_patient_search_default_frame_deactivate()
+             self.main_page_frame_view3_patient_search_edit_frame_deactivate()
+             self.main_page_frame_view3_patient_search_display_frame_activate()
+             
               
               
 
@@ -3398,7 +3702,10 @@ class main_window():
              self.main_page_frame_view3_home_frame_deactivate()
              self.main_page_frame_view3_patient_registration_default_frame_deactivate()
              self.main_page_frame_view3_patient_visit_default_frame_deactivate()
+
              self.main_page_frame_view3_patient_search_default_frame_deactivate()
+             self.main_page_frame_view3_patient_search_edit_frame_deactivate()
+             self.main_page_frame_view3_patient_search_display_frame_deactivate()
 
              self.main_page_frame_view3_patient_queue_default_frame_activate()
               
@@ -3431,7 +3738,10 @@ class main_window():
         self.main_page_frame_view3_home_frame_deactivate()
         self.main_page_frame_view3_patient_registration_default_frame_deactivate()
         self.main_page_frame_view3_patient_visit_default_frame_deactivate()
+
         self.main_page_frame_view3_patient_search_default_frame_deactivate()
+        self.main_page_frame_view3_patient_search_edit_frame_deactivate()
+        self.main_page_frame_view3_patient_search_display_frame_deactivate()
 
         self.main_page_frame_view3_patient_queue_default_frame_deactivate()
          
@@ -3457,7 +3767,10 @@ class main_window():
          self.main_page_frame_view3_home_frame_deactivate()
          self.main_page_frame_view3_patient_registration_default_frame_deactivate()
          self.main_page_frame_view3_patient_visit_default_frame_deactivate()
+
          self.main_page_frame_view3_patient_search_default_frame_deactivate()
+         self.main_page_frame_view3_patient_search_edit_frame_deactivate()
+         self.main_page_frame_view3_patient_search_display_frame_deactivate()
 
          self.main_page_frame_view3_patient_queue_default_frame_deactivate()
           
@@ -3486,7 +3799,10 @@ class main_window():
          self.main_page_frame_view3_home_frame_deactivate()
          self.main_page_frame_view3_patient_registration_default_frame_deactivate()
          self.main_page_frame_view3_patient_visit_default_frame_deactivate()
+
          self.main_page_frame_view3_patient_search_default_frame_deactivate()
+         self.main_page_frame_view3_patient_search_edit_frame_deactivate()
+         self.main_page_frame_view3_patient_search_display_frame_deactivate()
 
          self.main_page_frame_view3_patient_queue_default_frame_deactivate()
           
@@ -3516,7 +3832,10 @@ class main_window():
         self.main_page_frame_view3_home_frame_deactivate()
         self.main_page_frame_view3_patient_registration_default_frame_deactivate()
         self.main_page_frame_view3_patient_visit_default_frame_deactivate()
+
         self.main_page_frame_view3_patient_search_default_frame_deactivate()
+        self.main_page_frame_view3_patient_search_edit_frame_deactivate()
+        self.main_page_frame_view3_patient_search_display_frame_deactivate()
 
         self.main_page_frame_view3_patient_queue_default_frame_deactivate()
          
@@ -3546,7 +3865,10 @@ class main_window():
         self.main_page_frame_view3_home_frame_deactivate()
         self.main_page_frame_view3_patient_registration_default_frame_deactivate()
         self.main_page_frame_view3_patient_visit_default_frame_deactivate()
+        
         self.main_page_frame_view3_patient_search_default_frame_deactivate()
+        self.main_page_frame_view3_patient_search_edit_frame_deactivate()
+        self.main_page_frame_view3_patient_search_display_frame_deactivate()
 
         self.main_page_frame_view3_patient_queue_default_frame_deactivate()
          
@@ -3576,7 +3898,12 @@ class main_window():
         self.main_page_frame_view3_home_frame_deactivate()
         self.main_page_frame_view3_patient_registration_default_frame_deactivate()
         self.main_page_frame_view3_patient_visit_default_frame_deactivate()
+        
         self.main_page_frame_view3_patient_search_default_frame_deactivate()
+        self.main_page_frame_view3_patient_search_edit_frame_deactivate()
+        self.main_page_frame_view3_patient_search_display_frame_deactivate()
+
+
 
         self.main_page_frame_view3_patient_queue_default_frame_deactivate()
          
@@ -3604,7 +3931,12 @@ class main_window():
         self.main_page_frame_view3_home_frame_deactivate()
         self.main_page_frame_view3_patient_registration_default_frame_deactivate()
         self.main_page_frame_view3_patient_visit_default_frame_deactivate()
+        
         self.main_page_frame_view3_patient_search_default_frame_deactivate()
+        self.main_page_frame_view3_patient_search_edit_frame_deactivate()
+        self.main_page_frame_view3_patient_search_display_frame_deactivate()
+
+
 
         self.main_page_frame_view3_patient_queue_default_frame_deactivate()
          
@@ -3632,7 +3964,12 @@ class main_window():
         self.main_page_frame_view3_home_frame_deactivate()
         self.main_page_frame_view3_patient_registration_default_frame_deactivate()
         self.main_page_frame_view3_patient_visit_default_frame_deactivate()
+        
         self.main_page_frame_view3_patient_search_default_frame_deactivate()
+        self.main_page_frame_view3_patient_search_edit_frame_deactivate()
+        self.main_page_frame_view3_patient_search_display_frame_deactivate()
+
+
 
         self.main_page_frame_view3_patient_queue_default_frame_deactivate()
          
@@ -3662,7 +3999,12 @@ class main_window():
         self.main_page_frame_view3_home_frame_deactivate()
         self.main_page_frame_view3_patient_registration_default_frame_deactivate()
         self.main_page_frame_view3_patient_visit_default_frame_deactivate()
+        
         self.main_page_frame_view3_patient_search_default_frame_deactivate()
+        self.main_page_frame_view3_patient_search_edit_frame_deactivate()
+        self.main_page_frame_view3_patient_search_display_frame_deactivate()
+
+
 
         self.main_page_frame_view3_patient_queue_default_frame_deactivate()
          
@@ -3688,7 +4030,12 @@ class main_window():
         self.main_page_frame_view3_home_frame_deactivate()
         self.main_page_frame_view3_patient_registration_default_frame_deactivate()
         self.main_page_frame_view3_patient_visit_default_frame_deactivate()
+        
         self.main_page_frame_view3_patient_search_default_frame_deactivate()
+        self.main_page_frame_view3_patient_search_edit_frame_deactivate()
+        self.main_page_frame_view3_patient_search_display_frame_deactivate()
+
+
 
         self.main_page_frame_view3_patient_queue_default_frame_deactivate()
          
@@ -3714,7 +4061,12 @@ class main_window():
         self.main_page_frame_view3_home_frame_deactivate()
         self.main_page_frame_view3_patient_registration_default_frame_deactivate()
         self.main_page_frame_view3_patient_visit_default_frame_deactivate()
+        
         self.main_page_frame_view3_patient_search_default_frame_deactivate()
+        self.main_page_frame_view3_patient_search_edit_frame_deactivate()
+        self.main_page_frame_view3_patient_search_display_frame_deactivate()
+
+
 
         self.main_page_frame_view3_patient_queue_default_frame_deactivate()
          
