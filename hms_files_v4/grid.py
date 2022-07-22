@@ -14,10 +14,6 @@ from matplotlib.figure import Figure
 
 
 
-
-
-
-
 #private files are importing:
 import login_check
 #import main_page
@@ -605,6 +601,125 @@ class main_window():
         
         self.patient_search_edit_mainheading1 = tk.Label(self.main_page_frame_view3_patient_search_edit_frame,text="patient info edit",font=("lucida",15,"bold "),bg='blue')
         self.patient_search_edit_mainheading1.place(x=5,y=5,width=1300,height=40)
+
+        self.patient_search_edit_Patient_ID_display_var=tk.StringVar()
+        self.patient_search_edit_fname_display_var=tk.StringVar()
+        self.patient_search_edit_mname_display_var=tk.StringVar()
+        self.patient_search_edit_lname_display_var=tk.StringVar()
+        self.patient_search_edit_dob_display_var=tk.StringVar()
+        self.patient_search_edit_Phone_number1_display_var=tk.StringVar()
+        self.patient_search_edit_Phone_number2_display_var=tk.StringVar()
+        self.patient_search_edit_age_display_var=tk.StringVar()
+        self.patient_search_edit_gender_display_var=tk.StringVar()
+        self.patient_search_edit_adderess_display_var=tk.StringVar()
+        self.patient_search_edit_city_display_var=tk.StringVar()
+        self.patient_search_edit_emailid_display_var=tk.StringVar()
+        self.patient_search_edit_blood_group_display_var=tk.StringVar()
+
+        self.patient_search_edit_update_button = tk.Button(self.main_page_frame_view3_patient_search_edit_frame,text="UPDATE",command = self.patient_search_edit_update_button_fun)
+        self.patient_search_edit_update_button.place(x=1200,y=55,width=50,height=25)
+
+        self.patient_search_edit_Patient_ID = tk.Label(self.main_page_frame_view3_patient_search_edit_frame,text="Patient ID")
+        self.patient_search_edit_Patient_ID.place(x=20,y=85,width=150,height=25)
+        self.patient_search_edit_Patient_ID_display = tk.Label(self.main_page_frame_view3_patient_search_edit_frame,textvariable=self.patient_search_edit_Patient_ID_display_var ,font=("lucida",10,"bold "))
+        self.patient_search_edit_Patient_ID_display.place(x=180,y=85,width=150,height=25)
+
+        self.patient_search_edit_fname = tk.Label(self.main_page_frame_view3_patient_search_edit_frame,text="Fname ")
+        self.patient_search_edit_fname.place(x=20,y=150,width=150,height=25)
+        self.patient_search_edit_fname_display = tk.Entry(self.main_page_frame_view3_patient_search_edit_frame,textvariable=self.patient_search_edit_fname_display_var)
+        self.patient_search_edit_fname_display.place(x=180,y=150,width=150,height=25)
+
+        self.patient_search_edit_mname = tk.Label(self.main_page_frame_view3_patient_search_edit_frame,text="Mname ")
+        self.patient_search_edit_mname.place(x=490,y=150,width=150,height=25)
+        self.patient_search_edit_mname_display = tk.Entry(self.main_page_frame_view3_patient_search_edit_frame,textvariable=self.patient_search_edit_mname_display_var)
+        self.patient_search_edit_mname_display.place(x=650,y=150,width=150,height=25)
+
+        
+        self.patient_search_edit_lname = tk.Label(self.main_page_frame_view3_patient_search_edit_frame,text="Lname ")
+        self.patient_search_edit_lname.place(x=960,y=150,width=150,height=25)
+        self.patient_search_edit_lname_display = tk.Entry(self.main_page_frame_view3_patient_search_edit_frame,textvariable=self.patient_search_edit_lname_display_var)
+        self.patient_search_edit_lname_display.place(x=1120,y=150,width=150,height=25)
+
+        self.patient_search_edit_dob = tk.Label(self.main_page_frame_view3_patient_search_edit_frame,text="DOB ")
+        self.patient_search_edit_dob.place(x=20,y=215,width=150,height=25)
+        self.patient_search_edit_dob_display = tk.Entry(self.main_page_frame_view3_patient_search_edit_frame,textvariable=self.patient_search_edit_dob_display_var)
+        self.patient_search_edit_dob_display.place(x=180,y=215,width=150,height=25)
+
+        self.patient_search_edit_Phone_number1 = tk.Label(self.main_page_frame_view3_patient_search_edit_frame,text="Phone Number1")
+        self.patient_search_edit_Phone_number1.place(x=20,y=280,width=150,height=25)
+        self.patient_search_edit_Phone_number1_display = tk.Entry(self.main_page_frame_view3_patient_search_edit_frame,textvariable=self.patient_search_edit_Phone_number1_display_var)
+        self.patient_search_edit_Phone_number1_display.place(x=180,y=280,width=150,height=25)
+
+        self.patient_search_edit_Phone_number2 = tk.Label(self.main_page_frame_view3_patient_search_edit_frame,text="Phone Number2")
+        self.patient_search_edit_Phone_number2.place(x=490,y=280,width=150,height=25)
+        self.patient_search_edit_Phone_number2_display = tk.Entry(self.main_page_frame_view3_patient_search_edit_frame,textvariable=self.patient_search_edit_Phone_number2_display_var)
+        self.patient_search_edit_Phone_number2_display.place(x=650,y=280,width=150,height=25)
+
+        self.patient_search_edit_age = tk.Label(self.main_page_frame_view3_patient_search_edit_frame,text="Age")
+        self.patient_search_edit_age.place(x=490,y=215,width=150,height=25)
+        self.patient_search_edit_age_display = tk.Entry(self.main_page_frame_view3_patient_search_edit_frame,textvariable=self.patient_search_edit_age_display_var)
+        self.patient_search_edit_age_display.place(x=650,y=215,width=150,height=25)
+
+        self.patient_search_edit_gender = tk.Label(self.main_page_frame_view3_patient_search_edit_frame,text="Gender")
+        self.patient_search_edit_gender.place(x=960,y=215,width=150,height=25)
+        self.patient_search_edit_gender_display = tk.Entry(self.main_page_frame_view3_patient_search_edit_frame,textvariable=self.patient_search_edit_gender_display_var)
+        self.patient_search_edit_gender_display.place(x=1120,y=215,width=150,height=25)
+
+        self.patient_search_edit_adderess = tk.Label(self.main_page_frame_view3_patient_search_edit_frame,text="Address")
+        self.patient_search_edit_adderess.place(x=20,y=345,width=150,height=25)
+        self.patient_search_edit_adderess_display = tk.Entry(self.main_page_frame_view3_patient_search_edit_frame,textvariable=self.patient_search_edit_adderess_display_var)
+        self.patient_search_edit_adderess_display.place(x=180,y=345,width=150,height=25)
+
+        self.patient_search_edit_city = tk.Label(self.main_page_frame_view3_patient_search_edit_frame,text="City")
+        self.patient_search_edit_city.place(x=490,y=345,width=150,height=25)
+        self.patient_search_edit_city_display = tk.Entry(self.main_page_frame_view3_patient_search_edit_frame,textvariable=self.patient_search_edit_city_display_var)
+        self.patient_search_edit_city_display.place(x=650,y=345,width=150,height=25)
+
+        self.patient_search_edit_emailid = tk.Label(self.main_page_frame_view3_patient_search_edit_frame,textvariable=self.patient_search_edit_Patient_ID_display_var)
+        self.patient_search_edit_emailid.place(x=20,y=410,width=150,height=25)
+        self.patient_search_edit_emailid_display = tk.Entry(self.main_page_frame_view3_patient_search_edit_frame,textvariable=self.patient_search_edit_emailid_display_var)
+        self.patient_search_edit_emailid_display.place(x=180,y=410,width=150,height=25)
+        
+        self.patient_search_edit_blood_group = tk.Label(self.main_page_frame_view3_patient_search_edit_frame,text="Blood Group")
+        self.patient_search_edit_blood_group.place(x=20,y=410,width=150,height=25)
+        self.patient_search_edit_blood_group_display = tk.Entry(self.main_page_frame_view3_patient_search_edit_frame,textvariable=self.patient_search_edit_blood_group_display_var)
+        self.patient_search_edit_blood_group_display.place(x=180,y=410,width=150,height=25)
+
+        self.patient_search_edit_ROOM_DETAILS = tk.Label(self.main_page_frame_view3_patient_search_edit_frame,text="ROOM DETAILS")
+        self.patient_search_edit_ROOM_DETAILS.place(x=5,y=468,width=100,height=25)
+        self.patient_search_edit_line1 = tk.Label(self.main_page_frame_view3_patient_search_edit_frame,text="",bg='black')
+        self.patient_search_edit_line1.place(x=110,y=480,width=1160,height=1)
+
+        self.patient_search_edit_ROOM_id = tk.Label(self.main_page_frame_view3_patient_search_edit_frame,text="ROOM ID")
+        self.patient_search_edit_ROOM_id.place(x=20,y=530,width=150,height=25)
+        self.patient_search_edit_ROOM_id_display = tk.Label(self.main_page_frame_view3_patient_search_edit_frame,text="ROOM ID Display")
+        self.patient_search_edit_ROOM_id_display.place(x=180,y=530,width=150,height=25)
+        self.patient_search_edit_ROOM_Floor = tk.Label(self.main_page_frame_view3_patient_search_edit_frame,text="ROOM Floor")
+        self.patient_search_edit_ROOM_Floor.place(x=490,y=530,width=150,height=25)
+        self.patient_search_edit_ROOM_Floor_display = tk.Label(self.main_page_frame_view3_patient_search_edit_frame,text="ROOM Floor Display")
+        self.patient_search_edit_ROOM_Floor_display.place(x=650,y=530,width=150,height=25)
+        self.patient_search_edit_ROOM_no = tk.Label(self.main_page_frame_view3_patient_search_edit_frame,text="ROOM No")
+        self.patient_search_edit_ROOM_no.place(x=960,y=530,width=150,height=25)
+        self.patient_search_edit_ROOM_no_display = tk.Label(self.main_page_frame_view3_patient_search_edit_frame,text="ROOM No Display")
+        self.patient_search_edit_ROOM_no_display.place(x=1120,y=530,width=150,height=25)
+
+        self.patient_search_edit_FINANCE_DETAILS = tk.Label(self.main_page_frame_view3_patient_search_edit_frame,text="FINANCE DETAILS")
+        self.patient_search_edit_FINANCE_DETAILS.place(x=5,y=588,width=100,height=25)
+        self.patient_search_edit_line2 = tk.Label(self.main_page_frame_view3_patient_search_edit_frame,text="",bg='black')
+        self.patient_search_edit_line2.place(x=110,y=600,width=1160,height=1)
+
+        self.patient_search_edit_FINANCE_Debit = tk.Label(self.main_page_frame_view3_patient_search_edit_frame,text="Debit")
+        self.patient_search_edit_FINANCE_Debit.place(x=20,y=650,width=150,height=25)
+        self.patient_search_edit_FINANCE_Debit_display = tk.Label(self.main_page_frame_view3_patient_search_edit_frame,text="Debit Display")
+        self.patient_search_edit_FINANCE_Debit_display.place(x=180,y=650,width=150,height=25)
+        self.patient_search_edit_FINANCE_Credit = tk.Label(self.main_page_frame_view3_patient_search_edit_frame,text="Credit")
+        self.patient_search_edit_FINANCE_Credit.place(x=490,y=650,width=150,height=25)
+        self.patient_search_edit_FINANCE_Credit_display = tk.Label(self.main_page_frame_view3_patient_search_edit_frame,text="Credit Display")
+        self.patient_search_edit_FINANCE_Credit_display.place(x=650,y=650,width=150,height=25)
+        self.patient_search_edit_FINANCE_Balance = tk.Label(self.main_page_frame_view3_patient_search_edit_frame,text="Balance")
+        self.patient_search_edit_FINANCE_Balance.place(x=960,y=650,width=150,height=25)
+        self.patient_search_edit_FINANCE_Balance_display = tk.Label(self.main_page_frame_view3_patient_search_edit_frame,text="Balance Display")
+        self.patient_search_edit_FINANCE_Balance_display.place(x=1120,y=650,width=150,height=25)
         #patient_search_edit_frame------end-------------
 
         #patient_search_display_frame------start-------------
@@ -1765,10 +1880,148 @@ class main_window():
              print("patient_search_edit_fun : self.patient_search_temp:",self.patient_search_temp)
         if  len(self.patient_search_selected)!=0:
                   print("self.patient_search_selected in patient_search_edit ",self.patient_search_selected)
+                  self.patient_search_edit_details_update_in_ui_fun()
                   self.patient_search_edit()
+                  #self.patient_search_edit_details_update_in_ui_fun()
         else:
                    print("main_page_frame_view3_patient_search_default_frame_activate because len(self.patient_search_selected)!=0:len(self.patient_search_selected)=",len(self.patient_search_selected))
                    #self.main_page_frame_view3_patient_search_default_frame_activate()
+    def patient_search_edit_details_update_in_ui_fun(self):
+        self.patient_search_treeview_select_responce = self.patient_search_default_tree.focus()
+        print("patient_search_treeview_selected :",self.patient_search_treeview_select_responce)
+        print("patient_search_treeview_selected type:",type(self.patient_search_treeview_select_responce))
+        self.patient_search_treeview_selected1 = self.patient_search_default_tree.item(self.patient_search_treeview_select_responce)
+        print("values are ",self.patient_search_treeview_selected1['values'])
+        self.patient_search_treeview_selected=self.patient_search_treeview_selected1['values']
+        print("self.patient_search_treeview_selected type:",type(self.patient_search_treeview_selected))
+        print("patient_search_treeview_selected ID:",self.patient_search_treeview_selected[0])
+        self.patient_search_treeview_selected_id = tk.IntVar()
+        self.patient_search_treeview_selected_id=  self.patient_search_treeview_selected[0]
+        self.patient_search_treeview_selected_id_char = str(self.patient_search_treeview_selected_id)
+        self.edit_details_update_command1 = "select id,name,mname,lname,dob,bloodgroup,phone_number,phone_number2,age,gender,address,city,emailid   from patient_details where id = " + self.patient_search_treeview_selected_id_char
+        self.edit_details_update_login_database = login_check.get_execution_result(self.edit_details_update_command1 )
+        print("self.edit_details_update_login_database:",self.edit_details_update_login_database)
+        self.edit_details_edit_store=[]
+        for i in self.edit_details_update_login_database:
+            #print(" for loop i[0]",i[0])
+            #self.book_room_assain_contact.append((f'{i[0]}', f'{i[1]}', f'{i[2]}',f'{i[3]}',f'{i[4]}'))
+            self.edit_details_edit_store.append(f'{i[0]}')
+            self.edit_details_edit_store.append(f'{i[1]}')
+            self.edit_details_edit_store.append(f'{i[2]}')
+            self.edit_details_edit_store.append(f'{i[3]}')
+            self.edit_details_edit_store.append(f'{i[4]}')
+            self.edit_details_edit_store.append(f'{i[5]}')
+            self.edit_details_edit_store.append(f'{i[6]}')
+            self.edit_details_edit_store.append(f'{i[7]}')
+            self.edit_details_edit_store.append(f'{i[8]}')
+            self.edit_details_edit_store.append(f'{i[9]}')
+            self.edit_details_edit_store.append(f'{i[10]}')
+            self.edit_details_edit_store.append(f'{i[11]}')
+            self.edit_details_edit_store.append(f'{i[12]}')
+        self.patient_search_edit_Patient_ID_display_var.set(str(self.edit_details_edit_store[0]))
+        self.patient_search_edit_fname_display_var.set(str(self.edit_details_edit_store[1]))
+        self.patient_search_edit_mname_display_var.set(str(self.edit_details_edit_store[2]))
+        self.patient_search_edit_lname_display_var.set(str(self.edit_details_edit_store[3]))
+        self.patient_search_edit_dob_display_var.set(str(self.edit_details_edit_store[4]))
+        self.patient_search_edit_blood_group_display_var.set(str(self.edit_details_edit_store[5]))
+        self.patient_search_edit_Phone_number1_display_var.set(str(self.edit_details_edit_store[6]))
+        self.patient_search_edit_Phone_number2_display_var.set(str(self.edit_details_edit_store[7]))
+        self.patient_search_edit_age_display_var.set(str(self.edit_details_edit_store[8]))
+        self.patient_search_edit_gender_display_var.set(str(self.edit_details_edit_store[9]))
+        self.patient_search_edit_adderess_display_var.set(str(self.edit_details_edit_store[10]))
+        self.patient_search_edit_city_display_var.set(str(self.edit_details_edit_store[11]))
+        self.patient_search_edit_emailid_display_var.set(str(self.edit_details_edit_store[12]))
+        self.edit_details_update_room_details = None
+        self.edit_details_update_room_details = login_check.get_execution_result("select room_ID,room_floor,room_no from rooms_details where  booked_person_id = " + str(self.edit_details_edit_store[0]) + " and rooms_status='occupied'  LIMIT 1; ")
+        self.edit_details_edit_room_details=[]
+        for i in self.edit_details_update_room_details:
+            #print(" for loop i[0]",i[0])
+            #self.book_room_assain_contact.append((f'{i[0]}', f'{i[1]}', f'{i[2]}',f'{i[3]}',f'{i[4]}'))
+            if  self.edit_details_update_room_details != '':
+                 self.edit_details_edit_room_details.append(f'{i[0]}')
+                 self.edit_details_edit_room_details.append(f'{i[1]}')
+                 self.edit_details_edit_room_details.append(f'{i[2]}')
+        print("self.edit_details_edit_room_details:",self.edit_details_edit_room_details)
+        if self.edit_details_edit_room_details != []:
+            self.patient_search_edit_ROOM_id_display.config(text = str(self.edit_details_edit_room_details[0]),width=len(self.edit_details_edit_room_details[0]))
+            self.patient_search_edit_ROOM_Floor_display.config(text = str(self.edit_details_edit_room_details[1]),width=len(self.edit_details_edit_room_details[1]))
+            self.patient_search_edit_ROOM_no_display.config(text = str(self.edit_details_edit_room_details[2]),width=len(self.edit_details_edit_room_details[2]))
+        else:
+            self.patient_search_edit_ROOM_id_display.config(text = "None",width=len("None"))
+            self.patient_search_edit_ROOM_Floor_display.config(text = "None",width=len("None"))
+            self.patient_search_edit_ROOM_no_display.config(text = "None",width=len("None"))
+
+        self.edit_details_update_finance_details = None
+        self.edit_details_update_finance_details = login_check.get_execution_result("select sum(Debit),sum(credit) from finance_details  where  patient_id = " + str(self.edit_details_edit_store[0]) + "   LIMIT 1; ")
+        self.edit_details_edit_finance_details=[]
+        self.edit_details_edit_finance_details_balance= None
+        print("self.edit_details_update_finance_details :",self.edit_details_update_finance_details )
+        for i in self.edit_details_update_finance_details:
+            #print(" for loop i[0]",i[0])
+            #self.book_room_assain_contact.append((f'{i[0]}', f'{i[1]}', f'{i[2]}',f'{i[3]}',f'{i[4]}'))
+            if  self.edit_details_update_finance_details != None:
+                 self.edit_details_edit_finance_details.append(i[0])
+                 print("self.edit_details_edit_finance_details[0]",self.edit_details_edit_finance_details[0])
+                 self.edit_details_edit_finance_details.append(i[1])
+                 print("self.edit_details_edit_finance_details[1]",self.edit_details_edit_finance_details[1])
+                 if self.edit_details_edit_finance_details[0]  != None:
+                      self.edit_details_edit_finance_details_balance=self.edit_details_edit_finance_details[0] - self.edit_details_edit_finance_details[1]
+
+          
+        if self.edit_details_edit_finance_details != []:
+            self.patient_search_edit_FINANCE_Debit_display.config(text = str(self.edit_details_edit_finance_details[0]))
+            self.patient_search_edit_FINANCE_Credit_display.config(text = str(self.edit_details_edit_finance_details[1]))
+            self.patient_search_edit_FINANCE_Balance_display.config(text = str(self.edit_details_edit_finance_details_balance))
+        else:
+            self.patient_search_edit_FINANCE_Debit_display.config(text = "0",width=len("0"))
+            self.patient_search_edit_FINANCE_Credit_display.config(text = "0",width=len("0"))
+            self.patient_search_edit_FINANCE_Balance_display.config(text = "0",width=len("0"))
+        
+        
+    def patient_search_edit_update_button_fun(self):
+        self.patient_search_edit_update_button_command1 = "UPDATE patient_details set "
+        self.patient_search_edit_update_button_command2  = " where id = " + self.patient_search_edit_Patient_ID_display_var.get()
+        
+        self.patient_search_edit_update_button_command_name= self.patient_search_edit_update_button_command1 + " name = '" + self.patient_search_edit_fname_display_var.get() + "'" +  self.patient_search_edit_update_button_command2
+        self.patient_search_edit_update_button_command_mname=self.patient_search_edit_update_button_command1 + " mname = '" + self.patient_search_edit_mname_display_var.get() + "'" +  self.patient_search_edit_update_button_command2
+        self.patient_search_edit_update_button_command_lname=self.patient_search_edit_update_button_command1 + " lname = '" + self.patient_search_edit_lname_display_var.get() + "'" +  self.patient_search_edit_update_button_command2
+        self.patient_search_edit_update_button_command_dob=self.patient_search_edit_update_button_command1 + " dob = '" + self.patient_search_edit_dob_display_var.get() + "'" +  self.patient_search_edit_update_button_command2
+        self.patient_search_edit_update_button_command_bloodgroup=self.patient_search_edit_update_button_command1 + " bloodgroup = '" + self.patient_search_edit_blood_group_display_var.get() + "'" + self.patient_search_edit_update_button_command2
+        self.patient_search_edit_update_button_command_phone_number=self.patient_search_edit_update_button_command1 + " phone_number = " + self.patient_search_edit_Phone_number1_display_var.get() + self.patient_search_edit_update_button_command2
+        self.patient_search_edit_update_button_command_phone_number2=self.patient_search_edit_update_button_command1 + " phone_number2 = " + self.patient_search_edit_Phone_number2_display_var.get() + self.patient_search_edit_update_button_command2
+        self.patient_search_edit_update_button_command_age=self.patient_search_edit_update_button_command1 + " age = " + self.patient_search_edit_age_display_var.get() + self.patient_search_edit_update_button_command2
+        self.patient_search_edit_update_button_command_gender=self.patient_search_edit_update_button_command1 + " gender = '" + self.patient_search_edit_gender_display_var.get() + "'" +  self.patient_search_edit_update_button_command2
+        self.patient_search_edit_update_button_command_address=self.patient_search_edit_update_button_command1 + " address = '" + self.patient_search_edit_adderess_display_var.get() + "'" +  self.patient_search_edit_update_button_command2
+        self.patient_search_edit_update_button_command_city=self.patient_search_edit_update_button_command1 + " city = '" + self.patient_search_edit_city_display_var.get() + "'" +  self.patient_search_edit_update_button_command2
+        self.patient_search_edit_update_button_command_emailid=self.patient_search_edit_update_button_command1 + " emailid = '" + self.patient_search_edit_emailid_display_var.get() + "'" +  self.patient_search_edit_update_button_command2
+        print("self.patient_search_edit_update_button_command_name:",self.patient_search_edit_update_button_command_name)
+        login_check.get_execution_result(self.patient_search_edit_update_button_command_name)
+        #print("successfully_completed")
+        login_check.get_execution_result(self.patient_search_edit_update_button_command_mname)
+        login_check.get_execution_result(self.patient_search_edit_update_button_command_lname)
+        login_check.get_execution_result(self.patient_search_edit_update_button_command_dob)
+        login_check.get_execution_result(self.patient_search_edit_update_button_command_bloodgroup)
+        login_check.get_execution_result(self.patient_search_edit_update_button_command_phone_number)
+        login_check.get_execution_result(self.patient_search_edit_update_button_command_phone_number2)
+        login_check.get_execution_result(self.patient_search_edit_update_button_command_age)
+        login_check.get_execution_result(self.patient_search_edit_update_button_command_gender)
+        login_check.get_execution_result(self.patient_search_edit_update_button_command_address)
+        login_check.get_execution_result(self.patient_search_edit_update_button_command_city)
+        login_check.get_execution_result(self.patient_search_edit_update_button_command_emailid)
+    
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 
     def patient_search_display_fun(self):
         self.patient_search_selected = self.patient_search_default_tree.focus()
@@ -1888,7 +2141,7 @@ class main_window():
             self.patient_search_display_FINANCE_Credit_display.config(text = "0",width=len("0"))
             self.patient_search_display_FINANCE_Balance_display.config(text = "0",width=len("0"))
 
-
+    
 
 
     
