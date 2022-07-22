@@ -1837,7 +1837,57 @@ class main_window():
         self.patient_search_display_adderess_display.config(text = str(self.display_details_display_store[10]))
         self.patient_search_display_city_display.config(text = str(self.display_details_display_store[11]))
         self.patient_search_display_emailid_display.config(text = str(self.display_details_display_store[12]))
-             
+
+        self.display_details_update_room_details = None
+        self.display_details_update_room_details = login_check.get_execution_result("select room_ID,room_floor,room_no from rooms_details where  booked_person_id = " + str(self.display_details_display_store[0]) + " and rooms_status='occupied'  LIMIT 1; ")
+        self.display_details_display_room_details=[]
+        for i in self.display_details_update_room_details:
+            #print(" for loop i[0]",i[0])
+            #self.book_room_assain_contact.append((f'{i[0]}', f'{i[1]}', f'{i[2]}',f'{i[3]}',f'{i[4]}'))
+            if  self.display_details_update_room_details != '':
+                 self.display_details_display_room_details.append(f'{i[0]}')
+                 self.display_details_display_room_details.append(f'{i[1]}')
+                 self.display_details_display_room_details.append(f'{i[2]}')
+        print("self.display_details_display_room_details:",self.display_details_display_room_details)
+        if self.display_details_display_room_details != []:
+            self.patient_search_display_ROOM_id_display.config(text = str(self.display_details_display_room_details[0]),width=len(self.display_details_display_room_details[0]))
+            self.patient_search_display_ROOM_Floor_display.config(text = str(self.display_details_display_room_details[1]),width=len(self.display_details_display_room_details[1]))
+            self.patient_search_display_ROOM_no_display.config(text = str(self.display_details_display_room_details[2]),width=len(self.display_details_display_room_details[2]))
+        else:
+            self.patient_search_display_ROOM_id_display.config(text = "None",width=len("None"))
+            self.patient_search_display_ROOM_Floor_display.config(text = "None",width=len("None"))
+            self.patient_search_display_ROOM_no_display.config(text = "None",width=len("None"))
+
+        self.display_details_update_finance_details = None
+        self.display_details_update_finance_details = login_check.get_execution_result("select sum(Debit),sum(credit) from finance_details  where  patient_id = " + str(self.display_details_display_store[0]) + "   LIMIT 1; ")
+        self.display_details_display_finance_details=[]
+        self.display_details_display_finance_details_balance= None
+        print("self.display_details_update_finance_details :",self.display_details_update_finance_details )
+        for i in self.display_details_update_finance_details:
+            #print(" for loop i[0]",i[0])
+            #self.book_room_assain_contact.append((f'{i[0]}', f'{i[1]}', f'{i[2]}',f'{i[3]}',f'{i[4]}'))
+            if  self.display_details_update_finance_details != None:
+                 self.display_details_display_finance_details.append(i[0])
+                 print("self.display_details_display_finance_details[0]",self.display_details_display_finance_details[0])
+                 self.display_details_display_finance_details.append(i[1])
+                 print("self.display_details_display_finance_details[1]",self.display_details_display_finance_details[1])
+                 if self.display_details_display_finance_details[0]  != None:
+                      self.display_details_display_finance_details_balance=self.display_details_display_finance_details[0] - self.display_details_display_finance_details[1]
+                 
+        print("self.display_details_display_room_details:",self.display_details_display_room_details)
+        #self.display_details_display_finance_details_balance=self.display_details_display_finance_details[0] - self.display_details_display_finance_details[1]
+        if self.display_details_display_finance_details != []:
+            self.patient_search_display_FINANCE_Debit_display.config(text = str(self.display_details_display_finance_details[0]))
+            self.patient_search_display_FINANCE_Credit_display.config(text = str(self.display_details_display_finance_details[1]))
+            self.patient_search_display_FINANCE_Balance_display.config(text = str(self.display_details_display_finance_details_balance))
+        else:
+            self.patient_search_display_FINANCE_Debit_display.config(text = "0",width=len("0"))
+            self.patient_search_display_FINANCE_Credit_display.config(text = "0",width=len("0"))
+            self.patient_search_display_FINANCE_Balance_display.config(text = "0",width=len("0"))
+
+
+
+
     
     #search_patient_functions=============================end=================================
 
