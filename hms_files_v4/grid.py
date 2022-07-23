@@ -2995,7 +2995,7 @@ class main_window():
          self.physical_management_book_room_assaign_room_age_label_display.place(x=172,y=220,width=112,height=25)
 
          self.physical_management_book_room_assaign_room_yes_button = tk.Button(self.physical_management_book_room_assaign_room,text='YES',command=self.physical_management_book_room_assaign_room_yes_button_fun)
-         self.physical_management_book_room_assaign_room_no_button = tk.Button(self.physical_management_book_room_assaign_room,text='NO')
+         self.physical_management_book_room_assaign_room_no_button = tk.Button(self.physical_management_book_room_assaign_room,text='NO',command=self.physical_management_book_room_assaign_room_no_button_fun)
 
          
         
@@ -3054,6 +3054,9 @@ class main_window():
         self.physical_management_book_room_assaign_yes_responce = login_check.get_execution_result(self.physical_management_book_room_assaign_room_command_main)
         if self.physical_management_book_room_assaign_yes_responce == []:
             self.physical_management_book_room_assaign_room.destroy()
+
+    def physical_management_book_room_assaign_room_no_button_fun(self):
+        self.physical_management_book_room_assaign_room.destroy()
 
 
 
@@ -3151,7 +3154,7 @@ class main_window():
          self.physical_management_Discharge_room_Discharge_room_age_label_display.place(x=172,y=220,width=112,height=25)
 
          self.physical_management_Discharge_room_Discharge_room_yes_button = tk.Button(self.physical_management_Discharge_room_Discharge_room,text='YES',command=self.physical_management_Discharge_room_Discharge_room_yes_button_fun)
-         self.physical_management_Discharge_room_Discharge_room_no_button = tk.Button(self.physical_management_Discharge_room_Discharge_room,text='NO')
+         self.physical_management_Discharge_room_Discharge_room_no_button = tk.Button(self.physical_management_Discharge_room_Discharge_room,text='NO',command=self.physical_management_Discharge_room_Discharge_room_no_button_fun)
 
          
         
@@ -3210,6 +3213,9 @@ class main_window():
         self.physical_management_Discharge_room_Discharge_yes_responce = login_check.get_execution_result(self.physical_management_Discharge_room_Discharge_room_command_main)
         if self.physical_management_Discharge_room_Discharge_yes_responce == []:
             self.physical_management_Discharge_room_Discharge_room.destroy()
+
+    def physical_management_Discharge_room_Discharge_room_no_button_fun(self):
+        self.physical_management_Discharge_room_Discharge_room.destroy()
 
     def physical_management_room_status_refresh(self):
         self.room_details_data=None
