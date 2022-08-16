@@ -100,8 +100,8 @@ class main_window():
 
     def login_check_fun(self):
               print(self.value_inside.get(),self.reg_id_var.get(),self.password_var.get())
-              #self.response = login_check.username_password_check(login_check.mydb,self.value_inside.get(),self.reg_id_var.get(),self.password_var.get())
-              self.response = 'true'
+              self.response = login_check.username_password_check(login_check.mydb,self.value_inside.get(),self.reg_id_var.get(),self.password_var.get())
+              #self.response = 'true'
               if self.response == 'true':
                        #return  self.response
                        self.login_page_frame1.destroy()
@@ -1408,7 +1408,7 @@ class main_window():
         self.main_page_frame_view3_dialy_collection_default_frame_button1_dialy_collection_opd.place(x=350,y=20)
 
         self.mid_line =Canvas(self.main_page_frame_view3_dialy_collection_default_frame,width=1,height=200,bg='black',highlightthickness = 1, highlightbackground = 'black')
-        self.mid_line .place(x=590,y=100,width=1,height=1000)
+        self.mid_line .place(x=590,y=100,width=2,height=1000)
         self.mid_line .create_line(300, 35, 300, 200, dash = (5, 2))
 
         self.right_heading_label1= tk.Label(self.main_page_frame_view3_dialy_collection_default_frame,text="Dialy Collection ipd",font= ("arial ", 18))
@@ -1884,6 +1884,8 @@ class main_window():
                   self.patient_search_edit()
                   #self.patient_search_edit_details_update_in_ui_fun()
         else:
+
+            
                    print("main_page_frame_view3_patient_search_default_frame_activate because len(self.patient_search_selected)!=0:len(self.patient_search_selected)=",len(self.patient_search_selected))
                    #self.main_page_frame_view3_patient_search_default_frame_activate()
     def patient_search_edit_details_update_in_ui_fun(self):
@@ -2041,6 +2043,7 @@ class main_window():
                   
 
         else:
+            
                    print("main_page_frame_view3_patient_search_default_frame_activate because len(self.patient_search_selected)!=0:len(self.patient_search_selected)=",len(self.patient_search_selected))
                    #self.main_page_frame_view3_patient_search_default_frame_activate()
 
