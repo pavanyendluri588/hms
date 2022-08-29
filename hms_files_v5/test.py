@@ -1,10 +1,8 @@
-self.main_page_frame_view1_logout_image =Image.open("G:\hms_v1\hms_files_v3\main_page_home.jpeg")
+self.patient_queue_send_to_OPD_refresh_image =Image.open("G:\hms_v1\hms_files_v5\refresh_img.png")
         #G:\hms_v1\hms_files_v3\main_page_home.jpeg
         # Show image using label
         
-        self.logout_resized_image= self.main_page_frame_view1_logout_image.resize((1300,770), Image.ANTIALIAS)
-        self.logout_img=ImageTk.PhotoImage(self.logout_resized_image)
-
-        self.logout_main_page_frame_view3_home_label = tk.Label( self.main_page_frame_view3_home_frame,)
-        self.main_page_frame_view3_ = tk.Label( self.main_page_frame_view3_home_frame, image = self.my_img)
-        self.main_page_frame_view3_home_label.place(x=0,y=0,width=1300,height=770)
+        self.patient_queue_send_to_OPD_refresh_resized_image= self.patient_queue_send_to_OPD_refresh_image.resize((40,32), Image.ANTIALIAS)
+        self.patient_queue_send_to_OPD_refresh_img=ImageTk.PhotoImage(self.patient_queue_send_to_OPD_refresh_resized_image)
+        self.patient_queue_send_to_OPD_button2_refresh=tk.Button(self.patient_queue_send_to_OPD, image = self.patient_queue_send_to_OPD_refresh_img)#,command= self.refresh_default
+        self.patient_queue_send_to_OPD_button2_refresh.place(x=1480,y=5,width=40,height=32)
