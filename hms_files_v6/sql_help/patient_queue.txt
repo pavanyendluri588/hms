@@ -13,6 +13,7 @@ reason
 doctor_id
 doctor_name
 
+
 select pd.id,pd.name,pd.mname,pd.lname,pd.dob,pd.age
 ,pd.gender
 ,pd.phone_number

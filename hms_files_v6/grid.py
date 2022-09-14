@@ -20,50 +20,6 @@ import login_check
 
 class main_window():
     def __init__(self):
-         #frames status variables---------------------start----------------------------
-        self.login_page_frame1_status= "None" 
-        self.main_page_frame_view1_status= "None"
-        self.main_page_frame_view1_dialy_tasks_default_frame_status="None"
-        self.main_page_frame_view1_dialy_tasks_default_frame_status = "None"
-        self.main_page_frame_view1_dialy_tasks_dialy_attdence_frame_status = "None"
-        self.main_page_frame_view1_dialy_tasks_view_dialy_attdence_frame_status = "None"
-        self.main_page_frame_view1_dialy_tasks_add_dialy_work_done_frame_status = "None"
-        self.main_page_frame_view1_dialy_tasks_update_work_done_frame_status = "None"
-        self.main_page_frame_view1_dialy_tasks_work_done_frame_status = "None"
-        self.main_page_frame_view2_status= "None"
-
-
-        self.main_page_frame_view3_home_frame_status= "None"
-        self.main_page_frame_view3_patient_registration_default_frame_status = "None"
-        self.main_page_frame_view3_patient_visit_default_frame_status = "None"
-
-        self.main_page_frame_view3_patient_search_default_frame_status= "None"
-        self.main_page_frame_view3_patient_search_edit_frame_status = "None"
-        self.main_page_frame_view3_patient_search_display_frame_status = "None"
-
-        self.main_page_frame_view3_patient_queue_default_frame_status= "None"
-        
-
-        self.main_page_frame_view3_lab_queue_default_frame_status= "None"
-        self.main_page_frame_view3_search_lab_queue_frame_status= "None"
-        self.main_page_frame_view3_view_lab_report_frame_status = "None"
-
-        self.main_page_frame_view3_opd_queue_default_frame_status= "None"
-        self.main_page_frame_view3_ipo_queue_default_frame_status= "None"
-
-        self.main_page_frame_view3_physical_management_book_frame_status= "None"
-        self.main_page_frame_view3_physical_management_Discharge_frame_status= "None"
-        self.main_page_frame_view3_physical_management_room_status_frame_status= "None"
-
-
-   
-        
-        self.main_page_frame_view3_dialy_collection_default_frame_status = "None"
-        self.main_page_frame_view3_dialy_collection_dialy_collection_opd_frame_status = "None"
-        self.main_page_frame_view3_dialy_collection_dialy_collection_ipd_frame_status = "None"
-        
-        
-         #frames status variables---------------------end----------------------------
         self.root1 = tk.Tk()
         self.canvas=Canvas()
         self.screem_width=int(self.root1.winfo_screenwidth())
@@ -145,7 +101,7 @@ class main_window():
     def login_check_fun(self):
               print(self.value_inside.get(),self.reg_id_var.get(),self.password_var.get())
               self.response = login_check.username_password_check(login_check.mydb,self.value_inside.get(),self.reg_id_var.get(),self.password_var.get())
-              self.response = 'true'
+              # self.response = 'true'
               if self.response == 'true':
                        #return  self.response
                        self.login_page_frame1.place_forget()
@@ -320,7 +276,7 @@ class main_window():
         #G:\hms_v1\hms_files_v3\main_page_home.jpeg
         # Show image using label
         
-        self.resized_image= self.main_page_frame_view3_home_image.resize((1300,770))
+        self.resized_image= self.main_page_frame_view3_home_image.resize((1300,770), Image.ANTIALIAS)
         self.my_img=ImageTk.PhotoImage(self.resized_image)
 
         self.main_page_frame_view3_home_label = tk.Label( self.main_page_frame_view3_home_frame, image = self.my_img)
@@ -949,7 +905,7 @@ class main_window():
 
         #patient_queue_tree_view========================================start========================================
         # define columns
-        self.patient_queue_columns = ('patinet ID', 'First name','Middle name','Last name', 'Dob','Age','Gender','Phone Number1','Phone Number2','Queue Type','Queue Status','Reason','doctor Id','Doctor name')
+        self.patient_queue_columns = ('patinet_ID', 'First_name','Queue_Type','Queue_Status','Reason','doctor_Id','Doctor_name')
         """
         id
 name
@@ -972,11 +928,9 @@ doctor_name
 
 
         # define headings
-        self.patient_queue_default_tree.heading('patinet__ID', text='patinet ID')
+        self.patient_queue_default_tree.heading('patinet_ID', text='patinet ID')
         self.patient_queue_default_tree.heading('First_name', text='First name')
-        self.patient_queue_default_tree.heading('Middle_name', text='Middle name')
         self.patient_queue_default_tree.heading('Last_name', text='Last name')
-        self.patient_queue_default_tree.heading('Dob', text='Dob')
         self.patient_queue_default_tree.heading('Age', text='Age')
         self.patient_queue_default_tree.heading('Gender', text='Gender')
         self.patient_queue_default_tree.heading('Phone_Number1', text='Phone Number1')
@@ -985,7 +939,10 @@ doctor_name
         self.patient_queue_default_tree.heading('Queue_Status', text='Queue Status')
         self.patient_queue_default_tree.heading('Reason', text='Reason')
         self.patient_queue_default_tree.heading('doctor_Id', text='doctor Id')
-        self.patient_queue_default_tree.heading('Doctor_name', text='Doctor_name')
+        self.patient_queue_default_tree.heading('Doctor_name', text='Doctor name')
+
+
+
         #patient_search_tree_view========================================end========================================
         #patient_queue_default_frame-----------end-------------
 
@@ -1781,7 +1738,50 @@ doctor_name
         
 
 
+        #frames status variables---------------------start----------------------------
+        self.login_page_frame1_status= "None" 
+        self.main_page_frame_view1_status= "None"
+        self.main_page_frame_view1_dialy_tasks_default_frame_status="None"
+        self.main_page_frame_view1_dialy_tasks_default_frame_status = "None"
+        self.main_page_frame_view1_dialy_tasks_dialy_attdence_frame_status = "None"
+        self.main_page_frame_view1_dialy_tasks_view_dialy_attdence_frame_status = "None"
+        self.main_page_frame_view1_dialy_tasks_add_dialy_work_done_frame_status = "None"
+        self.main_page_frame_view1_dialy_tasks_update_work_done_frame_status = "None"
+        self.main_page_frame_view1_dialy_tasks_work_done_frame_status = "None"
+        self.main_page_frame_view2_status= "None"
+
+
+        self.main_page_frame_view3_home_frame_status= "None"
+        self.main_page_frame_view3_patient_registration_default_frame_status = "None"
+        self.main_page_frame_view3_patient_visit_default_frame_status = "None"
+
+        self.main_page_frame_view3_patient_search_default_frame_status= "None"
+        self.main_page_frame_view3_patient_search_edit_frame_status = "None"
+        self.main_page_frame_view3_patient_search_display_frame_status = "None"
+
+        self.main_page_frame_view3_patient_queue_default_frame_status= "None"
+        
+
+        self.main_page_frame_view3_lab_queue_default_frame_status= "None"
+        self.main_page_frame_view3_search_lab_queue_frame_status= "None"
+        self.main_page_frame_view3_view_lab_report_frame_status = "None"
+
+        self.main_page_frame_view3_opd_queue_default_frame_status= "None"
+        self.main_page_frame_view3_ipo_queue_default_frame_status= "None"
+
+        self.main_page_frame_view3_physical_management_book_frame_status= "None"
+        self.main_page_frame_view3_physical_management_Discharge_frame_status= "None"
+        self.main_page_frame_view3_physical_management_room_status_frame_status= "None"
+
+
    
+        
+        self.main_page_frame_view3_dialy_collection_default_frame_status = "None"
+        self.main_page_frame_view3_dialy_collection_dialy_collection_opd_frame_status = "None"
+        self.main_page_frame_view3_dialy_collection_dialy_collection_ipd_frame_status = "None"
+        
+        
+         #frames status variables---------------------end----------------------------
     #search_patient_functions==============================start==================================
     def patient_search_default_display(self):
         self.patient_search_default_display_just_treeview_reset() 
@@ -2195,7 +2195,7 @@ doctor_name
         #adding the values into contact list 
         self.patient_queue_contacts = []
         for n in range(1, 200):
-            self.patient_queue_contacts.append((f'id{n}', f'first {n}',f'middle {n}',f'last {n}',f'dob {n}',f'age {n}',f'gender {n}', f'first {n}',f'ph1 {n}',f'ph2 {n}',f'queue_type {n}',f'queue_status {n}',f'reason {n}',f'doctorid {n}',f'doctor_name {n}'))
+            self.patient_queue_contacts.append((f'id{n}', f'first {n}',f'last {n}',f'age {n}',f'gender {n}', f'ph1 {n}',f'ph2 {n}',f'queue_type {n}',f'queue_status {n}',f'reason {n}',f'doctorid {n}',f'doctor_name {n}'))
 
         # add data to the treeview 
         for contact in self.patient_queue_contacts:
