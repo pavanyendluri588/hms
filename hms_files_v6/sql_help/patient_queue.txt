@@ -26,7 +26,8 @@ select pd.id,pd.name,pd.mname,pd.lname,pd.dob,pd.age
 
 from patient_details pd inner join patient_queue pq
  on pd.id=pq.patient_id inner join doctor_details dd on 
-pq.doctor_id = dd.doctor_id ;
+pq.doctor_id = dd.doctor_id 
+where dd.doctor_name
 
 
 

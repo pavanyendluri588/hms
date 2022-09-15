@@ -29,7 +29,7 @@ def execute_cmd(connection,command):
     try:
         global mycursor
         mycursor = connection.cursor()
-        mycursor.execute(command);
+        mycursor.execute(command)
         print(command," executed successfully")
     except Exception as e:
         print("execution was failed\n error is ",e)

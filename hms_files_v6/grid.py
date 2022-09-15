@@ -101,7 +101,7 @@ class main_window():
     def login_check_fun(self):
               print(self.value_inside.get(),self.reg_id_var.get(),self.password_var.get())
               self.response = login_check.username_password_check(login_check.mydb,self.value_inside.get(),self.reg_id_var.get(),self.password_var.get())
-              # self.response = 'true'
+              self.response = 'true'
               if self.response == 'true':
                        #return  self.response
                        self.login_page_frame1.place_forget()
@@ -276,7 +276,7 @@ class main_window():
         #G:\hms_v1\hms_files_v3\main_page_home.jpeg
         # Show image using label
         
-        self.resized_image= self.main_page_frame_view3_home_image.resize((1300,770), Image.ANTIALIAS)
+        self.resized_image= self.main_page_frame_view3_home_image.resize((1300,770))#, Image.ANTIALIAS
         self.my_img=ImageTk.PhotoImage(self.resized_image)
 
         self.main_page_frame_view3_home_label = tk.Label( self.main_page_frame_view3_home_frame, image = self.my_img)
@@ -861,7 +861,7 @@ class main_window():
         self.patient_queue_mainheading1 = tk.Label(self.main_page_frame_view3_patient_queue_default_frame,text="patient queue",font=("lucida",15,"bold "),bg='blue')
         self.patient_queue_mainheading1.place(x=5,y=5,width=1300,height=40)
 
-        self.patient_queue_button1_Reload_Queue = tk.Button(self.main_page_frame_view3_patient_queue_default_frame,text="Reload Queue",command=self.patient_queue_display)
+        self.patient_queue_button1_Reload_Queue = tk.Button(self.main_page_frame_view3_patient_queue_default_frame,text="Reload Queue",command=self.patient_queue_reload_button)
         self.patient_queue_button1_Reload_Queue.place(x=5,y=50,width=150,height=30)
 
         self.patient_queue_button2_Send_to_OPD = tk.Button(self.main_page_frame_view3_patient_queue_default_frame,text="Send to OPD",command=self.patient_queue_send_to_OPD_fun)
@@ -892,7 +892,7 @@ class main_window():
 
         self.patient_queue_value_inside = tk.StringVar(self.main_page_frame_view3_patient_queue_default_frame)
         self.patient_queue_value_inside.set('select role')
-        self.patient_queue_roles_list = ["ALL"]
+        self.patient_queue_roles_list = ["ALL",'ashok','praveen','harsha','ram','chandar','pahul']
         self.patient_queue_role_entry = ttk.OptionMenu(self.main_page_frame_view3_patient_queue_default_frame,self.patient_queue_value_inside , *self.patient_queue_roles_list)
         self.patient_queue_role_entry.configure(width=30)
         self.patient_queue_role_entry.place(x=120,y=100)
@@ -905,7 +905,7 @@ class main_window():
 
         #patient_queue_tree_view========================================start========================================
         # define columns
-        self.patient_queue_columns = ('patinet_ID', 'First_name','Queue_Type','Queue_Status','Reason','doctor_Id','Doctor_name')
+        self.patient_queue_columns = ('patinet_ID', 'First_name','Queue_Type','Queue_Status','Reason','Doctor_name','doctor_Id')
         """
         id
 name
@@ -930,16 +930,16 @@ doctor_name
         # define headings
         self.patient_queue_default_tree.heading('patinet_ID', text='patinet ID')
         self.patient_queue_default_tree.heading('First_name', text='First name')
-        self.patient_queue_default_tree.heading('Last_name', text='Last name')
-        self.patient_queue_default_tree.heading('Age', text='Age')
-        self.patient_queue_default_tree.heading('Gender', text='Gender')
-        self.patient_queue_default_tree.heading('Phone_Number1', text='Phone Number1')
-        self.patient_queue_default_tree.heading('Phone_Number2', text='Phone Number2')
+        #self.patient_queue_default_tree.heading('Last_name', text='Last name')
+        #self.patient_queue_default_tree.heading('Age', text='Age')
+        #self.patient_queue_default_tree.heading('Gender', text='Gender')
+        #self.patient_queue_default_tree.heading('Phone_Number1', text='Phone Number1')
+        #self.patient_queue_default_tree.heading('Phone_Number2', text='Phone Number2')
         self.patient_queue_default_tree.heading('Queue_Type', text='Queue Type')
         self.patient_queue_default_tree.heading('Queue_Status', text='Queue Status')
         self.patient_queue_default_tree.heading('Reason', text='Reason')
-        self.patient_queue_default_tree.heading('doctor_Id', text='doctor Id')
         self.patient_queue_default_tree.heading('Doctor_name', text='Doctor name')
+        self.patient_queue_default_tree.heading('doctor_Id', text='doctor Id')
 
 
 
@@ -2193,13 +2193,22 @@ doctor_name
     #patient_queue_functions==============================start==================================
     def patient_queue_display(self): 
         #adding the values into contact list 
+        """
+        self.patient_queue_display_sql_command = None 
+        if self.patient_queue_value_inside =="All":
+           self.patient_queue_display_sql_command = "select pd.id,pd.name,pq.queue_type,pq.queue_status,pq.reason,dd.doctor_id,dd.doctor_name   from patient_details pd inner join patient_queue pq  on pd.id=pq.patient_id inner join doctor_details dd on   pq.doctor_id = dd.doctor_id ;"
+        else :
+            self.patient_queue_display_sql_command = "select pd.id,pd.name,pq.queue_type,pq.queue_status,pq.reason,dd.doctor_id,dd.doctor_name   from patient_details pd inner join patient_queue pq  on pd.id=pq.patient_id inner join doctor_details dd on   pq.doctor_id = dd.doctor_id where dd.doctor_name = " + str(self.patient_queue_value_inside) + " ;"
+        self.patient_queue_display_sql_command_execution = login_check.get_execution_result(self.patient_queue_display_sql_command)
+        print("/n/n/n/n/n/nself.patient_queue_display_sql_command :/n")
         self.patient_queue_contacts = []
         for n in range(1, 200):
-            self.patient_queue_contacts.append((f'id{n}', f'first {n}',f'last {n}',f'age {n}',f'gender {n}', f'ph1 {n}',f'ph2 {n}',f'queue_type {n}',f'queue_status {n}',f'reason {n}',f'doctorid {n}',f'doctor_name {n}'))
+            self.patient_queue_contacts.append((f'id{n}', f'first {n}',f'queue_type {n}',f'queue_status {n}',f'reason {n}',f'doctorid {n}',f'doctor_name {n}'))
 
         # add data to the treeview 
         for contact in self.patient_queue_contacts:
             self.patient_queue_default_tree.insert('', tk.END, values=contact)
+        """
 
         self.patient_queue_default_tree.place(x=15,y=150,width=1200,height=600)
         #tree.grid(row=0, column=0, sticky='nsew')
@@ -2212,6 +2221,27 @@ doctor_name
 
         self.patient_queue_selected = self.patient_queue_default_tree.focus()
         print("self.patient_queue_selected in display" + self.patient_queue_selected)
+    
+    def patient_queue_reload_button(self):
+        self.patient_queue_display_treeview_reset()
+        self.patient_queue_display_sql_command = None 
+        if self.patient_queue_value_inside.get() =="ALL":
+
+           self.patient_queue_display_sql_command = "select pd.id,pd.name,pq.queue_type,pq.queue_status,pq.reason,dd.doctor_name,dd.doctor_id   from patient_details pd inner join patient_queue pq  on pd.id=pq.patient_id inner join doctor_details dd on   pq.doctor_id = dd.doctor_id where pq.queue_status != 'completed' ;"
+        else :
+            self.patient_queue_display_sql_command = "select pd.id,pd.name,pq.queue_type,pq.queue_status,pq.reason,dd.doctor_name,dd.doctor_id    from patient_details pd inner join patient_queue pq  on pd.id=pq.patient_id inner join doctor_details dd on   pq.doctor_id = dd.doctor_id where dd.doctor_name = '" + str(self.patient_queue_value_inside.get()) + "' and pq.queue_status != 'completed';"
+        self.patient_queue_display_sql_command_execution = login_check.get_execution_result(self.patient_queue_display_sql_command)
+        print(" str(self.patient_queue_value_inside):", str(self.patient_queue_value_inside.get()))
+        print("/n/n/n/n/n/nself.patient_queue_display_sql_command :/n",self.patient_queue_display_sql_command_execution)
+        self.patient_queue_contacts=[]
+        for i in self.patient_queue_display_sql_command_execution:
+            self.patient_queue_contacts.append((f'{i[0]}', f'{i[1]}', f'{i[2]}',f'{i[3]}',f'{i[4]}', f'{i[5]}',f'{i[6]}'))
+          
+
+        # add data to the treeview 
+        for contact in self.patient_queue_contacts:
+            self.patient_queue_default_tree.insert('', tk.END, values=contact)
+
 
     def patient_queue_selectItem(self):
         #curItem = tree.focus()
@@ -2223,6 +2253,7 @@ doctor_name
              print(self.patient_queue_temp)
 
     def patient_queue_display_treeview_reset(self):
+        
         for item in self.patient_queue_default_tree.get_children():
             self.patient_queue_default_tree.delete(item)
 
