@@ -892,7 +892,8 @@ class main_window():
 
         self.patient_queue_value_inside = tk.StringVar(self.main_page_frame_view3_patient_queue_default_frame)
         self.patient_queue_value_inside.set('select role')
-        self.patient_queue_roles_list = ["ALL",'ashok','praveen','harsha','ram','chandar','pahul']
+        self.patient_queue_roles_list = ["ALL",]
+        self.patient_queue_ddoctor_value_update()
         self.patient_queue_role_entry = ttk.OptionMenu(self.main_page_frame_view3_patient_queue_default_frame,self.patient_queue_value_inside , *self.patient_queue_roles_list)
         self.patient_queue_role_entry.configure(width=30)
         self.patient_queue_role_entry.place(x=120,y=100)
@@ -2209,7 +2210,7 @@ doctor_name
         for contact in self.patient_queue_contacts:
             self.patient_queue_default_tree.insert('', tk.END, values=contact)
         """
-
+        
         self.patient_queue_default_tree.place(x=15,y=150,width=1200,height=600)
         #tree.grid(row=0, column=0, sticky='nsew')
 
@@ -2224,8 +2225,9 @@ doctor_name
     
     def patient_queue_reload_button(self):
         self.patient_queue_display_treeview_reset()
+        
         self.patient_queue_display_sql_command = None 
-        if self.patient_queue_value_inside.get() =="ALL":
+        if self.patient_queue_value_inside.get() == "ALL":
 
            self.patient_queue_display_sql_command = "select pd.id,pd.name,pq.queue_type,pq.queue_status,pq.reason,dd.doctor_name,dd.doctor_id   from patient_details pd inner join patient_queue pq  on pd.id=pq.patient_id inner join doctor_details dd on   pq.doctor_id = dd.doctor_id where pq.queue_status != 'completed' ;"
         else :
@@ -2242,7 +2244,7 @@ doctor_name
         for contact in self.patient_queue_contacts:
             self.patient_queue_default_tree.insert('', tk.END, values=contact)
 
-
+   
     def patient_queue_selectItem(self):
         #curItem = tree.focus()
         #print(curItem, a)
@@ -2253,10 +2255,26 @@ doctor_name
              print(self.patient_queue_temp)
 
     def patient_queue_display_treeview_reset(self):
-        
+        self.patient_queue_ddoctor_value_update()
         for item in self.patient_queue_default_tree.get_children():
             self.patient_queue_default_tree.delete(item)
-
+    def patient_queue_ddoctor_value_update(self):
+          self.patient_queue_roles_list = ["ALL"]
+          self.patient_queue_doctor_list_update_command = login_check.get_execution_result("select doctor_name from doctor_details;")
+          print("self.patient_queue_doctor_list_update_command:",self.patient_queue_doctor_list_update_command)
+          for i in self.patient_queue_doctor_list_update_command:
+             
+              self.patient_queue_roles_list.append(i)
+              print("self.patient_queue_roles_list:",self.patient_queue_roles_list)
+          self.patient_queue_roles_list.append("ALL")
+    def patient_queue_send_to_OPD_doctor_value_update(self):
+          self.patient_queue_doctor_list_update_command = login_check.get_execution_result("select doctor_name from doctor_details;")
+          print("self.patient_queue_doctor_list_update_command:",self.patient_queue_doctor_list_update_command)
+          for i in self.patient_queue_doctor_list_update_command:
+             
+              self.patient_queue_send_to_OPD_doctor_list.append(i)
+              print("self.patient_queue_send_to_OPD_doctor_list:",self.patient_queue_send_to_OPD_doctor_list)
+         
     def  patient_queue_send_to_OPD_fun(self):
         self.patient_queue_selectItem()
         self.patient_queue_send_to_OPD = Toplevel(self.main_page_frame_view3_patient_queue_default_frame)
@@ -2290,6 +2308,7 @@ doctor_name
         self.patient_queue_send_to_OPD_age_label_display=tk.Label(self.patient_queue_send_to_OPD,text="age display")
         self.patient_queue_send_to_OPD_age_label_display.place(x=172,y=100,width=112,height=15)
         
+        """
         self.patient_queue_send_to_OPD_specialization_label=tk.Label(self.patient_queue_send_to_OPD,text="Specialization ")
         self.patient_queue_send_to_OPD_specialization_label.place(x=20,y=140,width=100,height=15)
         self.patient_queue_send_to_OPD_specialization_value_inside=tk.StringVar()
@@ -2307,22 +2326,24 @@ doctor_name
         self.patient_queue_send_to_OPD_refresh_resized_image= self.patient_queue_send_to_OPD_refresh_image.resize((20,22), Image.ANTIALIAS)
         self.patient_queue_send_to_OPD_refresh_img=ImageTk.PhotoImage(self.patient_queue_send_to_OPD_refresh_resized_image)
         self.patient_queue_send_to_OPD_button2_refresh=tk.Button(self.patient_queue_send_to_OPD, image = self.patient_queue_send_to_OPD_refresh_img)#,command= self.refresh_default
-        self.patient_queue_send_to_OPD_button2_refresh.place(x=460,y=150,width=25,height=25)
+        self.patient_queue_send_to_OPD_button2_refresh.place(x=220,y=150,width=25,height=25)
+        """
 
         self.patient_queue_send_to_OPD_doctor_label=tk.Label(self.patient_queue_send_to_OPD,text="Doctor ")
-        self.patient_queue_send_to_OPD_doctor_label.place(x=20,y=180,width=100,height=15)
+        self.patient_queue_send_to_OPD_doctor_label.place(x=20,y=150,width=100,height=15)
         self.patient_queue_send_to_OPD_doctor_value_inside=tk.StringVar()
         self.patient_queue_send_to_OPD_doctor_value_inside.set('select role')
-        self.patient_queue_send_to_OPD_doctor_list = ["Accountant","Clerical Staff","Admin","Doctor","House Keeping","Janitorial Staff","Nurse","Physician","Receptionist"]
-        self.patient_queue_send_to_OPD_doctor= ttk.OptionMenu(self.patient_queue_send_to_OPD,self.patient_queue_send_to_OPD_doctor_value_inside , *self.patient_queue_send_to_OPD_doctor_list)
+        self.patient_queue_send_to_OPD_doctor_list = []
+        self.patient_queue_send_to_OPD_doctor_value_update()
+        self.patient_queue_send_to_OPD_doctor= ttk.OptionMenu(self.patient_queue_send_to_OPD ,self.patient_queue_send_to_OPD_doctor_value_inside, *self.patient_queue_send_to_OPD_doctor_list)
         self.patient_queue_send_to_OPD_doctor.configure(width=38)
-        self.patient_queue_send_to_OPD_doctor.place(x=170,y=180)
+        self.patient_queue_send_to_OPD_doctor.place(x=170,y=150)
         print("the valuse on the roles:",self.patient_queue_send_to_OPD_doctor_value_inside.get())
 
         self.patient_queue_send_to_OPD_warning_label=tk.Label(self.patient_queue_send_to_OPD,text=" ",font=('calibre',13,'bold'))
         self.patient_queue_send_to_OPD_warning_label.place(x=70,y=220,width=400,height=15)
 
-        self.patient_queue_send_to_OPD_yes_button=tk.Button(self.patient_queue_send_to_OPD,text="YES")
+        self.patient_queue_send_to_OPD_yes_button=tk.Button(self.patient_queue_send_to_OPD,text="YES",command=self.patient_queue_send_to_OPD_yes_button_values_update)
         self.patient_queue_send_to_OPD_yes_button.pack_forget()
         self.patient_queue_send_to_OPD_no_button=tk.Button(self.patient_queue_send_to_OPD,text="NO",command=self.patient_queue_send_to_OPD__deactivate)
         self.patient_queue_send_to_OPD_no_button.pack_forget()
@@ -2337,13 +2358,16 @@ doctor_name
 
         self.patient_queue_send_to_OPD.wm_transient(self.root1)
         self.patient_queue_send_to_OPD.mainloop()
+    def patient_queue_send_to_OPD_yes_button_values_update(self):
+        pass
     def patient_queue_send_to_OPD__deactivate(self):
         self.patient_queue_send_to_OPD.destroy()
+
 
     def  patient_queue_send_to_ipd_fun(self):
         self.patient_queue_send_to_ipd = Toplevel()
         self.patient_queue_send_to_ipd.title("SEND TO IPD")
-        self.patient_queue_send_to_ipd.geometry("600x300+500+300")
+        self.patient_queue_send_to_ipd.geometry("600x250+500+300")
         self.patient_queue_selectItem()
 
         self.patient_queue_send_to_ipd_id_label=tk.Label(self.patient_queue_send_to_ipd,text="Patient ID :")
@@ -2371,30 +2395,23 @@ doctor_name
         self.patient_queue_send_to_ipd_age_label_display=tk.Label(self.patient_queue_send_to_ipd,text="age display")
         self.patient_queue_send_to_ipd_age_label_display.place(x=172,y=100,width=112,height=15)
         
-        self.patient_queue_send_to_ipd_specialization_label=tk.Label(self.patient_queue_send_to_ipd,text="Specialization ")
-        self.patient_queue_send_to_ipd_specialization_label.place(x=20,y=140,width=100,height=15)
-        self.patient_queue_send_to_ipd_specialization_value_inside=tk.StringVar()
-        self.patient_queue_send_to_ipd_specialization_value_inside.set('select role')
-        self.patient_queue_send_to_ipd_specialization_list = ["Accountant","Clerical Staff","Admin","Doctor","House Keeping","Janitorial Staff","Nurse","Physician","Receptionist"]
-        self.patient_queue_send_to_ipd_specialization = ttk.OptionMenu(self.patient_queue_send_to_ipd,self.patient_queue_send_to_ipd_specialization_value_inside , *self.patient_queue_send_to_ipd_specialization_list)
-        self.patient_queue_send_to_ipd_specialization.configure(width=38)
-        self.patient_queue_send_to_ipd_specialization.place(x=170,y=140)
-        print("the valuse on the roles:",self.patient_queue_send_to_ipd_specialization_value_inside.get())
+        
         
         self.patient_queue_send_to_ipd_doctor_label=tk.Label(self.patient_queue_send_to_ipd,text="Doctor ")
-        self.patient_queue_send_to_ipd_doctor_label.place(x=20,y=180,width=100,height=15)
+        self.patient_queue_send_to_ipd_doctor_label.place(x=20,y=140,width=100,height=15)
         self.patient_queue_send_to_ipd_doctor_value_inside=tk.StringVar()
         self.patient_queue_send_to_ipd_doctor_value_inside.set('select role')
-        self.patient_queue_send_to_ipd_doctor_list = ["Accountant","Clerical Staff","Admin","Doctor","House Keeping","Janitorial Staff","Nurse","Physician","Receptionist"]
+        self.patient_queue_send_to_ipd_doctor_list = []
+        self.patient_queue_send_to_ipd_doctor_value_update()
         self.patient_queue_send_to_ipd_doctor= ttk.OptionMenu(self.patient_queue_send_to_ipd,self.patient_queue_send_to_ipd_doctor_value_inside , *self.patient_queue_send_to_ipd_doctor_list)
         self.patient_queue_send_to_ipd_doctor.configure(width=38)
-        self.patient_queue_send_to_ipd_doctor.place(x=170,y=180)
+        self.patient_queue_send_to_ipd_doctor.place(x=170,y=140)
         print("the valuse on the roles:",self.patient_queue_send_to_ipd_doctor_value_inside.get())
 
         self.patient_queue_send_to_ipd_warning_label=tk.Label(self.patient_queue_send_to_ipd,text=" ",font=('calibre',13,'bold'))
-        self.patient_queue_send_to_ipd_warning_label.place(x=70,y=220,width=400,height=15)
+        self.patient_queue_send_to_ipd_warning_label.place(x=70,y=180,width=400,height=15)
 
-        self.patient_queue_send_to_ipd_yes_button=tk.Button(self.patient_queue_send_to_ipd,text="YES")
+        self.patient_queue_send_to_ipd_yes_button=tk.Button(self.patient_queue_send_to_ipd,text="YES",command=self.patient_queue_send_to_ipd_yes_button_update)
         self.patient_queue_send_to_ipd_yes_button.pack_forget()
         self.patient_queue_send_to_ipd_no_button=tk.Button(self.patient_queue_send_to_ipd,text="NO",command=self.patient_queue_send_to_ipd_deactivate)
         self.patient_queue_send_to_ipd_no_button.pack_forget()
@@ -2403,10 +2420,19 @@ doctor_name
         if(self.patient_queue_selected == ''):
             self.patient_queue_send_to_ipd_warning_label.config(text="WARNING!:please select patient in patient queue")
         else:
-            self.patient_queue_send_to_ipd_yes_button.place(x=70,y=250,width=112,height=25)
-            self.patient_queue_send_to_ipd_no_button.place(x=370,y=250,width=112,height=25)
+            self.patient_queue_send_to_ipd_yes_button.place(x=70,y=200,width=112,height=25)
+            self.patient_queue_send_to_ipd_no_button.place(x=370,y=200,width=112,height=25)
 
         self.patient_queue_send_to_ipd.mainloop()
+    def patient_queue_send_to_ipd_doctor_value_update(self):
+        self.patient_queue_doctor_list_update_command = login_check.get_execution_result("select doctor_name from doctor_details;")
+        print("self.patient_queue_doctor_list_update_command:",self.patient_queue_doctor_list_update_command)
+        for i in self.patient_queue_doctor_list_update_command:
+             
+              self.patient_queue_send_to_ipd_doctor_list.append(i)
+              print("self.patient_queue_send_to_OPD_doctor_list:",self.patient_queue_send_to_ipd_doctor_list)
+    def patient_queue_send_to_ipd_yes_button_update(self):
+        pass
     def patient_queue_send_to_ipd_deactivate(self):
         self.patient_queue_send_to_ipd.destroy()
 
@@ -2448,7 +2474,7 @@ doctor_name
         self.patient_queue_Delete_page_warning_label.place(x=70,y=130,width=400,height=15)
 
         
-        self.patient_queue_Delete_page_yes_button=tk.Button(self.patient_queue_Delete_page,text="YES")
+        self.patient_queue_Delete_page_yes_button=tk.Button(self.patient_queue_Delete_page,text="YES",command=self.patient_queue_Delete_page_yes_button_update)
         self.patient_queue_Delete_page_yes_button.pack_forget()
         self.patient_queue_Delete_page_no_button=tk.Button(self.patient_queue_Delete_page,text="NO",command=self.patient_queue_Delete_page_deactivate)
         self.patient_queue_Delete_page_no_button.pack_forget()
@@ -2462,6 +2488,8 @@ doctor_name
             self.patient_queue_Delete_page_no_button.place(x=370,y=170,width=112,height=25)
 
         self.patient_queue_Delete_page.mainloop()
+    def patient_queue_Delete_page_yes_button_update(self):
+        pass
     def patient_queue_Delete_page_deactivate(self):
         self.patient_queue_Delete_page.destroy()
     
