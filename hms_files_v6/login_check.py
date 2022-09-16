@@ -7,7 +7,7 @@ mycursor=None
 #password=None
 #database_name=None
 
-
+mydb = mysql.connector.connect(host='localhost',user='root',passwd='1234',database='hms')
 def server_connection(host_name=None,user_name=None,password=None):
      try:
           global mydb
@@ -29,7 +29,7 @@ def execute_cmd(connection,command):
     try:
         global mycursor
         mycursor = connection.cursor()
-        mycursor.execute(command);
+        mycursor.execute(command)
         print(command," executed successfully")
     except Exception as e:
         print("execution was failed\n error is ",e)
@@ -63,7 +63,7 @@ def username_password_check(connection,role,username11,password11):
     result=None
     check=None
     try:
-        mycursor_upc= connection.cursor();
+        mycursor_upc= connection.cursor()
         mycursor_upc.execute("select * from login_details")
         result = mycursor_upc.fetchall()
         print("result shape:",len(result))
@@ -88,10 +88,11 @@ def get_execution_result(command):
     global mydb
     result=None
     check=None
-    execution_cursor = mydb.cursor();
+    execution_cursor = mydb.cursor()
+    print("Exexition in database:",command)
     execution_cursor.execute(command)
     result = execution_cursor.fetchall()
-    print("Exexition in database:",command)
+    
     mydb.commit()
     print("result:",result)
     return result
