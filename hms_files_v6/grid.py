@@ -2282,31 +2282,59 @@ doctor_name
         self.main_window_geometry_x = self.root1.winfo_x()
         self.main_window_geometry_y = self.root1.winfo_y()
         self.patient_queue_send_to_OPD.geometry("600x300+500+300")
+        self.patient_queue_selectItem()
+        self.patient_queue_send_to_opd_id_label_display_var = StringVar()
+        self.patient_queue_send_to_opd_id_label_display_var.set("None1")
+        self.patient_queue_send_to_opd_name_label_display_var = "None"
+        self.patient_queue_send_to_opd_phoneno_label_display_var = "None"
+        self.patient_queue_send_to_opd_gender_label_display_var = "None"
+        self.patient_queue_send_to_opd_age_label_display_var = "None"
+        if(self.patient_queue_selected == ''):
+            pass
+        else:
+            self.patient_queue_send_to_opd_treeview_select_responce= self.patient_queue_default_tree.focus()
+            print("patient_queue_send_to_opd_treeview_selected :",self.patient_queue_send_to_opd_treeview_select_responce)
+            self.patient_queue_send_to_opd_treeview_selected1 = self.patient_queue_default_tree.item(self.patient_queue_send_to_opd_treeview_select_responce)
+            print("values are ",self.patient_queue_send_to_opd_treeview_selected1['values'])
+            self.patient_queue_send_to_opd_treeview_selected=self.patient_queue_send_to_opd_treeview_selected1['values']
+            print("self.patient_queue_send_to_opd_treeview_selected type:",type(self.patient_queue_send_to_opd_treeview_selected))
+            self.patient_queue_send_to_opd_values_update_command = login_check.get_execution_result("select  id,name,phone_number,gender,age	from patient_details where id = '" + str(self.patient_queue_send_to_opd_treeview_selected[0]) + " ';")
+            print("self.patient_queue_send_to_opd_values_update_command:",self.patient_queue_send_to_opd_values_update_command)
+            self.patient_queue_send_to_opd_id_label_display_var.set(str(self.patient_queue_send_to_opd_values_update_command[0][0]))
+            print("after self.patient_queue_send_to_opd_id_label_display_var.set:",self.patient_queue_send_to_opd_id_label_display_var.get())
+            print("str(self.patient_queue_send_to_opd_values_update_command[0][0])",str(self.patient_queue_send_to_opd_values_update_command[0][0]))
+            self.patient_queue_send_to_opd_name_label_display_var=str(self.patient_queue_send_to_opd_values_update_command[0][1])
+            self.patient_queue_send_to_opd_phoneno_label_display_var=str(self.patient_queue_send_to_opd_values_update_command[0][2])
+            self.patient_queue_send_to_opd_gender_label_display_var=str(self.patient_queue_send_to_opd_values_update_command[0][3])
+            self.patient_queue_send_to_opd_age_label_display_var=str(self.patient_queue_send_to_opd_values_update_command[0][4])
+            #self. =self.patient_queue_send_to_opd_treeview_selected[1]
+            #self. =self.patient_queue_send_to_opd_treeview_selected[2]
+            
         
 
         self.patient_queue_send_to_OPD_id_label=tk.Label(self.patient_queue_send_to_OPD,text="Patient ID :")
         self.patient_queue_send_to_OPD_id_label.place(x=20,y=20,width=100,height=15)
-        self.patient_queue_send_to_OPD_id_label_display=tk.Label(self.patient_queue_send_to_OPD,text="Patient ID display")
+        self.patient_queue_send_to_OPD_id_label_display=tk.Label(self.patient_queue_send_to_OPD,text=self.patient_queue_send_to_opd_id_label_display_var.get())
         self.patient_queue_send_to_OPD_id_label_display.place(x=172,y=20,width=112,height=15)
 
         self.patient_queue_send_to_OPD_name_label=tk.Label(self.patient_queue_send_to_OPD,text="Name :")
         self.patient_queue_send_to_OPD_name_label.place(x=300,y=20,width=102,height=15)
-        self.patient_queue_send_to_OPD_name_label_display=tk.Label(self.patient_queue_send_to_OPD,text="Name display")
+        self.patient_queue_send_to_OPD_name_label_display=tk.Label(self.patient_queue_send_to_OPD,text=self.patient_queue_send_to_opd_name_label_display_var)
         self.patient_queue_send_to_OPD_name_label_display.place(x=424,y=20,width=112,height=15)
         
         self.patient_queue_send_to_OPD_phoneno_label=tk.Label(self.patient_queue_send_to_OPD,text="Phone NO :")
         self.patient_queue_send_to_OPD_phoneno_label.place(x=20,y=60,width=100,height=15)
-        self.patient_queue_send_to_OPD_phoneno_label_display=tk.Label(self.patient_queue_send_to_OPD,text="phone_no_display")
+        self.patient_queue_send_to_OPD_phoneno_label_display=tk.Label(self.patient_queue_send_to_OPD,text=self.patient_queue_send_to_opd_phoneno_label_display_var)
         self.patient_queue_send_to_OPD_phoneno_label_display.place(x=172,y=60,width=112,height=15)
         
         self.patient_queue_send_to_OPD_gender_label=tk.Label(self.patient_queue_send_to_OPD,text="Gender:")
         self.patient_queue_send_to_OPD_gender_label.place(x=300,y=60,width=100,height=15)
-        self.patient_queue_send_to_OPD_gender_label_display=tk.Label(self.patient_queue_send_to_OPD,text="gender_display")
+        self.patient_queue_send_to_OPD_gender_label_display=tk.Label(self.patient_queue_send_to_OPD,text=self.patient_queue_send_to_opd_gender_label_display_var)
         self.patient_queue_send_to_OPD_gender_label_display.place(x=424,y=60,width=112,height=15)
 
         self.patient_queue_send_to_OPD_age_label=tk.Label(self.patient_queue_send_to_OPD,text="Age :")
         self.patient_queue_send_to_OPD_age_label.place(x=20,y=100,width=100,height=15)
-        self.patient_queue_send_to_OPD_age_label_display=tk.Label(self.patient_queue_send_to_OPD,text="age display")
+        self.patient_queue_send_to_OPD_age_label_display=tk.Label(self.patient_queue_send_to_OPD,text=self.patient_queue_send_to_opd_age_label_display_var)
         self.patient_queue_send_to_OPD_age_label_display.place(x=172,y=100,width=112,height=15)
         
         """
@@ -2360,7 +2388,18 @@ doctor_name
         self.patient_queue_send_to_OPD.wm_transient(self.root1)
         self.patient_queue_send_to_OPD.mainloop()
     def patient_queue_send_to_OPD_yes_button_values_update(self):
-        pass
+        self.patient_queue_send_to_opd_yes_button_update_doc_name = str(self.patient_queue_send_to_OPD_doctor_value_inside.get())
+        if self.patient_queue_send_to_opd_yes_button_update_doc_name == "('ashok',)":
+            self.patient_queue_send_to_opd_yes_button_update_doc_name = self.patient_queue_send_to_opd_yes_button_update_doc_name[2:len(self.patient_queue_send_to_opd_yes_button_update_doc_name)-3]
+            print("self.patient_queue_send_to_opd_yes_button_update_doc_name[2:len(self.patient_queue_send_to_opd_yes_button_update_doc_name)-3]:",self.patient_queue_send_to_opd_yes_button_update_doc_name[2:len(self.patient_queue_send_to_opd_yes_button_update_doc_name)-3])
+        else:
+            print("str(self.patient_queue_send_to_opd_doctor_value_inside.get()):",str(self.patient_queue_send_to_OPD_doctor_value_inside.get()))
+            self.patient_queue_send_to_opd_yes_button_update_doc_name = str(self.patient_queue_send_to_OPD_doctor_value_inside.get())
+
+        self.patient_queue_send_to_opd_yes_button_doctor_id_var=login_check.get_execution_result("select doctor_id from doctor_details where doctor_name = '" + str(self.patient_queue_send_to_opd_yes_button_update_doc_name) +"';")
+        print("self.patient_queue_send_to_opd_yes_button_doctor_id_var:",str(self.patient_queue_send_to_opd_yes_button_doctor_id_var[0][0]))
+        self.patient_queue_send_to_opd_yes_button_update_command1 = login_check.get_execution_result( "update patient_queue set queue_type ='opd' , doctor_id = " + str(self.patient_queue_send_to_opd_yes_button_doctor_id_var[0][0]) +" where  patient_id =   " + str(self.patient_queue_send_to_opd_id_label_display_var.get()) + " ;")
+        self.patient_queue_send_to_OPD__deactivate()
     def patient_queue_send_to_OPD__deactivate(self):
         self.patient_queue_send_to_OPD.destroy()
 
@@ -2454,13 +2493,6 @@ doctor_name
         if(self.patient_queue_selected == ''):
             self.patient_queue_send_to_ipd_warning_label.config(text="WARNING!:please select patient in patient queue")
         else:
-            
-            
-            
-
-
-
-
             self.patient_queue_send_to_ipd_yes_button.place(x=70,y=200,width=112,height=25)
             self.patient_queue_send_to_ipd_no_button.place(x=370,y=200,width=112,height=25)
 
@@ -2496,37 +2528,66 @@ doctor_name
         self.patient_queue_selectItem()
         self.patient_queue_Delete_page = Toplevel(self.main_page_frame_view3_patient_queue_default_frame)
         self.patient_queue_Delete_page.title("DELETE FROM PATIENT QUEUE")
-        self.main_window_geometry_x = self.roo1.winfo_x()
+        self.main_window_geometry_x = self.root1.winfo_x()
         self.main_window_geometry_y = self.root1.winfo_y()
         self.patient_queue_Delete_page.geometry("600x205+500+300")
+        self.patient_queue_selectItem()
+        self.patient_queue_Delete_page_id_label_display_var = StringVar()
+        self.patient_queue_Delete_page_id_label_display_var.set("None1")
+        self.patient_queue_Delete_page_name_label_display_var = "None"
+        self.patient_queue_Delete_page_phoneno_label_display_var = "None"
+        self.patient_queue_Delete_page_gender_label_display_var = "None"
+        self.patient_queue_Delete_page_age_label_display_var = "None"
+        if(self.patient_queue_selected == ''):
+            pass
+        else:
+            self.patient_queue_Delete_page_treeview_select_responce= self.patient_queue_default_tree.focus()
+            print("patient_queue_Delete_page_treeview_selected :",self.patient_queue_Delete_page_treeview_select_responce)
+            self.patient_queue_Delete_page_treeview_selected1 = self.patient_queue_default_tree.item(self.patient_queue_Delete_page_treeview_select_responce)
+            print("values are ",self.patient_queue_Delete_page_treeview_selected1['values'])
+            self.patient_queue_Delete_page_treeview_selected=self.patient_queue_Delete_page_treeview_selected1['values']
+            print("self.patient_queue_Delete_page_treeview_selected type:",type(self.patient_queue_Delete_page_treeview_selected))
+            self.patient_queue_Delete_page_values_update_command = login_check.get_execution_result("select  id,name,phone_number,gender,age	from patient_details where id = '" + str(self.patient_queue_Delete_page_treeview_selected[0]) + " ';")
+            print("self.patient_queue_Delete_page_values_update_command:",self.patient_queue_Delete_page_values_update_command)
+            self.patient_queue_Delete_page_id_label_display_var.set(str(self.patient_queue_Delete_page_values_update_command[0][0]))
+            print("after self.patient_queue_Delete_page_id_label_display_var.set:",self.patient_queue_Delete_page_id_label_display_var.get())
+            print("str(self.patient_queue_Delete_page_values_update_command[0][0])",str(self.patient_queue_Delete_page_values_update_command[0][0]))
+            self.patient_queue_Delete_page_name_label_display_var=str(self.patient_queue_Delete_page_values_update_command[0][1])
+            self.patient_queue_Delete_page_phoneno_label_display_var=str(self.patient_queue_Delete_page_values_update_command[0][2])
+            self.patient_queue_Delete_page_gender_label_display_var=str(self.patient_queue_Delete_page_values_update_command[0][3])
+            self.patient_queue_Delete_page_age_label_display_var=str(self.patient_queue_Delete_page_values_update_command[0][4])
+            #self. =self.patient_queue_Delete_page_treeview_selected[1]
+            #self. =self.patient_queue_Delete_page_treeview_selected[2]
 
         self.patient_queue_Delete_page_label=tk.Label(self.patient_queue_Delete_page,text="Patient ID :")
         self.patient_queue_Delete_page_label.place(x=20,y=20,width=100,height=15)
-        self.patient_queue_Delete_page_label_display=tk.Label(self.patient_queue_Delete_page,text="Patient ID display")
+        self.patient_queue_Delete_page_label_display=tk.Label(self.patient_queue_Delete_page,text=self.patient_queue_Delete_page_id_label_display_var.get())
         self.patient_queue_Delete_page_label_display.place(x=172,y=20,width=112,height=15)
 
         self.patient_queue_Delete_page_name_label=tk.Label(self.patient_queue_Delete_page,text="Name :")
         self.patient_queue_Delete_page_name_label.place(x=300,y=20,width=102,height=15)
-        self.patient_queue_Delete_page_name_label_display=tk.Label(self.patient_queue_Delete_page,text="Name display")
+        self.patient_queue_Delete_page_name_label_display=tk.Label(self.patient_queue_Delete_page,text=self.patient_queue_Delete_page_name_label_display_var)
         self.patient_queue_Delete_page_name_label_display.place(x=424,y=20,width=112,height=15)
         
         self.patient_queue_Delete_page_phoneno_label=tk.Label(self.patient_queue_Delete_page,text="Phone NO :")
         self.patient_queue_Delete_page_phoneno_label.place(x=20,y=60,width=100,height=15)
-        self.patient_queue_Delete_page_phoneno_label_display=tk.Label(self.patient_queue_Delete_page,text="phone_no_display")
+        self.patient_queue_Delete_page_phoneno_label_display=tk.Label(self.patient_queue_Delete_page,text=self.patient_queue_Delete_page_phoneno_label_display_var)
         self.patient_queue_Delete_page_phoneno_label_display.place(x=172,y=60,width=112,height=15)
         
         self.patient_queue_Delete_page_gender_label=tk.Label(self.patient_queue_Delete_page,text="Gender:")
         self.patient_queue_Delete_page_gender_label.place(x=300,y=60,width=100,height=15)
-        self.patient_queue_Delete_page_gender_label_display=tk.Label(self.patient_queue_Delete_page,text="gender_display")
+        self.patient_queue_Delete_page_gender_label_display=tk.Label(self.patient_queue_Delete_page,text=self.patient_queue_Delete_page_gender_label_display_var)
         self.patient_queue_Delete_page_gender_label_display.place(x=424,y=60,width=112,height=15)
 
         self.patient_queue_Delete_page_age_label=tk.Label(self.patient_queue_Delete_page,text="Age :")
         self.patient_queue_Delete_page_age_label.place(x=20,y=100,width=100,height=15)
-        self.patient_queue_Delete_page_age_label_display=tk.Label(self.patient_queue_Delete_page,text="age display")
+        self.patient_queue_Delete_page_age_label_display=tk.Label(self.patient_queue_Delete_page,text=self.patient_queue_Delete_page_age_label_display_var)
         self.patient_queue_Delete_page_age_label_display.place(x=172,y=100,width=112,height=15)
         
         self.patient_queue_Delete_page_warning_label=tk.Label(self.patient_queue_Delete_page,text=" ",font=('calibre',13,'bold'))
         self.patient_queue_Delete_page_warning_label.place(x=70,y=130,width=400,height=15)
+
+        
 
         
         self.patient_queue_Delete_page_yes_button=tk.Button(self.patient_queue_Delete_page,text="YES",command=self.patient_queue_Delete_page_yes_button_update)
@@ -2537,6 +2598,7 @@ doctor_name
         if(self.patient_queue_selected == ''):
             self.patient_queue_Delete_page_warning_label.config(text="WARNING!:please select patient in patient queue")
         else:
+            self.patient_queue_Delete_page_warning_label.config(text="Do you want to detele from patient queue")
             #self.patient_queue_Delete_page_yes_button = tk.Button(self.patient_queue_Delete_page,text="YES",font=('calibre',20,'bold'))
             self.patient_queue_Delete_page_yes_button.place(x=70,y=170,width=112,height=25)
             #self.patient_queue_Delete_page_no_button = tk.Button(self.patient_queue_Delete_page,text="NO",font=('calibre',20,'bold'))
@@ -2544,7 +2606,10 @@ doctor_name
 
         self.patient_queue_Delete_page.mainloop()
     def patient_queue_Delete_page_yes_button_update(self):
-        pass
+        self.patient_queue_Delete_page_delete_command = login_check.get_execution_result("DELETE FROM patient_queue where patient_id =   " + str(self.patient_queue_Delete_page_id_label_display_var.get()) + " ;")
+
+        self.patient_queue_Delete_page_deactivate()
+        
     def patient_queue_Delete_page_deactivate(self):
         self.patient_queue_Delete_page.destroy()
     
