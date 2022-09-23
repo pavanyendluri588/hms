@@ -1,0 +1,45 @@
+id
+name
+mname
+lname
+dob
+age
+gender
+phone_number
+phone_number2
+queue_type
+queue_status
+reason
+doctor_id
+doctor_name
+
+
+select pd.id,pd.name,pd.mname,pd.lname,pd.dob,pd.age
+,pd.gender
+,pd.phone_number
+,pd.phone_number2
+,pq.queue_type
+,pq.queue_status
+,pq.reason
+,dd.doctor_id
+,dd.doctor_name
+
+from patient_details pd inner join patient_queue pq
+ on pd.id=pq.patient_id inner join doctor_details dd on 
+pq.doctor_id = dd.doctor_id 
+where dd.doctor_name
+
+
+
+insert into patient_queue
+values(101,"ipo","completed","nose bleading",7),
+(104,"opd","waiting","headance",8),
+(105,"ipo","waiting","cut on neck",9),
+(107,"opd","waiting","stomach pain"12),
+(108,"ipo","not attended","leg facture",10),
+(109,"opd","completed","vomit",11),
+(110,"ipo","waiting","hand facture",7),
+(115,"opd","not attended","eye redness",8),
+(124,"ipo","waiting","accident",9),
+(134,"opd","completed","pregencey operation"10),
+(122,"ipo","not attended","eye surgery"11);
