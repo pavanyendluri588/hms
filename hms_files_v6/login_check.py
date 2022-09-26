@@ -1,4 +1,14 @@
-import re
+'''
+required versions:
+tk                           0.1.0
+tkinterdnd2                  0.3.0
+pymongo                      4.2.0
+PyMsgBox                     1.0.9
+PyMySQL                      1.0.2
+pyodbc                       4.0.32
+mysql-connector              2.2.9
+mysql-connector-python       8.0.29
+'''
 import mysql.connector
 mydb = None
 mycursor=None

@@ -3712,7 +3712,7 @@ doctor_name
                self.room_statusfloor5_room5_label.config(bg='yellow')
         
      
-
+                
 
     #physical_management_functions==============================end==================================
 
@@ -4241,10 +4241,7 @@ doctor_name
      
      
 
-
-         self.main_page_frame_view3_lab_queue_default_frame_deactivate()
-         self.main_page_frame_view3_search_lab_queue_frame_deactivate()
-         self.main_page_frame_view3_view_lab_report_frame_deactivate()
+         self.main_page_frame_view3_ipo_queue_default_frame_deactivate()
 
          self.main_page_frame_view3_opd_queue_default_frame_deactivate()
 
