@@ -35,7 +35,7 @@ insert into patient_queue
 values(101,"ipo","completed","nose bleading",7),
 (104,"opd","waiting","headance",8),
 (105,"ipo","waiting","cut on neck",9),
-(107,"opd","waiting","stomach pain"12),
+(107,"opd","waiting","stomach pain",12),
 (108,"ipo","not attended","leg facture",10),
 (109,"opd","completed","vomit",11),
 (110,"ipo","waiting","hand facture",7),
