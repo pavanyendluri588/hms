@@ -101,7 +101,7 @@ class main_window():
     def login_check_fun(self):
               print(self.value_inside.get(),self.reg_id_var.get(),self.password_var.get())
               self.response = login_check.username_password_check(login_check.mydb,self.value_inside.get(),self.reg_id_var.get(),self.password_var.get())
-              self.response = 'true'
+              #self.response = 'true'
               if self.response == 'true':
                        #return  self.response
                        self.login_page_frame1.place_forget()
@@ -237,16 +237,16 @@ class main_window():
 
 
 
-        self.label1= tk.Button(self.main_page_frame_view2,text="patient registration",command=self.patient_registration_default)
-        self.label1.pack(padx=5,pady=3,ipadx=40,ipady=10,fill='x')
-        self.label11= tk.Button(self.main_page_frame_view2,text="patient visit",command=self.patient_visit_default)
-        self.label11.pack(padx=5,pady=3,ipadx=40,ipady=10,fill='x')
+        #self.label1= tk.Button(self.main_page_frame_view2,text="patient registration",command=self.patient_registration_default)
+        #self.label1.pack(padx=5,pady=3,ipadx=40,ipady=10,fill='x')
+        #self.label11= tk.Button(self.main_page_frame_view2,text="patient visit",command=self.patient_visit_default)
+        #self.label11.pack(padx=5,pady=3,ipadx=40,ipady=10,fill='x')
         self.label12= tk.Button(self.main_page_frame_view2,text="patient search",command=self.patient_search_default)
         self.label12.pack(padx=5,pady=3,ipadx=40,ipady=10,fill='x')
         self.label13= tk.Button(self.main_page_frame_view2,text="patient queue",command=self.patient_queue_default)
         self.label13.pack(padx=5,pady=3,ipadx=40,ipady=10,fill='x')
-        self.label14= tk.Button(self.main_page_frame_view2,text="Lab queue",command=self.lab_queue_default)
-        self.label14.pack(padx=5,pady=3,ipadx=40,ipady=10,fill='x')
+        #self.label14= tk.Button(self.main_page_frame_view2,text="Lab queue",command=self.lab_queue_default)
+        #self.label14.pack(padx=5,pady=3,ipadx=40,ipady=10,fill='x')
         self.label15= tk.Button(self.main_page_frame_view2,text="opd queue",command=self.opd_queue_default)
         self.label15.pack(padx=5,pady=3,ipadx=40,ipady=10,fill='x')
         self.label16= tk.Button(self.main_page_frame_view2,text="ipd queue",command=self.ipd_queue_default)
@@ -255,8 +255,8 @@ class main_window():
         self.label17.pack(padx=5,pady=3,ipadx=40,ipady=10,fill='x')
         self.label18= tk.Button(self.main_page_frame_view2,text="`Dialy collection",command=self.dialy_collection_default)
         self.label18.pack(padx=5,pady=3,ipadx=40,ipady=10,fill='x')
-        self.label19= tk.Button(self.main_page_frame_view2,text="Finance Details")
-        self.label19.pack(padx=5,pady=3,ipadx=40,ipady=10,fill='x')
+        #self.label19= tk.Button(self.main_page_frame_view2,text="Finance Details")
+        #self.label19.pack(padx=5,pady=3,ipadx=40,ipady=10,fill='x')
         #side='top',
         #main_page_frame_view2------end-------------
 
@@ -1827,7 +1827,7 @@ doctor_name
             print("self.patient_search_input_Phone_No_var.get():",self.patient_search_input_Phone_No_var.get())
             self.patient_search_input_Phone_No_var_str = str(self.patient_search_input_Phone_No_var.get())
             print("self.patient_search_input_Phone_No_var_str:",self.patient_search_input_Phone_No_var_str)
-        self.patient_search_table_command =" select id,name,lname,phone_number,age,gender from patient_details where "
+        self.patient_search_table_command =" select id,name,lname,phone_number,age,gender from hms.patient_details where "
         self.patient_search_command = None
         if self.patient_search_input_reg_id_var.get() != 0 and self.patient_search_input_Fname_var.get() == '' and self.patient_search_input_Lname_var.get() == '' and self.patient_search_input_Phone_No_var.get() == 0:
             #1
@@ -1951,7 +1951,7 @@ doctor_name
         self.patient_search_treeview_selected_id = tk.IntVar()
         self.patient_search_treeview_selected_id=  self.patient_search_treeview_selected[0]
         self.patient_search_treeview_selected_id_char = str(self.patient_search_treeview_selected_id)
-        self.edit_details_update_command1 = "select id,name,mname,lname,dob,bloodgroup,phone_number,phone_number2,age,gender,address,city,emailid   from patient_details where id = " + self.patient_search_treeview_selected_id_char
+        self.edit_details_update_command1 = "select id,name,mname,lname,dob,bloodgroup,phone_number,phone_number2,age,gender,address,city,emailid   from hms.patient_details where id = " + self.patient_search_treeview_selected_id_char
         self.edit_details_update_login_database = login_check.get_execution_result(self.edit_details_update_command1 )
         print("self.edit_details_update_login_database:",self.edit_details_update_login_database)
         self.edit_details_edit_store=[]
@@ -1985,7 +1985,7 @@ doctor_name
         self.patient_search_edit_city_display_var.set(str(self.edit_details_edit_store[11]))
         self.patient_search_edit_emailid_display_var.set(str(self.edit_details_edit_store[12]))
         self.edit_details_update_room_details = None
-        self.edit_details_update_room_details = login_check.get_execution_result("select room_ID,room_floor,room_no from rooms_details where  booked_person_id = " + str(self.edit_details_edit_store[0]) + " and rooms_status='occupied'  LIMIT 1; ")
+        self.edit_details_update_room_details = login_check.get_execution_result("select room_ID,room_floor,room_no from hms.rooms_details where  booked_person_id = " + str(self.edit_details_edit_store[0]) + " and rooms_status='occupied'; ")
         self.edit_details_edit_room_details=[]
         for i in self.edit_details_update_room_details:
             #print(" for loop i[0]",i[0])
@@ -2005,7 +2005,7 @@ doctor_name
             self.patient_search_edit_ROOM_no_display.config(text = "None",width=len("None"))
 
         self.edit_details_update_finance_details = None
-        self.edit_details_update_finance_details = login_check.get_execution_result("select sum(Debit),sum(credit) from finance_details  where  patient_id = " + str(self.edit_details_edit_store[0]) + "   LIMIT 1; ")
+        self.edit_details_update_finance_details = login_check.get_execution_result("select sum(Debit),sum(credit) from hms.finance_details  where  patient_id = " + str(self.edit_details_edit_store[0]) + " ; ")
         self.edit_details_edit_finance_details=[]
         self.edit_details_edit_finance_details_balance= None
         print("self.edit_details_update_finance_details :",self.edit_details_update_finance_details )
@@ -2032,7 +2032,7 @@ doctor_name
         
         
     def patient_search_edit_update_button_fun(self):
-        self.patient_search_edit_update_button_command1 = "UPDATE patient_details set "
+        self.patient_search_edit_update_button_command1 = "UPDATE hms.patient_details set "
         self.patient_search_edit_update_button_command2  = " where id = " + self.patient_search_edit_Patient_ID_display_var.get()
         
         self.patient_search_edit_update_button_command_name= self.patient_search_edit_update_button_command1 + " name = '" + self.patient_search_edit_fname_display_var.get() + "'" +  self.patient_search_edit_update_button_command2
@@ -2110,7 +2110,7 @@ doctor_name
         self.patient_search_treeview_selected_id = tk.IntVar()
         self.patient_search_treeview_selected_id=  self.patient_search_treeview_selected[0]
         self.patient_search_treeview_selected_id_char = str(self.patient_search_treeview_selected_id)
-        self.display_details_update_command1 = "select id,name,mname,lname,dob,bloodgroup,phone_number,phone_number2,age,gender,address,city,emailid   from patient_details where id = " + self.patient_search_treeview_selected_id_char
+        self.display_details_update_command1 = "select id,name,mname,lname,dob,bloodgroup,phone_number,phone_number2,age,gender,address,city,emailid   from hms.patient_details where id = " + self.patient_search_treeview_selected_id_char
         self.display_details_update_login_database = login_check.get_execution_result(self.display_details_update_command1 )
         self.display_details_display_store=[]
         for i in self.display_details_update_login_database:
@@ -2149,7 +2149,7 @@ doctor_name
         self.patient_search_display_emailid_display.config(text = str(self.display_details_display_store[12]))
 
         self.display_details_update_room_details = None
-        self.display_details_update_room_details = login_check.get_execution_result("select room_ID,room_floor,room_no from rooms_details where  booked_person_id = " + str(self.display_details_display_store[0]) + " and rooms_status='occupied'  LIMIT 1; ")
+        self.display_details_update_room_details = login_check.get_execution_result("select room_ID,room_floor,room_no from hms.rooms_details where  booked_person_id = " + str(self.display_details_display_store[0]) + " and rooms_status='occupied' ; ")
         self.display_details_display_room_details=[]
         for i in self.display_details_update_room_details:
             #print(" for loop i[0]",i[0])
@@ -2169,7 +2169,7 @@ doctor_name
             self.patient_search_display_ROOM_no_display.config(text = "None",width=len("None"))
 
         self.display_details_update_finance_details = None
-        self.display_details_update_finance_details = login_check.get_execution_result("select sum(Debit),sum(credit) from finance_details  where  patient_id = " + str(self.display_details_display_store[0]) + "   LIMIT 1; ")
+        self.display_details_update_finance_details = login_check.get_execution_result("select sum(Debit),sum(credit) from hms.finance_details  where  patient_id = " + str(self.display_details_display_store[0]) + "  ; ")
         self.display_details_display_finance_details=[]
         self.display_details_display_finance_details_balance= None
         print("self.display_details_update_finance_details :",self.display_details_update_finance_details )
@@ -2207,9 +2207,9 @@ doctor_name
         """
         self.patient_queue_display_sql_command = None 
         if self.patient_queue_value_inside =="All":
-           self.patient_queue_display_sql_command = "select pd.id,pd.name,pq.queue_type,pq.queue_status,pq.reason,dd.doctor_id,dd.doctor_name   from patient_details pd inner join patient_queue pq  on pd.id=pq.patient_id inner join doctor_details dd on   pq.doctor_id = dd.doctor_id ;"
+           self.patient_queue_display_sql_command = "select pd.id,pd.name,pq.queue_type,pq.queue_status,pq.reason,dd.doctor_id,dd.doctor_name   from patient_details pd inner    join hms.patient_queue pq  on pd.id=pq.patient_id inner join   hms.doctor_details dd on   pq.doctor_id = dd.doctor_id ;"
         else :
-            self.patient_queue_display_sql_command = "select pd.id,pd.name,pq.queue_type,pq.queue_status,pq.reason,dd.doctor_id,dd.doctor_name   from patient_details pd inner join patient_queue pq  on pd.id=pq.patient_id inner join doctor_details dd on   pq.doctor_id = dd.doctor_id where dd.doctor_name = " + str(self.patient_queue_value_inside) + " ;"
+            self.patient_queue_display_sql_command = "select pd.id,pd.name,pq.queue_type,pq.queue_status,pq.reason,dd.doctor_id,dd.doctor_name   from patient_details pd inner    join hms.patient_queue pq  on pd.id=pq.patient_id inner join   hms.doctor_details dd on   pq.doctor_id = dd.doctor_id where dd.doctor_name = " + str(self.patient_queue_value_inside) + " ;"
         self.patient_queue_display_sql_command_execution = login_check.get_execution_result(self.patient_queue_display_sql_command)
         print("/n/n/n/n/n/nself.patient_queue_display_sql_command :/n")
         self.patient_queue_contacts = []
@@ -2239,9 +2239,9 @@ doctor_name
         self.patient_queue_display_sql_command = None 
         if self.patient_queue_value_inside.get() == "ALL":
 
-           self.patient_queue_display_sql_command = "select pd.id,pd.name,pq.queue_type,pq.queue_status,pq.reason,dd.doctor_name,dd.doctor_id   from patient_details pd inner join patient_queue pq  on pd.id=pq.patient_id inner join doctor_details dd on   pq.doctor_id = dd.doctor_id where pq.queue_status != 'completed' ;"
+           self.patient_queue_display_sql_command = "select pd.id,pd.name,pq.queue_type,pq.queue_status,pq.reason,dd.doctor_name,dd.doctor_id   from hms.patient_details pd inner    join hms.patient_queue pq  on pd.id=pq.patient_id inner join  hms.doctor_details dd on   pq.doctor_id = dd.doctor_id where pq.queue_status != 'completed' ;"
         else :
-            self.patient_queue_display_sql_command = "select pd.id,pd.name,pq.queue_type,pq.queue_status,pq.reason,dd.doctor_name,dd.doctor_id    from patient_details pd inner join patient_queue pq  on pd.id=pq.patient_id inner join doctor_details dd on   pq.doctor_id = dd.doctor_id where dd.doctor_name = '" + str(self.patient_queue_value_inside.get()) + "' and pq.queue_status != 'completed';"
+            self.patient_queue_display_sql_command = "select pd.id,pd.name,pq.queue_type,pq.queue_status,pq.reason,dd.doctor_name,dd.doctor_id    from hms.patient_details pd inner    join hms.patient_queue pq  on pd.id=pq.patient_id inner join  hms.doctor_details dd on   pq.doctor_id = dd.doctor_id where dd.doctor_name = '" + str(self.patient_queue_value_inside.get()) + "' and pq.queue_status != 'completed';"
         self.patient_queue_display_sql_command_execution = login_check.get_execution_result(self.patient_queue_display_sql_command)
         print(" str(self.patient_queue_value_inside):", str(self.patient_queue_value_inside.get()))
         print("/n/n/n/n/n/nself.patient_queue_display_sql_command :/n",self.patient_queue_display_sql_command_execution)
@@ -2270,7 +2270,7 @@ doctor_name
             self.patient_queue_default_tree.delete(item)
     def patient_queue_doctor_value_update(self):
           self.patient_queue_roles_list = ["ALL"]
-          self.patient_queue_doctor_list_update_command = login_check.get_execution_result("select doctor_name from doctor_details;")
+          self.patient_queue_doctor_list_update_command = login_check.get_execution_result("select doctor_name from   hms.doctor_details;")
           print("self.patient_queue_doctor_list_update_command:",self.patient_queue_doctor_list_update_command)
           for i in self.patient_queue_doctor_list_update_command:
              
@@ -2278,7 +2278,7 @@ doctor_name
               print("self.patient_queue_roles_list:",self.patient_queue_roles_list)
           self.patient_queue_roles_list.append("ALL")
     def patient_queue_send_to_OPD_doctor_value_update(self):
-          self.patient_queue_doctor_list_update_command = login_check.get_execution_result("select doctor_name from doctor_details;")
+          self.patient_queue_doctor_list_update_command = login_check.get_execution_result("select doctor_name from   hms.doctor_details;")
           print("self.patient_queue_doctor_list_update_command:",self.patient_queue_doctor_list_update_command)
           for i in self.patient_queue_doctor_list_update_command:
              
@@ -2308,7 +2308,7 @@ doctor_name
             print("values are ",self.patient_queue_send_to_opd_treeview_selected1['values'])
             self.patient_queue_send_to_opd_treeview_selected=self.patient_queue_send_to_opd_treeview_selected1['values']
             print("self.patient_queue_send_to_opd_treeview_selected type:",type(self.patient_queue_send_to_opd_treeview_selected))
-            self.patient_queue_send_to_opd_values_update_command = login_check.get_execution_result("select  id,name,phone_number,gender,age	from patient_details where id = '" + str(self.patient_queue_send_to_opd_treeview_selected[0]) + " ';")
+            self.patient_queue_send_to_opd_values_update_command = login_check.get_execution_result("select  id,name,phone_number,gender,age	from hms.patient_details where id = '" + str(self.patient_queue_send_to_opd_treeview_selected[0]) + " ';")
             print("self.patient_queue_send_to_opd_values_update_command:",self.patient_queue_send_to_opd_values_update_command)
             self.patient_queue_send_to_opd_id_label_display_var.set(str(self.patient_queue_send_to_opd_values_update_command[0][0]))
             print("after self.patient_queue_send_to_opd_id_label_display_var.set:",self.patient_queue_send_to_opd_id_label_display_var.get())
@@ -2406,9 +2406,9 @@ doctor_name
             print("str(self.patient_queue_send_to_opd_doctor_value_inside.get()):",str(self.patient_queue_send_to_OPD_doctor_value_inside.get()))
             self.patient_queue_send_to_opd_yes_button_update_doc_name = str(self.patient_queue_send_to_OPD_doctor_value_inside.get())
 
-        self.patient_queue_send_to_opd_yes_button_doctor_id_var=login_check.get_execution_result("select doctor_id from doctor_details where doctor_name = '" + str(self.patient_queue_send_to_opd_yes_button_update_doc_name) +"';")
+        self.patient_queue_send_to_opd_yes_button_doctor_id_var=login_check.get_execution_result("select doctor_id from hms.octor_details where doctor_name = '" + str(self.patient_queue_send_to_opd_yes_button_update_doc_name) +"';")
         print("self.patient_queue_send_to_opd_yes_button_doctor_id_var:",str(self.patient_queue_send_to_opd_yes_button_doctor_id_var[0][0]))
-        self.patient_queue_send_to_opd_yes_button_update_command1 = login_check.get_execution_result( "update patient_queue set queue_type ='OPD' , doctor_id = " + str(self.patient_queue_send_to_opd_yes_button_doctor_id_var[0][0]) +" where  patient_id =   " + str(self.patient_queue_send_to_opd_id_label_display_var.get()) + " ;")
+        self.patient_queue_send_to_opd_yes_button_update_command1 = login_check.get_execution_result( "update hms.patient_queue set queue_type ='OPD' , doctor_id = " + str(self.patient_queue_send_to_opd_yes_button_doctor_id_var[0][0]) +" where  patient_id =   " + str(self.patient_queue_send_to_opd_id_label_display_var.get()) + " ;")
         self.patient_queue_send_to_OPD__deactivate()
     def patient_queue_send_to_OPD__deactivate(self):
         self.patient_queue_send_to_OPD.destroy()
@@ -2434,7 +2434,7 @@ doctor_name
             print("values are ",self.patient_queue_send_to_ipd_treeview_selected1['values'])
             self.patient_queue_send_to_ipd_treeview_selected=self.patient_queue_send_to_ipd_treeview_selected1['values']
             print("self.patient_queue_send_to_ipd_treeview_selected type:",type(self.patient_queue_send_to_ipd_treeview_selected))
-            self.patient_queue_send_to_ipd_values_update_command = login_check.get_execution_result("select  id,name,phone_number,gender,age	from patient_details where id = '" + str(self.patient_queue_send_to_ipd_treeview_selected[0]) + " ';")
+            self.patient_queue_send_to_ipd_values_update_command = login_check.get_execution_result("select  id,name,phone_number,gender,age	from hms.patient_details where id = '" + str(self.patient_queue_send_to_ipd_treeview_selected[0]) + " ';")
             print("self.patient_queue_send_to_ipd_values_update_command:",self.patient_queue_send_to_ipd_values_update_command)
             self.patient_queue_send_to_ipd_id_label_display_var.set(str(self.patient_queue_send_to_ipd_values_update_command[0][0]))
             print("after self.patient_queue_send_to_ipd_id_label_display_var.set:",self.patient_queue_send_to_ipd_id_label_display_var.get())
@@ -2511,7 +2511,7 @@ doctor_name
 
         self.patient_queue_send_to_ipd.mainloop()
     def patient_queue_send_to_ipd_doctor_value_update(self):
-        self.patient_queue_doctor_list_update_command = login_check.get_execution_result("select doctor_name from doctor_details;")
+        self.patient_queue_doctor_list_update_command = login_check.get_execution_result("select doctor_name from   hms.doctor_details;")
         print("self.patient_queue_doctor_list_update_command:",self.patient_queue_doctor_list_update_command)
         for i in self.patient_queue_doctor_list_update_command:
              
@@ -2526,9 +2526,9 @@ doctor_name
             print("str(self.patient_queue_send_to_ipd_doctor_value_inside.get()):",str(self.patient_queue_send_to_ipd_doctor_value_inside.get()))
             self.patient_queue_send_to_ipd_yes_button_update_doc_name = str(self.patient_queue_send_to_ipd_doctor_value_inside.get())
 
-        self.patient_queue_send_to_ipd_yes_button_doctor_id_var=login_check.get_execution_result("select doctor_id from doctor_details where doctor_name = '" + str(self.patient_queue_send_to_ipd_yes_button_update_doc_name) +"';")
+        self.patient_queue_send_to_ipd_yes_button_doctor_id_var=login_check.get_execution_result("select doctor_id from   hms.doctor_details where doctor_name = '" + str(self.patient_queue_send_to_ipd_yes_button_update_doc_name) +"';")
         print("self.patient_queue_send_to_ipd_yes_button_doctor_id_var:",str(self.patient_queue_send_to_ipd_yes_button_doctor_id_var[0][0]))
-        self.patient_queue_send_to_ipd_yes_button_update_command1 = login_check.get_execution_result( "update patient_queue set queue_type ='IPD' , doctor_id = " + str(self.patient_queue_send_to_ipd_yes_button_doctor_id_var[0][0]) +" where  patient_id =   " + str(self.patient_queue_send_to_ipd_id_label_display_var.get()) + " ;")
+        self.patient_queue_send_to_ipd_yes_button_update_command1 = login_check.get_execution_result( "update hms.patient_queue set queue_type ='IPD' , doctor_id = " + str(self.patient_queue_send_to_ipd_yes_button_doctor_id_var[0][0]) +" where  patient_id =   " + str(self.patient_queue_send_to_ipd_id_label_display_var.get()) + " ;")
         self.patient_queue_send_to_ipd_deactivate()
     def patient_queue_send_to_ipd_deactivate(self):
         self.patient_queue_send_to_ipd.destroy()
@@ -2557,7 +2557,7 @@ doctor_name
             print("values are ",self.patient_queue_Delete_page_treeview_selected1['values'])
             self.patient_queue_Delete_page_treeview_selected=self.patient_queue_Delete_page_treeview_selected1['values']
             print("self.patient_queue_Delete_page_treeview_selected type:",type(self.patient_queue_Delete_page_treeview_selected))
-            self.patient_queue_Delete_page_values_update_command = login_check.get_execution_result("select  id,name,phone_number,gender,age	from patient_details where id = '" + str(self.patient_queue_Delete_page_treeview_selected[0]) + " ';")
+            self.patient_queue_Delete_page_values_update_command = login_check.get_execution_result("select  id,name,phone_number,gender,age	from hms.patient_details where id = '" + str(self.patient_queue_Delete_page_treeview_selected[0]) + " ';")
             print("self.patient_queue_Delete_page_values_update_command:",self.patient_queue_Delete_page_values_update_command)
             self.patient_queue_Delete_page_id_label_display_var.set(str(self.patient_queue_Delete_page_values_update_command[0][0]))
             print("after self.patient_queue_Delete_page_id_label_display_var.set:",self.patient_queue_Delete_page_id_label_display_var.get())
@@ -2608,7 +2608,7 @@ doctor_name
         if(self.patient_queue_selected == ''):
             self.patient_queue_Delete_page_warning_label.config(text="WARNING!:please select patient in patient queue")
         else:
-            self.patient_queue_Delete_page_warning_label.config(text="Do you want to detele from patient queue")
+            self.patient_queue_Delete_page_warning_label.config(text="Do you want to detele from hms.patient queue")
             #self.patient_queue_Delete_page_yes_button = tk.Button(self.patient_queue_Delete_page,text="YES",font=('calibre',20,'bold'))
             self.patient_queue_Delete_page_yes_button.place(x=70,y=170,width=112,height=25)
             #self.patient_queue_Delete_page_no_button = tk.Button(self.patient_queue_Delete_page,text="NO",font=('calibre',20,'bold'))
@@ -2616,7 +2616,7 @@ doctor_name
 
         self.patient_queue_Delete_page.mainloop()
     def patient_queue_Delete_page_yes_button_update(self):
-        self.patient_queue_Delete_page_delete_command = login_check.get_execution_result("DELETE FROM patient_queue where patient_id =   " + str(self.patient_queue_Delete_page_id_label_display_var.get()) + " ;")
+        self.patient_queue_Delete_page_delete_command = login_check.get_execution_result("DELETE FROM hms.patient_queue where patient_id =   " + str(self.patient_queue_Delete_page_id_label_display_var.get()) + " ;")
 
         self.patient_queue_Delete_page_deactivate()
         
@@ -2643,9 +2643,9 @@ doctor_name
         self.opd_queue_display_sql_command = None 
         if self.opd_queue_value_inside.get() == "ALL":
 
-           self.opd_queue_display_sql_command = "select pd.id,pd.name,pq.queue_type,pq.queue_status,pq.reason,dd.doctor_name,dd.doctor_id   from patient_details pd inner join patient_queue pq  on pd.id=pq.patient_id inner join doctor_details dd on   pq.doctor_id = dd.doctor_id where pq.queue_status != 'completed' and pq.queue_type = 'OPD';"
+           self.opd_queue_display_sql_command = "select pd.id,pd.name,pq.queue_type,pq.queue_status,pq.reason,dd.doctor_name,dd.doctor_id   from hms.patient_details pd inner    join hms.patient_queue pq  on pd.id=pq.patient_id inner join  hms.doctor_details dd on   pq.doctor_id = dd.doctor_id where pq.queue_status != 'completed' and pq.queue_type = 'OPD';"
         else :
-            self.opd_queue_display_sql_command = "select pd.id,pd.name,pq.queue_type,pq.queue_status,pq.reason,dd.doctor_name,dd.doctor_id    from patient_details pd inner join patient_queue pq  on pd.id=pq.patient_id inner join doctor_details dd on   pq.doctor_id = dd.doctor_id where dd.doctor_name = '" + str(self.opd_queue_value_inside.get()) + "' and pq.queue_status != 'completed'  and pq.queue_type = 'OPD';"
+            self.opd_queue_display_sql_command = "select pd.id,pd.name,pq.queue_type,pq.queue_status,pq.reason,dd.doctor_name,dd.doctor_id    from hms.patient_details pd inner    join hms.patient_queue pq  on pd.id=pq.patient_id inner join  hms.doctor_details dd on   pq.doctor_id = dd.doctor_id where dd.doctor_name = '" + str(self.opd_queue_value_inside.get()) + "' and pq.queue_status != 'completed'  and pq.queue_type = 'OPD';"
         self.opd_queue_display_sql_command_execution = login_check.get_execution_result(self.opd_queue_display_sql_command)
         print(" str(self.opd_queue_value_inside):", str(self.opd_queue_value_inside.get()))
         print("/n/n/n/n/n/nself.opd_queue_display_sql_command :/n",self.opd_queue_display_sql_command_execution)
@@ -2675,7 +2675,7 @@ doctor_name
             self.opd_queue_default_tree.delete(item)
     def opd_queue_doctor_value_update(self):
           self.opd_queue_roles_list = ["ALL"]
-          self.opd_queue_doctor_list_update_command = login_check.get_execution_result("select doctor_name from doctor_details")
+          self.opd_queue_doctor_list_update_command = login_check.get_execution_result("select doctor_name from   hms.doctor_details")
           print("self.opd_queue_doctor_list_update_command:",self.opd_queue_doctor_list_update_command)
           for i in self.opd_queue_doctor_list_update_command:
              
@@ -2683,7 +2683,7 @@ doctor_name
               print("self.opd_queue_roles_list:",self.opd_queue_roles_list)
           self.opd_queue_roles_list.append("ALL")
     def opd_queue_send_to_IPD_doctor_value_update(self):
-          self.opd_queue_doctor_list_update_command = login_check.get_execution_result("select doctor_name from doctor_details;")
+          self.opd_queue_doctor_list_update_command = login_check.get_execution_result("select doctor_name from   hms.doctor_details;")
           print("self.opd_queue_doctor_list_update_command:",self.opd_queue_doctor_list_update_command)
           for i in self.opd_queue_doctor_list_update_command:
              
@@ -2712,7 +2712,7 @@ doctor_name
             print("values are ",self.opd_queue_send_to_ipd_treeview_selected1['values'])
             self.opd_queue_send_to_ipd_treeview_selected=self.opd_queue_send_to_ipd_treeview_selected1['values']
             print("self.opd_queue_send_to_ipd_treeview_selected type:",type(self.opd_queue_send_to_ipd_treeview_selected))
-            self.opd_queue_send_to_ipd_values_update_command = login_check.get_execution_result("select  id,name,phone_number,gender,age	from patient_details where id = '" + str(self.opd_queue_send_to_ipd_treeview_selected[0]) + " ';")
+            self.opd_queue_send_to_ipd_values_update_command = login_check.get_execution_result("select  id,name,phone_number,gender,age	from hms.patient_details where id = '" + str(self.opd_queue_send_to_ipd_treeview_selected[0]) + " ';")
             print("self.opd_queue_send_to_ipd_values_update_command:",self.opd_queue_send_to_ipd_values_update_command)
             self.opd_queue_send_to_ipd_id_label_display_var.set(str(self.opd_queue_send_to_ipd_values_update_command[0][0]))
             print("after self.opd_queue_send_to_ipd_id_label_display_var.set:",self.opd_queue_send_to_ipd_id_label_display_var.get())
@@ -2780,7 +2780,7 @@ doctor_name
         self.opd_queue_send_to_IPD.wm_transient(self.root1)
         self.opd_queue_send_to_IPD.mainloop()
     def opd_queue_send_to_IPD_doctor_value_update(self):
-        self.opd_queue_doctor_list_update_command = login_check.get_execution_result("select doctor_name from doctor_details;")
+        self.opd_queue_doctor_list_update_command = login_check.get_execution_result("select doctor_name from   hms.doctor_details;")
         print("self.patient_queue_doctor_list_update_command:",self.opd_queue_doctor_list_update_command)
         for i in self.opd_queue_doctor_list_update_command:
              
@@ -2795,9 +2795,9 @@ doctor_name
             print("str(self.opd_queue_send_to_OPD_doctor_value_inside.get()):",str(self.opd_queue_send_to_IPD_doctor_value_inside.get()))
             self.opd_queue_send_to_IPD_yes_button_update_doc_name = str(self.opd_queue_send_to_IPD_doctor_value_inside.get())
 
-        self.opd_queue_send_to_IPD_yes_button_doctor_id_var=login_check.get_execution_result("select doctor_id from doctor_details where doctor_name = '" + str(self.opd_queue_send_to_IPD_yes_button_update_doc_name) +"';")
+        self.opd_queue_send_to_IPD_yes_button_doctor_id_var=login_check.get_execution_result("select doctor_id from   hms.doctor_details where doctor_name = '" + str(self.opd_queue_send_to_IPD_yes_button_update_doc_name) +"';")
         print("self.opd_queue_send_to_OPD_yes_button_doctor_id_var:",str(self.opd_queue_send_to_IPD_yes_button_doctor_id_var[0][0]))
-        self.opd_queue_send_to_IPD_yes_button_update_command1 = login_check.get_execution_result( "update patient_queue set queue_type ='IPD' , doctor_id = " + str(self.opd_queue_send_to_IPD_yes_button_doctor_id_var[0][0]) +" where  patient_id =   " + str(self.opd_queue_send_to_ipd_id_label_display_var.get()) + " ;")
+        self.opd_queue_send_to_IPD_yes_button_update_command1 = login_check.get_execution_result( "update hms.patient_queue set queue_type ='IPD' , doctor_id = " + str(self.opd_queue_send_to_IPD_yes_button_doctor_id_var[0][0]) +" where  patient_id =   " + str(self.opd_queue_send_to_ipd_id_label_display_var.get()) + " ;")
         self.opd_queue_send_to_IPD_deactivate()
     def opd_queue_send_to_IPD_deactivate(self):
         self.opd_queue_send_to_IPD.destroy()
@@ -2823,7 +2823,7 @@ doctor_name
             print("values are ",self.opd_queue_completed_page_treeview_selected1['values'])
             self.opd_queue_completed_page_treeview_selected=self.opd_queue_completed_page_treeview_selected1['values']
             print("self.opd_queue_completed_page_treeview_selected type:",type(self.opd_queue_completed_page_treeview_selected))
-            self.opd_queue_completed_page_values_update_command = login_check.get_execution_result("select  id,name,phone_number,gender,age	from patient_details where id = '" + str(self.opd_queue_completed_page_treeview_selected[0]) + " ';")
+            self.opd_queue_completed_page_values_update_command = login_check.get_execution_result("select  id,name,phone_number,gender,age	from hms.patient_details where id = '" + str(self.opd_queue_completed_page_treeview_selected[0]) + " ';")
             print("self.opd_queue_completed_page_values_update_command:",self.opd_queue_completed_page_values_update_command)
             self.opd_queue_completed_page_id_label_display_var.set(str(self.opd_queue_completed_page_values_update_command[0][0]))
             print("after self.opd_queue_completed_page_id_label_display_var.set:",self.opd_queue_completed_page_id_label_display_var.get())
@@ -2883,7 +2883,7 @@ doctor_name
         self.opd_queue_completed.wm_transient(self.root1)
         self.opd_queue_completed.mainloop()
     def opd_queue_completed_page_yes_button_update(self):
-        self.opd_queue_completed_page_delete_command = login_check.get_execution_result("update patient_queue set queue_status='completed'   where patient_id =   " + str(self.opd_queue_completed_page_id_label_display_var.get()) + " ;")
+        self.opd_queue_completed_page_delete_command = login_check.get_execution_result("update hms.patient_queue set queue_status='completed'   where patient_id =   " + str(self.opd_queue_completed_page_id_label_display_var.get()) + " ;")
 
         self.opd_queue_completed_deactivate()
 
@@ -2913,7 +2913,7 @@ doctor_name
             print("values are ",self.opd_queue_Delete_page_treeview_selected1['values'])
             self.opd_queue_Delete_page_treeview_selected=self.opd_queue_Delete_page_treeview_selected1['values']
             print("self.opd_queue_Delete_page_treeview_selected type:",type(self.opd_queue_Delete_page_treeview_selected))
-            self.opd_queue_Delete_page_values_update_command = login_check.get_execution_result("select  id,name,phone_number,gender,age	from patient_details where id = '" + str(self.opd_queue_Delete_page_treeview_selected[0]) + " ';")
+            self.opd_queue_Delete_page_values_update_command = login_check.get_execution_result("select  id,name,phone_number,gender,age	from hms.patient_details where id = '" + str(self.opd_queue_Delete_page_treeview_selected[0]) + " ';")
             print("self.opd_queue_Delete_page_values_update_command:",self.opd_queue_Delete_page_values_update_command)
             self.opd_queue_Delete_page_id_label_display_var.set(str(self.opd_queue_Delete_page_values_update_command[0][0]))
             print("after self.opd_queue_Delete_page_id_label_display_var.set:",self.opd_queue_Delete_page_id_label_display_var.get())
@@ -2973,7 +2973,7 @@ doctor_name
 
         self.opd_queue_Delete_page.mainloop()
     def opd_queue_Delete_page_yes_button_update(self):
-        self.opd_queue_Delete_page_delete_command = login_check.get_execution_result("DELETE FROM patient_queue where patient_id =   " + str(self.opd_queue_Delete_page_id_label_display_var.get()) + " ;")
+        self.opd_queue_Delete_page_delete_command = login_check.get_execution_result("DELETE FROM hms.patient_queue where patient_id =   " + str(self.opd_queue_Delete_page_id_label_display_var.get()) + " ;")
 
         self.opd_queue_Delete_page_deactivate()
         
@@ -3001,9 +3001,9 @@ doctor_name
         self.ipd_queue_display_sql_command = None 
         if self.ipd_queue_value_inside.get() == "ALL":
 
-           self.ipd_queue_display_sql_command = "select pd.id,pd.name,pq.queue_type,pq.queue_status,pq.reason,dd.doctor_name,dd.doctor_id   from patient_details pd inner join patient_queue pq  on pd.id=pq.patient_id inner join doctor_details dd on   pq.doctor_id = dd.doctor_id where pq.queue_status != 'completed' and pq.queue_type = 'IPD';"
+           self.ipd_queue_display_sql_command = "select pd.id,pd.name,pq.queue_type,pq.queue_status,pq.reason,dd.doctor_name,dd.doctor_id   from hms.patient_details pd inner    join hms.patient_queue pq  on pd.id=pq.patient_id inner join  hms.doctor_details dd on   pq.doctor_id = dd.doctor_id where pq.queue_status != 'completed' and pq.queue_type = 'IPD';"
         else :
-            self.ipd_queue_display_sql_command = "select pd.id,pd.name,pq.queue_type,pq.queue_status,pq.reason,dd.doctor_name,dd.doctor_id    from patient_details pd inner join patient_queue pq  on pd.id=pq.patient_id inner join doctor_details dd on   pq.doctor_id = dd.doctor_id where dd.doctor_name = '" + str(self.ipd_queue_value_inside.get()) + "' and pq.queue_status != 'completed'  and pq.queue_type = 'IPD';"
+            self.ipd_queue_display_sql_command = "select pd.id,pd.name,pq.queue_type,pq.queue_status,pq.reason,dd.doctor_name,dd.doctor_id    from hms.patient_details pd inner    join hms.patient_queue pq  on pd.id=pq.patient_id inner join  hms.doctor_details dd on   pq.doctor_id = dd.doctor_id where dd.doctor_name = '" + str(self.ipd_queue_value_inside.get()) + "' and pq.queue_status != 'completed'  and pq.queue_type = 'IPD';"
         self.ipd_queue_display_sql_command_execution = login_check.get_execution_result(self.ipd_queue_display_sql_command)
         print(" str(self.ipd_queue_value_inside):", str(self.ipd_queue_value_inside.get()))
         print("/n/n/n/n/n/nself.ipd_queue_display_sql_command :/n",self.ipd_queue_display_sql_command_execution)
@@ -3034,7 +3034,7 @@ doctor_name
 
     def ipd_queue_doctor_value_update(self):
           self.ipd_queue_roles_list = ["ALL"]
-          self.ipd_queue_doctor_list_update_command = login_check.get_execution_result("select doctor_name from doctor_details")
+          self.ipd_queue_doctor_list_update_command = login_check.get_execution_result("select doctor_name from   hms.doctor_details")
           print("self.ipd_queue_doctor_list_update_command:",self.ipd_queue_doctor_list_update_command)
           for i in self.ipd_queue_doctor_list_update_command:
              
@@ -3042,7 +3042,7 @@ doctor_name
               print("self.ipd_queue_roles_list:",self.ipd_queue_roles_list)
           self.ipd_queue_roles_list.append("ALL")
     def ipd_queue_send_to_opd_doctor_value_update(self):
-          self.ipd_queue_doctor_list_update_command = login_check.get_execution_result("select doctor_name from doctor_details;")
+          self.ipd_queue_doctor_list_update_command = login_check.get_execution_result("select doctor_name from   hms.doctor_details;")
           print("self.ipd_queue_doctor_list_update_command:",self.ipd_queue_doctor_list_update_command)
           for i in self.ipd_queue_doctor_list_update_command:
              
@@ -3070,7 +3070,7 @@ doctor_name
             print("values are ",self.ipd_queue_send_to_opd_treeview_selected1['values'])
             self.ipd_queue_send_to_opd_treeview_selected=self.ipd_queue_send_to_opd_treeview_selected1['values']
             print("self.ipd_queue_send_to_opd_treeview_selected type:",type(self.ipd_queue_send_to_opd_treeview_selected))
-            self.ipd_queue_send_to_opd_values_update_command = login_check.get_execution_result("select  id,name,phone_number,gender,age	from patient_details where id = '" + str(self.ipd_queue_send_to_opd_treeview_selected[0]) + " ';")
+            self.ipd_queue_send_to_opd_values_update_command = login_check.get_execution_result("select  id,name,phone_number,gender,age	from hms.patient_details where id = '" + str(self.ipd_queue_send_to_opd_treeview_selected[0]) + " ';")
             print("self.ipd_queue_send_to_opd_values_update_command:",self.ipd_queue_send_to_opd_values_update_command)
             self.ipd_queue_send_to_opd_id_label_display_var.set(str(self.ipd_queue_send_to_opd_values_update_command[0][0]))
             print("after self.ipd_queue_send_to_opd_id_label_display_var.set:",self.ipd_queue_send_to_opd_id_label_display_var.get())
@@ -3139,7 +3139,7 @@ doctor_name
         self.ipd_queue_send_to_opd.mainloop()
 
     def ipd_queue_send_to_opd_doctor_value_update(self):
-        self.ipd_queue_doctor_list_update_command = login_check.get_execution_result("select doctor_name from doctor_details;")
+        self.ipd_queue_doctor_list_update_command = login_check.get_execution_result("select doctor_name from   hms.doctor_details;")
         print("self.patient_queue_doctor_list_update_command:",self.ipd_queue_doctor_list_update_command)
         for i in self.ipd_queue_doctor_list_update_command:
              
@@ -3154,9 +3154,9 @@ doctor_name
             print("str(self.ipd_queue_send_to_ipd_doctor_value_inside.get()):",str(self.ipd_queue_send_to_opd_doctor_value_inside.get()))
             self.ipd_queue_send_to_opd_yes_button_update_doc_name = str(self.ipd_queue_send_to_opd_doctor_value_inside.get())
 
-        self.ipd_queue_send_to_opd_yes_button_doctor_id_var=login_check.get_execution_result("select doctor_id from doctor_details where doctor_name = '" + str(self.ipd_queue_send_to_opd_yes_button_update_doc_name) +"';")
+        self.ipd_queue_send_to_opd_yes_button_doctor_id_var=login_check.get_execution_result("select doctor_id from   hms.doctor_details where doctor_name = '" + str(self.ipd_queue_send_to_opd_yes_button_update_doc_name[2:len(self.ipd_queue_send_to_opd_yes_button_update_doc_name)-4]) +"';")
         print("self.ipd_queue_send_to_ipd_yes_button_doctor_id_var:",str(self.ipd_queue_send_to_opd_yes_button_doctor_id_var[0][0]))
-        self.ipd_queue_send_to_opd_yes_button_update_command1 = login_check.get_execution_result( "update patient_queue set queue_type ='OPD' , doctor_id = " + str(self.ipd_queue_send_to_opd_yes_button_doctor_id_var[0][0]) +" where  patient_id =   " + str(self.ipd_queue_send_to_opd_id_label_display_var.get()) + " ;")
+        self.ipd_queue_send_to_opd_yes_button_update_command1 = login_check.get_execution_result( "update hms.patient_queue set queue_type ='OPD' , doctor_id = " + str(self.ipd_queue_send_to_opd_yes_button_doctor_id_var[0][0]) +" where  patient_id =   " + str(self.ipd_queue_send_to_opd_id_label_display_var.get()) + " ;")
         self.ipd_queue_send_to_OPD_deactivate()
 
 
@@ -3187,7 +3187,7 @@ doctor_name
             print("values are ",self.ipd_queue_completed_page_treeview_selected1['values'])
             self.ipd_queue_completed_page_treeview_selected=self.ipd_queue_completed_page_treeview_selected1['values']
             print("self.ipd_queue_completed_page_treeview_selected type:",type(self.ipd_queue_completed_page_treeview_selected))
-            self.ipd_queue_completed_page_values_update_command = login_check.get_execution_result("select  id,name,phone_number,gender,age	from patient_details where id = '" + str(self.ipd_queue_completed_page_treeview_selected[0]) + " ';")
+            self.ipd_queue_completed_page_values_update_command = login_check.get_execution_result("select  id,name,phone_number,gender,age	from hms.patient_details where id = '" + str(self.ipd_queue_completed_page_treeview_selected[0]) + " ';")
             print("self.ipd_queue_completed_page_values_update_command:",self.ipd_queue_completed_page_values_update_command)
             self.ipd_queue_completed_page_id_label_display_var.set(str(self.ipd_queue_completed_page_values_update_command[0][0]))
             print("after self.ipd_queue_completed_page_id_label_display_var.set:",self.ipd_queue_completed_page_id_label_display_var.get())
@@ -3247,7 +3247,7 @@ doctor_name
         self.ipd_queue_completed.wm_transient(self.root1)
         self.ipd_queue_completed.mainloop()
     def ipd_queue_completed_page_yes_button_update(self):
-        self.ipd_queue_completed_page_delete_command = login_check.get_execution_result("update patient_queue set queue_status='completed'   where patient_id =   " + str(self.ipd_queue_completed_page_id_label_display_var.get()) + " ;")
+        self.ipd_queue_completed_page_delete_command = login_check.get_execution_result("update hms.patient_queue set queue_status='completed'   where patient_id =   " + str(self.ipd_queue_completed_page_id_label_display_var.get()) + " ;")
 
         self.ipd_queue_completed_deactivate()
 
@@ -3279,7 +3279,7 @@ doctor_name
             print("values are ",self.ipd_queue_Delete_page_treeview_selected1['values'])
             self.ipd_queue_Delete_page_treeview_selected=self.ipd_queue_Delete_page_treeview_selected1['values']
             print("self.ipd_queue_Delete_page_treeview_selected type:",type(self.ipd_queue_Delete_page_treeview_selected))
-            self.ipd_queue_Delete_page_values_update_command = login_check.get_execution_result("select  id,name,phone_number,gender,age	from patient_details where id = '" + str(self.ipd_queue_Delete_page_treeview_selected[0]) + " ';")
+            self.ipd_queue_Delete_page_values_update_command = login_check.get_execution_result("select  id,name,phone_number,gender,age	from hms.patient_details where id = '" + str(self.ipd_queue_Delete_page_treeview_selected[0]) + " ';")
             print("self.ipd_queue_Delete_page_values_update_command:",self.ipd_queue_Delete_page_values_update_command)
             self.ipd_queue_Delete_page_id_label_display_var.set(str(self.ipd_queue_Delete_page_values_update_command[0][0]))
             print("after self.ipd_queue_Delete_page_id_label_display_var.set:",self.ipd_queue_Delete_page_id_label_display_var.get())
@@ -3339,7 +3339,7 @@ doctor_name
 
         self.ipd_queue_Delete_page.mainloop()
     def ipd_queue_Delete_page_yes_button_update(self):
-        self.ipd_queue_Delete_page_delete_command = login_check.get_execution_result("DELETE FROM patient_queue where patient_id =   " + str(self.ipd_queue_Delete_page_id_label_display_var.get()) + " ;")
+        self.ipd_queue_Delete_page_delete_command = login_check.get_execution_result("DELETE FROM hms.patient_queue where patient_id =   " + str(self.ipd_queue_Delete_page_id_label_display_var.get()) + " ;")
 
         self.ipd_queue_Delete_page_deactivate()
         
@@ -3356,7 +3356,7 @@ doctor_name
     def physical_management_Book_room_fun(self):
         self.physical_management_book_room_treeview_reset()
         self.avaliable_room_list = None
-        self.avaliable_room_list = login_check.get_execution_result("select room_ID,room_floor, room_no,rooms_status from rooms_details where rooms_status = 'unoccupied'")
+        self.avaliable_room_list = login_check.get_execution_result("select room_ID,room_floor, room_no,rooms_status from hms.rooms_details where rooms_status = 'unoccupied'")
         print("avaliable_room_list type:",self.avaliable_room_list)
         #adding the values into contact list 
         self.physical_management_book_room_contacts = []
@@ -3456,7 +3456,7 @@ doctor_name
          self.physical_management_book_room_assaign_room_patient_id_in_int =self.physical_management_book_room_assaign_room_patient_id_input_var.get()
          print("self.physical_management_book_room_assaign_room_patient_id_in_int:",self.physical_management_book_room_assaign_room_patient_id_in_int)
          self.physical_management_book_room_assaign_room_patient_id_in_string = str(self.physical_management_book_room_assaign_room_patient_id_in_int)
-         self.physical_management_book_room_assaign_room_get_details_database_command = "select id,name,phone_number,age,gender from patient_details where id = " + self.physical_management_book_room_assaign_room_patient_id_in_string
+         self.physical_management_book_room_assaign_room_get_details_database_command = "select id,name,phone_number,age,gender from hms.patient_details where id = " + self.physical_management_book_room_assaign_room_patient_id_in_string
          print("get details command :",self.physical_management_book_room_assaign_room_get_details_database_command)
          self.physical_management_book_room_assaign_room_patient_details_from_patient_id = login_check.get_execution_result(self.physical_management_book_room_assaign_room_get_details_database_command)
          self.book_room_assain_contact=[]
@@ -3498,7 +3498,7 @@ doctor_name
     def physical_management_book_room_assaign_room_yes_button_fun(self):
         self.physical_management_book_room_assaign_person_id_str= str(self.physical_management_book_room_assaign_room_id_label_display_var )
         self.physical_management_book_room_assaign_room_id_str=str(self.physical_management_book_room_assaign_room_id)
-        self.physical_management_book_room_assaign_room_command1 = "update rooms_details set  rooms_status = 'occupied',"
+        self.physical_management_book_room_assaign_room_command1 = "update hms.rooms_details set  rooms_status = 'occupied',"
         self.physical_management_book_room_assaign_room_command2 = "booked_person_id = " +  self.physical_management_book_room_assaign_person_id_str
         self.physical_management_book_room_assaign_room_command3= "  where room_ID = " + self.physical_management_book_room_assaign_room_id_str
         self.physical_management_book_room_assaign_room_command_main = self.physical_management_book_room_assaign_room_command1 + self.physical_management_book_room_assaign_room_command2 + self.physical_management_book_room_assaign_room_command3
@@ -3515,7 +3515,7 @@ doctor_name
     def physical_management_Discharge_room_fun(self):
         self.physical_management_Discharge_room_treeview_reset()
         self.unavaliable_room_list = None
-        self.unavaliable_room_list = login_check.get_execution_result("select room_ID,room_floor, room_no,rooms_status from rooms_details where rooms_status = 'occupied'")
+        self.unavaliable_room_list = login_check.get_execution_result("select room_ID,room_floor, room_no,rooms_status from hms.rooms_details where rooms_status = 'occupied'")
         print("avaliable_room_list type:",self.unavaliable_room_list)
         #adding the values into contact list 
         self.physical_management_Discharge_room_contacts = []
@@ -3615,7 +3615,7 @@ doctor_name
          self.physical_management_Discharge_room_Discharge_room_patient_id_in_int =self.physical_management_Discharge_room_Discharge_room_patient_id_input_var.get()
          print("self.physical_management_Discharge_room_Discharge_room_patient_id_in_int:",self.physical_management_Discharge_room_Discharge_room_patient_id_in_int)
          self.physical_management_Discharge_room_Discharge_room_patient_id_in_string = str(self.physical_management_Discharge_room_Discharge_room_patient_id_in_int)
-         self.physical_management_Discharge_room_Discharge_room_get_details_database_command = "select id,name,phone_number,age,gender from patient_details where id = " + self.physical_management_Discharge_room_Discharge_room_patient_id_in_string
+         self.physical_management_Discharge_room_Discharge_room_get_details_database_command = "select id,name,phone_number,age,gender from hms.patient_details where id = " + self.physical_management_Discharge_room_Discharge_room_patient_id_in_string
          print("get details command :",self.physical_management_Discharge_room_Discharge_room_get_details_database_command)
          self.physical_management_Discharge_room_Discharge_room_patient_details_from_patient_id = login_check.get_execution_result(self.physical_management_Discharge_room_Discharge_room_get_details_database_command)
          self.Discharge_room_assain_contact=[]
@@ -3657,7 +3657,7 @@ doctor_name
     def physical_management_Discharge_room_Discharge_room_yes_button_fun(self):
         self.physical_management_Discharge_room_Discharge_person_id_str= str(self.physical_management_Discharge_room_Discharge_room_id_label_display_var )
         self.physical_management_Discharge_room_Discharge_room_id_str=str(self.physical_management_Discharge_room_Discharge_room_id)
-        self.physical_management_Discharge_room_Discharge_room_command1 = "update rooms_details set  rooms_status = 'unoccupied',"
+        self.physical_management_Discharge_room_Discharge_room_command1 = "update   hms.rooms_details set  rooms_status = 'unoccupied',"
         self.physical_management_Discharge_room_Discharge_room_command2 = "booked_person_id = " +  self.physical_management_Discharge_room_Discharge_person_id_str
         self.physical_management_Discharge_room_Discharge_room_command3= "  where room_ID = " + self.physical_management_Discharge_room_Discharge_room_id_str
         self.physical_management_Discharge_room_Discharge_room_command_main = self.physical_management_Discharge_room_Discharge_room_command1 + self.physical_management_Discharge_room_Discharge_room_command2 + self.physical_management_Discharge_room_Discharge_room_command3
@@ -3671,7 +3671,7 @@ doctor_name
 
     def physical_management_room_status_refresh(self):
         self.room_details_data=None
-        self.room_details_data = login_check.get_execution_result("select * from rooms_details")
+        self.room_details_data = login_check.get_execution_result("select * from hms.rooms_details")
         print(self.room_details_data)
         for i in self.room_details_data:
             self.id_var=i[0]
@@ -4239,7 +4239,7 @@ doctor_name
 
     def patient_registration_default(self):
              self.main_page_frame_view3_home_frame_deactivate()
-             self.main_page_frame_view3_patient_registration_default_frame_activate()
+             self.main_page_frame_view3_patient_registration_default_frame_deactivate()
              self.main_page_frame_view3_patient_visit_default_frame_deactivate()
 
              self.main_page_frame_view3_patient_search_default_frame_deactivate()
@@ -4304,7 +4304,7 @@ doctor_name
     def patient_visit_default(self):
              self.main_page_frame_view3_home_frame_deactivate()
              self.main_page_frame_view3_patient_registration_default_frame_deactivate()
-             self.main_page_frame_view3_patient_visit_default_frame_activate()
+             self.main_page_frame_view3_patient_visit_default_frame_deactivate()
 
              self.main_page_frame_view3_patient_search_default_frame_deactivate()
              self.main_page_frame_view3_patient_search_edit_frame_deactivate()
@@ -4398,6 +4398,9 @@ doctor_name
          self.main_page_frame_view3_dialy_collection_dialy_collection_ipd_frame_deactivate()
               
          self.main_page_frame_view3_dialy_collection_dialy_collection_opd_frame_deactivate()
+         self.login_page_frame1.place(x=0,y=0)
+         self.reset_button_responce()
+
         
     def patient_search_default(self):
              self.patient_search_default_display()
@@ -4544,7 +4547,7 @@ doctor_name
          
          
 
-        self.main_page_frame_view3_lab_queue_default_frame_activate()
+        self.main_page_frame_view3_lab_queue_default_frame_deactivate()
         self.main_page_frame_view3_search_lab_queue_frame_deactivate()
         self.main_page_frame_view3_view_lab_report_frame_deactivate()
 
@@ -4575,7 +4578,7 @@ doctor_name
 
          
          self.main_page_frame_view3_lab_queue_default_frame_deactivate()
-         self.main_page_frame_view3_search_lab_queue_frame_activate()
+         self.main_page_frame_view3_search_lab_queue_frame_deactivate()
          self.main_page_frame_view3_view_lab_report_frame_deactivate()
 
          self.main_page_frame_view3_search_lab_queue_frame_activate()
@@ -4608,7 +4611,7 @@ doctor_name
 
          self.main_page_frame_view3_lab_queue_default_frame_deactivate()
          self.main_page_frame_view3_search_lab_queue_frame_deactivate()
-         self.main_page_frame_view3_view_lab_report_frame_activate()
+         self.main_page_frame_view3_view_lab_report_frame_deactivate()
 
          self.main_page_frame_view3_opd_queue_default_frame_deactivate()
          self.main_page_frame_view3_ipo_queue_default_frame_deactivate()
