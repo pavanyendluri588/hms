@@ -237,16 +237,16 @@ class main_window():
 
 
 
-        self.label1= tk.Button(self.main_page_frame_view2,text="patient registration",command=self.patient_registration_default)
-        self.label1.pack(padx=5,pady=3,ipadx=40,ipady=10,fill='x')
-        self.label11= tk.Button(self.main_page_frame_view2,text="patient visit",command=self.patient_visit_default)
-        self.label11.pack(padx=5,pady=3,ipadx=40,ipady=10,fill='x')
+        #self.label1= tk.Button(self.main_page_frame_view2,text="patient registration",command=self.patient_registration_default)
+        #self.label1.pack(padx=5,pady=3,ipadx=40,ipady=10,fill='x')
+        #self.label11= tk.Button(self.main_page_frame_view2,text="patient visit",command=self.patient_visit_default)
+        #self.label11.pack(padx=5,pady=3,ipadx=40,ipady=10,fill='x')
         self.label12= tk.Button(self.main_page_frame_view2,text="patient search",command=self.patient_search_default)
         self.label12.pack(padx=5,pady=3,ipadx=40,ipady=10,fill='x')
         self.label13= tk.Button(self.main_page_frame_view2,text="patient queue",command=self.patient_queue_default)
         self.label13.pack(padx=5,pady=3,ipadx=40,ipady=10,fill='x')
-        self.label14= tk.Button(self.main_page_frame_view2,text="Lab queue",command=self.lab_queue_default)
-        self.label14.pack(padx=5,pady=3,ipadx=40,ipady=10,fill='x')
+        #self.label14= tk.Button(self.main_page_frame_view2,text="Lab queue",command=self.lab_queue_default)
+        #self.label14.pack(padx=5,pady=3,ipadx=40,ipady=10,fill='x')
         self.label15= tk.Button(self.main_page_frame_view2,text="opd queue",command=self.opd_queue_default)
         self.label15.pack(padx=5,pady=3,ipadx=40,ipady=10,fill='x')
         self.label16= tk.Button(self.main_page_frame_view2,text="ipd queue",command=self.ipd_queue_default)
@@ -255,8 +255,8 @@ class main_window():
         self.label17.pack(padx=5,pady=3,ipadx=40,ipady=10,fill='x')
         self.label18= tk.Button(self.main_page_frame_view2,text="`Dialy collection",command=self.dialy_collection_default)
         self.label18.pack(padx=5,pady=3,ipadx=40,ipady=10,fill='x')
-        self.label19= tk.Button(self.main_page_frame_view2,text="Finance Details")
-        self.label19.pack(padx=5,pady=3,ipadx=40,ipady=10,fill='x')
+        #self.label19= tk.Button(self.main_page_frame_view2,text="Finance Details")
+        #self.label19.pack(padx=5,pady=3,ipadx=40,ipady=10,fill='x')
         #side='top',
         #main_page_frame_view2------end-------------
 
@@ -4398,6 +4398,7 @@ doctor_name
          self.main_page_frame_view3_dialy_collection_dialy_collection_ipd_frame_deactivate()
               
          self.main_page_frame_view3_dialy_collection_dialy_collection_opd_frame_deactivate()
+         self.login_page_frame1.place(x=0,y=0)
         
     def patient_search_default(self):
              self.patient_search_default_display()
